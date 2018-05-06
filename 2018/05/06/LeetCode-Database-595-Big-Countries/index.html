@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode,Database," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacqueline Wang">
-<meta property="og:url" content="https://jacquelinewang.github.io/index.html">
+<meta name="description" content="A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.Write a SQL solution to output big countries’ name, population and area.">
+<meta name="keywords" content="LeetCode,Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[LeetCode&#x2F;DB] 595 Big Countries">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/06/LeetCode-Database-595-Big-Countries/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.Write a SQL solution to output big countries’ name, population and area.">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-06T07:47:50.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacqueline Wang">
+<meta name="twitter:title" content="[LeetCode&#x2F;DB] 595 Big Countries">
+<meta name="twitter:description" content="A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.Write a SQL solution to output big countries’ name, population and area.">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/06/LeetCode-Database-595-Big-Countries/"/>
 
 
 
 
 
-  <title>Jacqueline Wang</title>
+  <title>[LeetCode/DB] 595 Big Countries | Jacqueline Wang</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -266,9 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/LeetCode-Database-595-Big-Countries/" itemprop="url">[LeetCode/DB] 595 Big Countries</a></h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode/DB] 595 Big Countries</h1>
         
 
         <div class="post-meta">
@@ -340,16 +342,86 @@
       
 
       
-        
-          <p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>Write a SQL solution to output big countries’ name, population and area.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/06/LeetCode-Database-595-Big-Countries/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>Write a SQL solution to output big countries’ name, population and area.<br><a id="more"></a></p>
+<h2 id="1-Question"><a href="#1-Question" class="headerlink" title="1. Question"></a>1. Question</h2><p></p><p>There is a table <code>World</code></p><p></p>
+<pre><code>+-----------------+------------+------------+--------------+---------------+
+| name            | continent  | area       | population   | gdp           |
++-----------------+------------+------------+--------------+---------------+
+| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |
+| Albania         | Europe     | 28748      | 2831741      | 12960000      |
+| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |
+| Andorra         | Europe     | 468        | 78115        | 3712000       |
+| Angola          | Africa     | 1246700    | 20609294     | 100990000     |
++-----------------+------------+------------+--------------+---------------+
+</code></pre>
+<p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>
+Write a SQL solution to output big countries' name, population and area.<br>
+For example, according to the above table, we should output:</p>
+<pre><code>+--------------+-------------+--------------+
+| name         | population  | area         |
++--------------+-------------+--------------+
+| Afghanistan  | 25500100    | 652230       |
+| Algeria      | 37100000    | 2381741      |
++--------------+-------------+--------------+
+</code></pre>
+
+<h2 id="2-Solution"><a href="#2-Solution" class="headerlink" title="2. Solution"></a>2. Solution</h2><p>This is quite an easy one. We need to select the rows which meet either of the two requirements. The keyword <code>OR</code> or <code>UNION</code> coud be used to solve the problem.</p>
+<p><strong>Solution 1: OR</strong></p>
+<pre><code>SELECT name, population, area
+FROM World
+WHERE area > 3000000 OR population > 25000000
+</code></pre>
+
+<p><strong>Solution 2: UNION</strong></p>
+<pre><code>SELECT name, population, area
+FROM World
+WHERE area > 3000000
+
+UNION
+
+SELECT name, population, area
+FROM World
+WHERE population > 25000000
+</code></pre>
+
+<p>In this case, <code>UNION</code> is faster than <code>OR</code>. The reason is discussed below.</p>
+<h2 id="3-Related-Knowledge"><a href="#3-Related-Knowledge" class="headerlink" title="3. Related Knowledge"></a>3. Related Knowledge</h2><h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p>Lets look at the definition for <strong>index</strong> ：</p>
+<blockquote>
+<p>“An index is an on-disk structure associated with a table or view that speeds retrieval of rows from the table or view. An index contains keys built from one or more columns in the table or view. These keys are stored in a structure (B-tree) that enables SQL Server to find the row or rows associated with the key values quickly and efficiently.”</p>
+</blockquote>
+<p>The use of index can boost the performance of query:</p>
+<blockquote>
+<p>“When performing a table scan, the query optimizer reads all the rows in the table, and extracts the rows that meet the criteria of the query. When the query optimizer uses an index, it searches the index key columns, finds the storage location of the rows needed and extracts the matching rows from that location.Generally, searching the index is much faster than searching the table because unlike a table, an index frequently contains very <strong>few</strong> columns per row and the rows are in <strong>sorted</strong> order.”</p>
+</blockquote>
+<h3 id="Clustered-Index-vs-Nonclustered-Index"><a href="#Clustered-Index-vs-Nonclustered-Index" class="headerlink" title="Clustered Index vs. Nonclustered Index"></a>Clustered Index vs. Nonclustered Index</h3><p>We can classify indexes from different angles:</p>
+<ul>
+<li>By storage type: Clustered Index, Nonclustered Index</li>
+<li>By uniqueness: Unique Index, Normal Index</li>
+<li>By number of keys: Single-column Index, Multi-column Index</li>
+</ul>
+<p>Here we only focus on comparing <strong>Clustered Index</strong> and <strong>Nonclustered Index</strong>:</p>
+<h5 id="Clustered-Index"><a href="#Clustered-Index" class="headerlink" title="Clustered Index"></a>Clustered Index</h5><ul>
+<li><strong>Sort and store</strong> the data rows in the table or view based on their key values(columns included in the index definition).</li>
+<li>There can be only <strong>one</strong> clustered index per table, because the data rows themselves can be stored in only one order.</li>
+<li>When a table has a clustered index, the table is called a clustered table. If it doesn’t, its data rows are stored in an unordered structure called a heap.</li>
+</ul>
+<h5 id="Nonclustered-Index"><a href="#Nonclustered-Index" class="headerlink" title="Nonclustered Index"></a>Nonclustered Index</h5><ul>
+<li>Have a structure separate from the data rows. A nonclustered index composed of a <strong>key value</strong> and a <strong>pointer(row locator)</strong> to the data row that contains the key value.</li>
+<li>The structure of the row locator depends on whether the data pages are stored in a heap or a clustered table. For a heap, a row locator is a pointer to the row. For a clustered table, the row locator is the clustered index key.</li>
+<li>There can be only <strong>multiple</strong> nonclustered index per table.</li>
+</ul>
+<h2 id="4-Conclusion"><a href="#4-Conclusion" class="headerlink" title="4. Conclusion"></a>4. Conclusion</h2><p>Using <code>UNION</code> is <strong>faster</strong> when it comes to cases like this, when we need to  scan two different columns.<br>Given that MySQL usually uses one index per table in a given query:<br>When using <code>OR</code>, it only uses the 1st index rather than 2nd index, it would still have to do a table-scan to find rows that fit the 2nd index.<br>When using <code>UNION</code>, each sub-query can use the index of its search, then the sub-queries are combined.</p>
+<p>The statistics for performance can be found in <a href="http://www.sql-server-performance.com/2011/union-or-sql-server-queries/" target="_blank" rel="noopener">here</a>:</p>
+<pre><code>Scenario 4: Selecting Clustered index columns for different fields
+            CPU       Reads        Duration       Row Counts
+OR           0         319           366           1228
+UNION        0          50           193           1228
+</code></pre>
+
+
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/big-countries/discuss/103561/Union-and-OR-and-the-Explanation" target="_blank" rel="noopener">1. Union and OR and the Explanation</a><br><a href="http://www.sql-server-performance.com/2011/union-or-sql-server-queries/" target="_blank" rel="noopener">2. Whether to use UNION or OR in SQL Server Queries</a><br><a href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-2017" target="_blank" rel="noopener">3. Clustered and Nonclustered Indexes Described</a><br><a href="https://www.cnblogs.com/jianmingyuan/p/6740090.html" target="_blank" rel="noopener">4. MySQL: index and key (Chinese)</a></p>
+
       
     </div>
     
@@ -364,14 +436,22 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -381,10 +461,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -392,6 +473,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -412,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Question"><span class="nav-number">1.</span> <span class="nav-text">1. Question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Solution"><span class="nav-number">2.</span> <span class="nav-text">2. Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">3. Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Index"><span class="nav-number">3.1.</span> <span class="nav-text">Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustered-Index-vs-Nonclustered-Index"><span class="nav-number">3.2.</span> <span class="nav-text">Clustered Index vs. Nonclustered Index</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Clustered-Index"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">Clustered Index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nonclustered-Index"><span class="nav-number">3.2.0.2.</span> <span class="nav-text">Nonclustered Index</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Conclusion"><span class="nav-number">4.</span> <span class="nav-text">4. Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -638,6 +748,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
