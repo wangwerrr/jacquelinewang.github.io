@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Jacqueline Wang">
 <meta property="og:description" content="A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.Write a SQL solution to output big countries’ name, population and area.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T08:26:33.299Z">
+<meta property="og:updated_time" content="2018-05-06T09:51:09.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode&#x2F;DB] 595 Big Countries">
 <meta name="twitter:description" content="A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.Write a SQL solution to output big countries’ name, population and area.">
@@ -384,12 +384,12 @@ FROM World
 WHERE population > 25000000
 </code></pre>
 
-<p>In this case, <code>UNION</code> is faster than <code>OR</code>. The reason is discussed below.</p>
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p>Lets look at the definition for <strong>index</strong> ：</p>
+<p>In this case, <code>UNION</code> is faster than <code>OR</code>. The difference is caused by the use of index, which we will discuss below in details.</p>
+<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p>First, lets look at the definition for <strong>index</strong> ：</p>
 <blockquote>
 <p>“An index is an on-disk structure associated with a table or view that speeds retrieval of rows from the table or view. An index contains keys built from one or more columns in the table or view. These keys are stored in a structure (B-tree) that enables SQL Server to find the row or rows associated with the key values quickly and efficiently.”</p>
 </blockquote>
-<p>The use of index can boost the performance of query:</p>
+<p>Usually, the use of index can boost the performance of query:</p>
 <blockquote>
 <p>“When performing a table scan, the query optimizer reads all the rows in the table, and extracts the rows that meet the criteria of the query. When the query optimizer uses an index, it searches the index key columns, finds the storage location of the rows needed and extracts the matching rows from that location.Generally, searching the index is much faster than searching the table because unlike a table, an index frequently contains very <strong>few</strong> columns per row and the rows are in <strong>sorted</strong> order.”</p>
 </blockquote>
@@ -411,7 +411,7 @@ WHERE population > 25000000
 <li>There can be only <strong>multiple</strong> nonclustered index per table.</li>
 </ul>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Using <code>UNION</code> is <strong>faster</strong> when it comes to cases like this, when we need to  scan two different columns.<br>Given that MySQL usually uses one index per table in a given query:<br>When using <code>OR</code>, it only uses the 1st index rather than 2nd index, it would still have to do a table-scan to find rows that fit the 2nd index.<br>When using <code>UNION</code>, each sub-query can use the index of its search, then the sub-queries are combined.</p>
-<p>The statistics for performance can be found in <a href="http://www.sql-server-performance.com/2011/union-or-sql-server-queries/" target="_blank" rel="noopener">here</a>:</p>
+<p>The performance statistics can be found in <a href="http://www.sql-server-performance.com/2011/union-or-sql-server-queries/" target="_blank" rel="noopener">here</a>:</p>
 <pre><code>Scenario 4: Selecting Clustered index columns for different fields
             CPU       Reads        Duration       Row Counts
 OR           0         319           366           1228
