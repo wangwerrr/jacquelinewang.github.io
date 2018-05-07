@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.">
+<meta name="description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
 <meta name="keywords" content="LeetCode,Database">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;DB] 627 Swap Salary">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/07/LeetCode-DB-627-Swap-Salary/index.html">
+<meta property="og:title" content="[LeetCode&#x2F;DB] 620 Not Boring Movies">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.">
+<meta property="og:description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T23:49:42.911Z">
+<meta property="og:updated_time" content="2018-05-07T23:34:04.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;DB] 627 Swap Salary">
-<meta name="twitter:description" content="Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.">
+<meta name="twitter:title" content="[LeetCode&#x2F;DB] 620 Not Boring Movies">
+<meta name="twitter:description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/07/LeetCode-DB-627-Swap-Salary/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/"/>
 
 
 
 
 
-  <title>[LeetCode/DB] 627 Swap Salary | Jacqueline Wang</title>
+  <title>[LeetCode/DB] 620 Not Boring Movies | Jacqueline Wang</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/07/LeetCode-DB-627-Swap-Salary/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/DB] 627 Swap Salary</h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode/DB] 620 Not Boring Movies</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T07:41:36+08:00">
-                2018-05-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-08T07:03:44+08:00">
+                2018-05-08
               </time>
             
 
@@ -342,51 +342,39 @@
       
 
       
-        <p>Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.</p>
-<a id="more"></a>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p></p><p>Given a table <code>salary</code>, such as the one below, that has m=male and f=female values. Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.</p>For example:<p></p>
-<pre>| id | name | sex | salary |
-|----|------|-----|--------|
-| 1  | A    | m   | 2500   |
-| 2  | B    | f   | 1500   |
-| 3  | C    | m   | 5500   |
-| 4  | D    | f   | 500    |
-</pre>
-After running your query, the above salary table should have the following rows:
-<pre>| id | name | sex | salary |
-|----|------|-----|--------|
-| 1  | A    | f   | 2500   |
-| 2  | B    | m   | 1500   |
-| 3  | C    | f   | 5500   |
-| 4  | D    | m   | 500    |
-</pre>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Using the keyword <code>CASE</code> could solve the problem easily.</p>
-<pre><code>UPDATE salary
-SET
-sex = CASE sex
-WHEN 'f' THEN 'm'
-ELSE 'f'
-END;
+        <p>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.<br><a id="more"></a></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.<br>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.<br>For example, table cinema:</p>
+<pre><code>+---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   1     | War       |   great 3D   |   8.9     |
+|   2     | Science   |   fiction    |   8.5     |
+|   3     | irish     |   boring     |   6.2     |
+|   4     | Ice song  |   Fantacy    |   8.6     |
+|   5     | House card|   Interesting|   9.1     |
++---------+-----------+--------------+-----------+
+</code></pre>
+For the example above, the output should be:
+<pre><code>+---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   5     | House card|   Interesting|   9.1     |
+|   1     | War       |   great 3D   |   8.9     |
++---------+-----------+--------------+-----------+
 </code></pre>
 
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="CASE"><a href="#CASE" class="headerlink" title="CASE"></a>CASE</h3><p><code>CASE</code> evaluates a list of conditions and returns one of multiple possible result expressions.<br>It has two formats:</p>
-<ul>
-<li>The simple <code>CASE</code> expression, which compares an expression to a set of simple expressions to determine the result.<pre><code>CASE input_expression
-WHEN when_expression THEN result_expression [ ...n ]
-[ ELSE else_result_expression ]
-END
-</code></pre></li>
-<li>The searched <code>CASE</code> expression, which evaluates a set of Boolean expressions to determine the result.<pre><code>CASE
-WHEN Boolean_expression THEN result_expression [ ...n ]
-[ ELSE else_result_expression ]
-END
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><pre><code>SELECT *
+FROM cinema
+WHERE description != 'boring' AND id % 2 = 1
+ORDER BY rating DESC;
 </code></pre>
 
-</li>
-</ul>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>CASE</code>  is very similar to ‘case’ expressions in other programming languagues.<br>For this problem, we use the simple <code>CASE</code> expression, but in fact both could be applied.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/case-transact-sql?view=sql-server-2017" target="_blank" rel="noopener">1. CASE (Transact-SQL)</a></p>
+<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p><code>WHERE</code> clause specifies the search condition for the rows returned by the query.<br>The syntax is:<br><code>WHERE column operator value</code></p>
+<p>Some commonly-used operators in <code>WHERE</code> clause:</p>
+<table><tr><th>Operators</th><th>Description</th></tr><tr><td>=</td><td>Equals</td></tr><tr><td>&lt;&gt;, !=</td><td>Not Equal To</td></tr><tr><td>&gt;</td><td>Greater Than</td></tr><tr><td>&lt;</td><td>Less Than</td></tr><tr><td>&gt;=</td><td>Greater Than or Equal To</td></tr><tr><td>&lt;=</td><td>Less Than or Equal To</td></tr><tr><td>BETWEEN</td><td>In Some Range Of</td></tr><tr><td>LIKE</td><td>Search For A Specified Pattern</td></tr></table>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>WHERE</code> is oftenly used after <code>SELECT</code> to select rows from table with some given conditions. The expression after <code>WHERE</code> defines the condition to be met for the rows to be returned. There is no limit to the number of predicates that can be included in a search condition.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/queries/where-transact-sql?view=sql-server-2017" target="_blank" rel="noopener">1. WHERE (Transact-SQL)</a><br><a href="http://www.w3school.com.cn/sql/sql_where.asp" target="_blank" rel="noopener">2. SQL WHERE Clause (Chinese)</a></p>
 
       
     </div>
@@ -419,8 +407,8 @@ END
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/06/LeetCode-DB-595-Big-Countries/" rel="next" title="[LeetCode/DB] 595 Big Countries">
-                <i class="fa fa-chevron-left"></i> [LeetCode/DB] 595 Big Countries
+              <a href="/2018/05/07/LeetCode-DB-627-Swap-Salary/" rel="next" title="[LeetCode/DB] 627 Swap Salary">
+                <i class="fa fa-chevron-left"></i> [LeetCode/DB] 627 Swap Salary
               </a>
             
           </div>
@@ -428,10 +416,6 @@ END
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/" rel="prev" title="[LeetCode/DB] 620 Not Boring Movies">
-                [LeetCode/DB] 620 Not Boring Movies <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +587,7 @@ END
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CASE"><span class="nav-number">3.1.</span> <span class="nav-text">CASE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE"><span class="nav-number">3.1.</span> <span class="nav-text">WHERE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
