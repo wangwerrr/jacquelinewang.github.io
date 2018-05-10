@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,Database," />
+  <meta name="keywords" content="Lean In," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
-<meta name="keywords" content="LeetCode,Database">
+<meta name="description" content="Lean In: Women, Work, and the Will to Lead is a 2013 book written by Sheryl Sandberg, the chief operating officer of Facebook, and Nell Scovell, TV and magazine writer.">
+<meta name="keywords" content="Lean In">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;Database] 175 Combine Two Tables">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/index.html">
+<meta property="og:title" content="[Lean In] Reading Note 2">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/10/Lean-In-note-2/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
+<meta property="og:description" content="Lean In: Women, Work, and the Will to Lead is a 2013 book written by Sheryl Sandberg, the chief operating officer of Facebook, and Nell Scovell, TV and magazine writer.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png">
-<meta property="og:updated_time" content="2018-05-10T01:20:37.078Z">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/05/10/Lean-In-note-2/lean-in-book-image.jpg">
+<meta property="og:updated_time" content="2018-05-10T14:46:52.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;Database] 175 Combine Two Tables">
-<meta name="twitter:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
-<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png">
+<meta name="twitter:title" content="[Lean In] Reading Note 2">
+<meta name="twitter:description" content="Lean In: Women, Work, and the Will to Lead is a 2013 book written by Sheryl Sandberg, the chief operating officer of Facebook, and Nell Scovell, TV and magazine writer.">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/05/10/Lean-In-note-2/lean-in-book-image.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/10/Lean-In-note-2/"/>
 
 
 
 
 
-  <title>[LeetCode/Database] 175 Combine Two Tables | Jacqueline Wang</title>
+  <title>[Lean In] Reading Note 2 | Jacqueline Wang</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/10/Lean-In-note-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 175 Combine Two Tables</h1>
+          <h1 class="post-title" itemprop="name headline">[Lean In] Reading Note 2</h1>
         
 
         <div class="post-meta">
@@ -284,7 +284,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T08:11:19+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T22:32:04+08:00">
                 2018-05-10
               </time>
             
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
+                  <a href="/categories/Reading/" itemprop="url" rel="index">
+                    <span itemprop="name">Reading</span>
                   </a>
                 </span>
 
@@ -344,62 +344,10 @@
       
 
       
-        <p>Write a SQL query for a report that provides the following information for each person in the Person table.<br><a id="more"></a></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Table: Person</p>
-<pre><code>+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| PersonId    | int     |
-| FirstName   | varchar |
-| LastName    | varchar |
-+-------------+---------+
-PersonId is the primary key column for this table.
-</code></pre>
-Table: Address
-<pre><code>+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| AddressId   | int     |
-| PersonId    | int     |
-| City        | varchar |
-| State       | varchar |
-+-------------+---------+
-AddressId is the primary key column for this table.
-</code></pre>
-<p>Write a SQL query for a report that provides the following information for each person in the Person table, regardless if there is an address for each of those people:</p>
-<pre><code>FirstName, LastName, City, State
-</code></pre>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p><strong>Solution 1: Using LEFT JOIN</strong></p>
-<pre><code>SELECT Person.FirstName, Person.LastName, Address.City, Address.State
-FROM Person
-LEFT JOIN Address
-ON Person.PersonId = Address.PersonId;
-</code></pre>
-
-<p><strong>Solution 2: Using keyword USING</strong></p>
-<pre><code>SELECT Person.FirstName, Person.LastName, Address.City, Address.State
-FROM Person
-LEFT JOIN Address
-USING(PersionId);
-</code></pre>
-
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h3><blockquote>
-<p>An SQL join clause combines columns from one or more tables in a relational database. It creates a set that can be saved as a table or used as it is. A JOIN is a means for combining columns from one (self-join) or more tables by using values common to each.</p>
-</blockquote>
-<p>ANSI-standard SQL specifies five types of JOIN:</p>
-<ul>
-<li><code>INNER JOIN</code> An inner join requires each row in the two joined tables to have matching column values.</li>
-<li><code>LEFT OUTER JOIN</code>: The result of a left outer join (or simply left join) for tables A and B always contains all rows of the “left” table (A), even if the join-condition does not find any matching row in the “right” table (B).</li>
-<li><code>RIGHT OUTER JOIN</code>: A right outer join (or right join) closely resembles a left outer join, except with the treatment of the tables reversed.</li>
-<li><code>FULL OUTER JOIN</code>: A full outer join combines the effect of applying both left and right outer joins.</li>
-<li><code>CROSS JOIN</code>: Returns the Cartesian product of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.</li>
-</ul>
-<p>The Venn diagrams could help us better understand their difference:</p>
-<p><img src="/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png" alt=""></p>
-<h3 id="USING"><a href="#USING" class="headerlink" title="USING"></a>USING</h3><p>Another valid sub clause of <code>JOIN</code>. The syntax for <code>USING</code> is simple:<br><code>USING(column1, column2…)</code></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Considering there might not be an address information for every person, we should use outer join instead of the default inner join.<br>One can join tables <code>ON</code> a column, a set of columns and even a condition(<code>WHERE</code>).<br><code>USING</code> is useful when both tables share a column of the exact same name on which they join.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/questions/3022713/difference-between-inner-join-full-join" target="_blank" rel="noopener">1. Difference between Inner Join &amp; Full join</a><br><a href="https://stackoverflow.com/questions/11366006/mysql-on-vs-using" target="_blank" rel="noopener">2. MySQL ON vs USING</a></p>
+        <p>Lean In: Women, Work, and the Will to Lead is a 2013 book written by Sheryl Sandberg, the chief operating officer of Facebook, and Nell Scovell, TV and magazine writer.<br><a id="more"></a><br><img src="/2018/05/10/Lean-In-note-2/lean-in-book-image.jpg" alt=""><br><strong>Chapter 9 The Myth of Doing It All</strong></p>
+<p><em>“He(Larry Kanarek) said McKinsey would never stop making demands on our time, so it was up to us to decide what we were willing to do. It was our responsibility to <strong>draw the line</strong>. We needed to determine how many hours we were willing to work in a day and how many nights we were willing to travel. If later on, the job did not work out, we would know that we had tried on our own terms. Counterintuitively, long-term success at work often depends on <strong>not</strong> trying to meet every demand placed on us. The best way to make room for both life and career is to make choices deliberately – to <strong>set limits</strong> and stick to them.”</em> (p134)</p>
+<p><em>“My coworkers should understand that I need to go to a party tonight – and this is just as legitimate as their kids’ soccer game – because going to a party is the only way I might actually meet someone and start a family so I can have a soccer game to go to one day!”</em>(p141)</p>
+<p><em>“Instead of perfection, we should aim for <strong>sustainable</strong> and <strong>fulfilling</strong>. The right question is not ‘Can I do it all?’ but ‘Can I do what’s most important for me and my family?’”</em>(p148)</p>
 
       
     </div>
@@ -417,9 +365,7 @@ USING(PersionId);
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-            <a href="/tags/Database/" rel="tag"># Database</a>
+            <a href="/tags/Lean-In/" rel="tag"># Lean In</a>
           
         </div>
       
@@ -432,8 +378,8 @@ USING(PersionId);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/09/LeetCode-DB-182-Duplicate-Emails/" rel="next" title="[LeetCode/DB] 182 Duplicate Emails">
-                <i class="fa fa-chevron-left"></i> [LeetCode/DB] 182 Duplicate Emails
+              <a href="/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/" rel="next" title="[LeetCode/Database] 175 Combine Two Tables">
+                <i class="fa fa-chevron-left"></i> [LeetCode/Database] 175 Combine Two Tables
               </a>
             
           </div>
@@ -441,10 +387,6 @@ USING(PersionId);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/10/Lean-In-note-2/" rel="prev" title="[Lean In] Reading Note 2">
-                [Lean In] Reading Note 2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,17 +438,8 @@ USING(PersionId);
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,22 +539,6 @@ USING(PersionId);
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JOIN"><span class="nav-number">3.1.</span> <span class="nav-text">JOIN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USING"><span class="nav-number">3.2.</span> <span class="nav-text">USING</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
