@@ -88,7 +88,7 @@
 <meta property="og:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png">
-<meta property="og:updated_time" content="2018-05-10T01:17:47.659Z">
+<meta property="og:updated_time" content="2018-05-10T01:20:37.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode&#x2F;Database] 175 Combine Two Tables">
 <meta name="twitter:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
@@ -377,7 +377,7 @@ LEFT JOIN Address
 ON Person.PersonId = Address.PersonId;
 </code></pre>
 
-<p><strong>Solution 2: using keyword USING</strong></p>
+<p><strong>Solution 2: Using keyword USING</strong></p>
 <pre><code>SELECT Person.FirstName, Person.LastName, Address.City, Address.State
 FROM Person
 LEFT JOIN Address
@@ -395,8 +395,9 @@ USING(PersionId);
 <li><code>FULL OUTER JOIN</code>: A full outer join combines the effect of applying both left and right outer joins.</li>
 <li><code>CROSS JOIN</code>: Returns the Cartesian product of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.</li>
 </ul>
-<p>The Venn diagrams could help us better understand their difference:<br><img src="/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png" alt=""></p>
-<h3 id="USING"><a href="#USING" class="headerlink" title="USING"></a>USING</h3><p>Another valid sub clause of <code>JOIN</code>. The syntax for <code>USING</code> is simpler than <code>ON</code>:<br><code>USING(column1, column2…)</code></p>
+<p>The Venn diagrams could help us better understand their difference:</p>
+<p><img src="/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png" alt=""></p>
+<h3 id="USING"><a href="#USING" class="headerlink" title="USING"></a>USING</h3><p>Another valid sub clause of <code>JOIN</code>. The syntax for <code>USING</code> is simple:<br><code>USING(column1, column2…)</code></p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Considering there might not be an address information for every person, we should use outer join instead of the default inner join.<br>One can join tables <code>ON</code> a column, a set of columns and even a condition(<code>WHERE</code>).<br><code>USING</code> is useful when both tables share a column of the exact same name on which they join.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/questions/3022713/difference-between-inner-join-full-join" target="_blank" rel="noopener">1. Difference between Inner Join &amp; Full join</a><br><a href="https://stackoverflow.com/questions/11366006/mysql-on-vs-using" target="_blank" rel="noopener">2. MySQL ON vs USING</a></p>
 
