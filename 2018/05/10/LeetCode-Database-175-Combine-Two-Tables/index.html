@@ -88,7 +88,7 @@
 <meta property="og:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/sql-join.png">
-<meta property="og:updated_time" content="2018-05-10T01:20:37.078Z">
+<meta property="og:updated_time" content="2018-05-12T05:36:40.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode&#x2F;Database] 175 Combine Two Tables">
 <meta name="twitter:description" content="Write a SQL query for a report that provides the following information for each person in the Person table.">
@@ -370,14 +370,14 @@ AddressId is the primary key column for this table.
 <pre><code>FirstName, LastName, City, State
 </code></pre>
 
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p><strong>Solution 1: Using LEFT JOIN</strong></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p><strong>Solution 1: Using ON</strong></p>
 <pre><code>SELECT Person.FirstName, Person.LastName, Address.City, Address.State
 FROM Person
 LEFT JOIN Address
 ON Person.PersonId = Address.PersonId;
 </code></pre>
 
-<p><strong>Solution 2: Using keyword USING</strong></p>
+<p><strong>Solution 2: Using USING</strong></p>
 <pre><code>SELECT Person.FirstName, Person.LastName, Address.City, Address.State
 FROM Person
 LEFT JOIN Address
@@ -525,7 +525,7 @@ USING(PersionId);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -536,7 +536,7 @@ USING(PersionId);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -547,7 +547,7 @@ USING(PersionId);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
