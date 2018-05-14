@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode,Database," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to my world :)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://jacquelinewang.github.io/tags/index.html">
+<meta name="description" content="Write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.">
+<meta name="keywords" content="LeetCode,Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[LeetCode&#x2F;Database] 197 Rising Temperature">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/14/LeetCode-Database-197-Rising-Temperature/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Welcome to my world :)">
+<meta property="og:description" content="Write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T07:03:27.846Z">
+<meta property="og:updated_time" content="2018-05-14T01:42:10.563Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Welcome to my world :)">
+<meta name="twitter:title" content="[LeetCode&#x2F;Database] 197 Rising Temperature">
+<meta name="twitter:description" content="Write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/tags/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/14/LeetCode-Database-197-Rising-Temperature/"/>
 
 
 
 
 
-  <title>tags | Jacqueline Wang</title>
+  <title>[LeetCode/Database] 197 Rising Temperature | Jacqueline Wang</title>
   
 
 
@@ -240,40 +241,197 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/14/LeetCode-Database-197-Rising-Temperature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                6 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Canada/" style="font-size: 12px; color: #ccc">Canada</a> <a href="/tags/Database/" style="font-size: 30px; color: #111">Database</a> <a href="/tags/Lean-In/" style="font-size: 21px; color: #6f6f6f">Lean In</a> <a href="/tags/LeetCode/" style="font-size: 30px; color: #111">LeetCode</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 197 Rising Temperature</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T08:05:55+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.<br><a id="more"></a></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Given a <code>Weather</code> table, write a SQL query to find all dates’ Ids with higher temperature compared to its previous (yesterday’s) dates.</p>
+<pre><code>+---------+------------------+------------------+
+| Id(INT) | RecordDate(DATE) | Temperature(INT) |
++---------+------------------+------------------+
+|       1 |       2015-01-01 |               10 |
+|       2 |       2015-01-02 |               25 |
+|       3 |       2015-01-03 |               20 |
+|       4 |       2015-01-04 |               30 |
++---------+------------------+------------------+
+</code></pre>
+
+<p>For example, return the following Ids for the above <code>Weather</code> table:</p>
+<pre><code>+----+
+| Id |
++----+
+|  2 |
+|  4 |
++----+
+</code></pre>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><pre><code>SELECT b.Id
+FROM Weather a JOIN Weather b
+ON DATEDIFF(b.RecordDate, a.RecordDate) = 1
+AND b.Temperature > a.Temperature;
+</code></pre>
+
+<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="DATEDIFF"><a href="#DATEDIFF" class="headerlink" title="DATEDIFF"></a>DATEDIFF</h3><p>The date and time types for representing temporal values are <code>DATE</code>, <code>TIME</code>, <code>DATETIME</code>, <code>TIMESTAMP</code>, and <code>YEAR</code>. Each temporal type has a range of valid values, as well as a “zero” value that may be used when you specify an invalid value that MySQL cannot represent.<br><code>DATEDIFF(expr1,expr2)</code>returns expr1 − expr2 expressed as a value in days from one date to the other. expr1 and expr2 are date or date-and-time expressions. Only the date parts of the values are used in the calculation.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>MySQL uses <code>DATEDIFF()</code> to compare two date type values. So, we can get the result by joining this table weather with itself and use this  <code>DATEDIFF()</code> function.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-types.html" target="_blank" rel="noopener">1. Date and Time Types</a><br><a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_datediff" target="_blank" rel="noopener">2. Date and Time Functions</a></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/12/Exchange-At-Toronto/" rel="next" title="记多伦多大学交换">
+                <i class="fa fa-chevron-left"></i> 记多伦多大学交换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -306,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -407,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DATEDIFF"><span class="nav-number">3.1.</span> <span class="nav-text">DATEDIFF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
