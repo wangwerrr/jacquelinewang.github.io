@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,Database," />
+  <meta name="keywords" content="Dear Echo," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
-<meta name="keywords" content="LeetCode,Database">
+<meta name="description" content="也许，透过书信呼应的方式，加上声音，我们人和人之间，所竖立起来的高墙，能够成为透明的。或说，不断那么晶莹剔透，或会有些光线照亮一刹那间幽暗的心灵，带来一比欣慰，然后再不打扰，各自安静存活等。…">
+<meta name="keywords" content="Dear Echo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;Database] 181 Employees Earning More Than Their Managers">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/index.html">
+<meta property="og:title" content="[亲爱的三毛] Reading Note 1">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/16/Dear-Echo-note-1/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
+<meta property="og:description" content="也许，透过书信呼应的方式，加上声音，我们人和人之间，所竖立起来的高墙，能够成为透明的。或说，不断那么晶莹剔透，或会有些光线照亮一刹那间幽暗的心灵，带来一比欣慰，然后再不打扰，各自安静存活等。…">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-11T09:04:46.557Z">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/05/16/Dear-Echo-note-1/Echo-Jose.jpeg">
+<meta property="og:updated_time" content="2018-05-15T23:43:18.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;Database] 181 Employees Earning More Than Their Managers">
-<meta name="twitter:description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
+<meta name="twitter:title" content="[亲爱的三毛] Reading Note 1">
+<meta name="twitter:description" content="也许，透过书信呼应的方式，加上声音，我们人和人之间，所竖立起来的高墙，能够成为透明的。或说，不断那么晶莹剔透，或会有些光线照亮一刹那间幽暗的心灵，带来一比欣慰，然后再不打扰，各自安静存活等。…">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/05/16/Dear-Echo-note-1/Echo-Jose.jpeg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/16/Dear-Echo-note-1/"/>
 
 
 
 
 
-  <title>[LeetCode/Database] 181 Employees Earning More Than Their Managers | Jacqueline Wang</title>
+  <title>[亲爱的三毛] Reading Note 1 | Jacqueline Wang</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/16/Dear-Echo-note-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 181 Employees Earning More Than Their Managers</h1>
+          <h1 class="post-title" itemprop="name headline">[亲爱的三毛] Reading Note 1</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T16:41:26+08:00">
-                2018-05-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T07:37:19+08:00">
+                2018-05-16
               </time>
             
 
@@ -305,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
+                  <a href="/categories/Reading/" itemprop="url" rel="index">
+                    <span itemprop="name">Reading</span>
                   </a>
                 </span>
 
@@ -342,38 +344,7 @@
       
 
       
-        <p>Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.<br><a id="more"></a></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<pre><code>+----+-------+--------+-----------+
-| Id | Name  | Salary | ManagerId |
-+----+-------+--------+-----------+
-| 1  | Joe   | 70000  | 3         |
-| 2  | Henry | 80000  | 4         |
-| 3  | Sam   | 60000  | NULL      |
-| 4  | Max   | 90000  | NULL      |
-+----+-------+--------+-----------+
-</code></pre>
-
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<pre><code>+----------+
-| Employee |
-+----------+
-| Joe      |
-+----------+
-</code></pre>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Using self join:</p>
-<pre><code>SELECT
-a.NAME AS Employee
-FROM Employee AS a JOIN Employee AS b
-ON a.ManagerId = b.Id
-AND a.Salary > b.Salary
-</code></pre>
-
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="SELF-JOIN"><a href="#SELF-JOIN" class="headerlink" title="SELF JOIN"></a>SELF JOIN</h3><p>The SQL SELF <code>JOIN</code> is used to join a table to itself as if the table were two tables.<br>The basic syntax of SELF <code>JOIN</code> is as follows:</p>
-<p><pre><code>SELECT a.column_name, b.column_name…<br>FROM table1 a, table1 b<br>WHERE a.common_field = b.common_field;<br></code></pre><br>SELF <code>JOIN</code> returns the <a href="https://en.wikipedia.org/wiki/Cartesian_product" target="_blank" rel="noopener">Cartesian product</a> of rows from the rowsets in the join. In other words, it will combine each row from the first rowset with each row from the second rowset. Actually, it has the similar effect as using <code>CROSS JOIN</code> between two different tables.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>As this table has the employee’s manager information, we need to select information from it twice. Though we can also solve the problem with <code>WHERE</code> &amp; <code>AND/OR</code>, <code>JOIN</code> &amp; <code>ON</code> is a more common and efficient way to link tables together.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/employees-earning-more-than-their-managers/solution/" target="_blank" rel="noopener">1. Employees Earning More Than Their Managers Solution</a><br><a href="https://www.tutorialspoint.com/sql/sql-self-joins.html" target="_blank" rel="noopener">2. SQL - SELF JOINS</a><br><a href="https://en.wikipedia.org/wiki/Cartesian_product" target="_blank" rel="noopener">3. Cartesian Product</a></p>
+        <p>也许，透过书信呼应的方式，加上声音，我们人和人之间，所竖立起来的高墙，能够成为透明的。或说，不断那么晶莹剔透，或会有些光线照亮一刹那间幽暗的心灵，带来一比欣慰，然后再不打扰，各自安静存活等。<br>…<br><a id="more"></a><br><img src="/2018/05/16/Dear-Echo-note-1/Echo-Jose.jpeg" alt="">“我明明飞出了水池，我犯了规，可是身边的人不说话、不批评。”<br>因为我们已然破局。全新的生活模式、价值观念，也就得到了建立的空间。<br>在这破空而去的步骤中，我们必须掌握一个简单的条件——经济独立、精神独立。甚而心有余力。<br>“当我们不再是任何人的拖累时，人们就对我们放心、肯定、漠视。这时候，自由的能力，在一碗阳春面或者满汉全席中的出神入化，已没有了区别。”<br>好，我们由守而破而化，这三个连贯的过程中，必然已经有所改变。<br>在这自然的转变中，我们走上了另一个境界——“我不再参与一般的游戏规则，我无所谓。”<br>我们慢慢在不伤害任何人的自信中，懂得了“拒绝的艺术”，而他人无伤。当我们也受到他人拒绝时，我们又培养了一个沟通的检讨和反省，以及学习绝对的客观。<br>很平衡地，我们在化过之后，又有了另一番了悟。原来我们已经创造出属于自己的游戏规则。<br>在这份知觉中，我们看清楚了一份生活的品质。我们升华了。<br>“人为物累、心为形役”的无可奈何已成为过去，那处身囹圄中的我们，被自己释放出来。我们内心的宇宙，如此饱满丰富，而对于外在的情、爱、名、利，也并不看轻，但是已不再是它们的囚犯了。<br>(p137)</p>
 
       
     </div>
@@ -391,9 +362,7 @@ AND a.Salary > b.Salary
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-            <a href="/tags/Database/" rel="tag"># Database</a>
+            <a href="/tags/Dear-Echo/" rel="tag"># Dear Echo</a>
           
         </div>
       
@@ -406,8 +375,8 @@ AND a.Salary > b.Salary
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/Lean-In-note-2/" rel="next" title="[Lean In] Reading Note 2">
-                <i class="fa fa-chevron-left"></i> [Lean In] Reading Note 2
+              <a href="/2018/05/16/LeetCode-Database-596-Classes-More-Than-5-Students/" rel="next" title="[LeetCode/Database] 596 Classes More Than 5 Students">
+                <i class="fa fa-chevron-left"></i> [LeetCode/Database] 596 Classes More Than 5 Students
               </a>
             
           </div>
@@ -415,10 +384,6 @@ AND a.Salary > b.Salary
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/12/LeetCode-Database-183-Customers-Who-Never-Order/" rel="prev" title="[LeetCode/Database] 183 Customers Who Never Order">
-                [LeetCode/Database] 183 Customers Who Never Order <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -470,17 +435,8 @@ AND a.Salary > b.Salary
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -580,22 +536,6 @@ AND a.Salary > b.Salary
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SELF-JOIN"><span class="nav-number">3.1.</span> <span class="nav-text">SELF JOIN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

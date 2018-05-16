@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
+<meta name="description" content="List out all classes which have more than or equal to 5 students.">
 <meta name="keywords" content="LeetCode,Database">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;Database] 181 Employees Earning More Than Their Managers">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/index.html">
+<meta property="og:title" content="[LeetCode&#x2F;Database] 596 Classes More Than 5 Students">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/16/LeetCode-Database-596-Classes-More-Than-5-Students/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
+<meta property="og:description" content="List out all classes which have more than or equal to 5 students.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-11T09:04:46.557Z">
+<meta property="og:updated_time" content="2018-05-16T00:27:47.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;Database] 181 Employees Earning More Than Their Managers">
-<meta name="twitter:description" content="Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.">
+<meta name="twitter:title" content="[LeetCode&#x2F;Database] 596 Classes More Than 5 Students">
+<meta name="twitter:description" content="List out all classes which have more than or equal to 5 students.">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/16/LeetCode-Database-596-Classes-More-Than-5-Students/"/>
 
 
 
 
 
-  <title>[LeetCode/Database] 181 Employees Earning More Than Their Managers | Jacqueline Wang</title>
+  <title>[LeetCode/Database] 596 Classes More Than 5 Students | Jacqueline Wang</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/16/LeetCode-Database-596-Classes-More-Than-5-Students/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 181 Employees Earning More Than Their Managers</h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 596 Classes More Than 5 Students</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T16:41:26+08:00">
-                2018-05-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T07:27:46+08:00">
+                2018-05-16
               </time>
             
 
@@ -342,38 +342,42 @@
       
 
       
-        <p>Write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.<br><a id="more"></a></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>The <code>Employee</code> table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.</p>
-<pre><code>+----+-------+--------+-----------+
-| Id | Name  | Salary | ManagerId |
-+----+-------+--------+-----------+
-| 1  | Joe   | 70000  | 3         |
-| 2  | Henry | 80000  | 4         |
-| 3  | Sam   | 60000  | NULL      |
-| 4  | Max   | 90000  | NULL      |
-+----+-------+--------+-----------+
+        <p>List out all classes which have more than or equal to 5 students.<br><a id="more"></a></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>There is a table <code>courses</code> with columns: student and class. Please list out all classes which have more than or equal to 5 students.<br>For example, the table:</p>
+<pre><code>+---------+------------+
+| student | class      |
++---------+------------+
+| A       | Math       |
+| B       | English    |
+| C       | Math       |
+| D       | Biology    |
+| E       | Math       |
+| F       | Computer   |
+| G       | Math       |
+| H       | Math       |
+| I       | Math       |
++---------+------------+
 </code></pre>
 
-<p>Given the <code>Employee</code> table, write a SQL query that finds out employees who earn more than their managers. For the above table, Joe is the only employee who earns more than his manager.</p>
-<pre><code>+----------+
-| Employee |
-+----------+
-| Joe      |
-+----------+
+<p>Should output:</p>
+<pre><code>+---------+
+| class   |
++---------+
+| Math    |
++---------+
 </code></pre>
 
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Using self join:</p>
-<pre><code>SELECT
-a.NAME AS Employee
-FROM Employee AS a JOIN Employee AS b
-ON a.ManagerId = b.Id
-AND a.Salary > b.Salary
+<p>Note:<br>The students should not be counted duplicate in each course.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Using <code>GROUP BY</code> and <code>HAVING</code>:</p>
+<pre><code>SELECT class FROM courses
+GROUP BY class
+HAVING COUNT(DISTINCT student) >= 5;
 </code></pre>
 
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="SELF-JOIN"><a href="#SELF-JOIN" class="headerlink" title="SELF JOIN"></a>SELF JOIN</h3><p>The SQL SELF <code>JOIN</code> is used to join a table to itself as if the table were two tables.<br>The basic syntax of SELF <code>JOIN</code> is as follows:</p>
-<p><pre><code>SELECT a.column_name, b.column_name…<br>FROM table1 a, table1 b<br>WHERE a.common_field = b.common_field;<br></code></pre><br>SELF <code>JOIN</code> returns the <a href="https://en.wikipedia.org/wiki/Cartesian_product" target="_blank" rel="noopener">Cartesian product</a> of rows from the rowsets in the join. In other words, it will combine each row from the first rowset with each row from the second rowset. Actually, it has the similar effect as using <code>CROSS JOIN</code> between two different tables.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>As this table has the employee’s manager information, we need to select information from it twice. Though we can also solve the problem with <code>WHERE</code> &amp; <code>AND/OR</code>, <code>JOIN</code> &amp; <code>ON</code> is a more common and efficient way to link tables together.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/employees-earning-more-than-their-managers/solution/" target="_blank" rel="noopener">1. Employees Earning More Than Their Managers Solution</a><br><a href="https://www.tutorialspoint.com/sql/sql-self-joins.html" target="_blank" rel="noopener">2. SQL - SELF JOINS</a><br><a href="https://en.wikipedia.org/wiki/Cartesian_product" target="_blank" rel="noopener">3. Cartesian Product</a></p>
+<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>The <code>HAVING</code> clause works like the <code>WHERE</code> clause, but it applies after group by aggregations take place. The syntax is like this:</p>
+<p><pre><code>SELECT columns FROM tables<br>GROUP BY column<br>HAVING condition;<br></code></pre><br>Usually, at least one of the columns will be an aggregate function such as <code>COUNT</code>, <code>MAX</code>, or <code>SUM</code> on one of the tables’ columns. In order to apply having to an aggregated column, you’ll want to give it a name using <code>AS</code>.<br>It doesn’t usually make sense to use having without group by.<br>If you use both <code>WHERE</code> and <code>HAVING</code>, the <code>WHERE</code> condition will filter the rows that are going into the aggregation, and the <code>HAVING</code> condition will filter the rows that come out of it.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The intuition is to count the student number in each class. And then, we can select the ones have more than 5 students. While using sub-query is one way to add some condition to a <code>GROUP BY</code> clause, <code>HAVING</code> is a more simpler and natural approach.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.postgresql.org/docs/9.4/static/sql-select.html#SQL-HAVING" target="_blank" rel="noopener">1. WHERE Clause - HAVING Condition</a><br><a href="https://leetcode.com/problems/classes-more-than-5-students/solution/" target="_blank" rel="noopener">2. Classes More Than 5 Students Solution</a></p>
 
       
     </div>
@@ -406,8 +410,8 @@ AND a.Salary > b.Salary
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/Lean-In-note-2/" rel="next" title="[Lean In] Reading Note 2">
-                <i class="fa fa-chevron-left"></i> [Lean In] Reading Note 2
+              <a href="/2018/05/14/LeetCode-Database-197-Rising-Temperature/" rel="next" title="[LeetCode/Database] 197 Rising Temperature">
+                <i class="fa fa-chevron-left"></i> [LeetCode/Database] 197 Rising Temperature
               </a>
             
           </div>
@@ -416,8 +420,8 @@ AND a.Salary > b.Salary
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/12/LeetCode-Database-183-Customers-Who-Never-Order/" rel="prev" title="[LeetCode/Database] 183 Customers Who Never Order">
-                [LeetCode/Database] 183 Customers Who Never Order <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/16/Dear-Echo-note-1/" rel="prev" title="[亲爱的三毛] Reading Note 1">
+                [亲爱的三毛] Reading Note 1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,7 +594,7 @@ AND a.Salary > b.Salary
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SELF-JOIN"><span class="nav-number">3.1.</span> <span class="nav-text">SELF JOIN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HAVING"><span class="nav-number">3.1.</span> <span class="nav-text">HAVING</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
