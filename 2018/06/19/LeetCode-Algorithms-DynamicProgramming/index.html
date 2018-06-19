@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,Database," />
+  <meta name="keywords" content="LeetCode,Algorithms," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Write a SQL query to find all customers who never order anything.">
-<meta name="keywords" content="LeetCode,Database">
+<meta name="description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
+<meta name="keywords" content="LeetCode,Algorithms">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;Database] 183 Customers Who Never Order">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/12/LeetCode-Database-183-Customers-Who-Never-Order/index.html">
+<meta property="og:title" content="[LeetCode&#x2F;Algorithms] Dynamic Programming">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/06/19/LeetCode-Algorithms-DynamicProgramming/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Write a SQL query to find all customers who never order anything.">
+<meta property="og:description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-12T05:56:55.664Z">
+<meta property="og:updated_time" content="2018-06-19T00:11:10.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;Database] 183 Customers Who Never Order">
-<meta name="twitter:description" content="Write a SQL query to find all customers who never order anything.">
+<meta name="twitter:title" content="[LeetCode&#x2F;Algorithms] Dynamic Programming">
+<meta name="twitter:description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/12/LeetCode-Database-183-Customers-Who-Never-Order/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/06/19/LeetCode-Algorithms-DynamicProgramming/"/>
 
 
 
 
 
-  <title>[LeetCode/Database] 183 Customers Who Never Order | Jacqueline Wang</title>
+  <title>[LeetCode/Algorithms] Dynamic Programming | Jacqueline Wang</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/12/LeetCode-Database-183-Customers-Who-Never-Order/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/19/LeetCode-Algorithms-DynamicProgramming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/Database] 183 Customers Who Never Order</h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode/Algorithms] Dynamic Programming</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:31:37+08:00">
-                2018-05-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T07:45:34+08:00">
+                2018-06-19
               </time>
             
 
@@ -342,54 +342,27 @@
       
 
       
-        <p>Write a SQL query to find all customers who never order anything.<br><a id="more"></a></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>Suppose that a website contains two tables, the <code>Customers</code> table and the <code>Orders</code> table. Write a SQL query to find all customers who never order anything.</p>
-<p>Table: <code>Customers</code></p>
-<pre><code>+----+-------+
-| Id | Name  |
-+----+-------+
-| 1  | Joe   |
-| 2  | Henry |
-| 3  | Sam   |
-| 4  | Max   |
-+----+-------+
-</code></pre>
-Table: <code>Orders</code>
-<pre><code>+----+------------+
-| Id | CustomerId |
-+----+------------+
-| 1  | 3          |
-| 2  | 1          |
-+----+------------+
-</code></pre>
-Using the above tables as example, return the following:
-<pre><code>+-----------+
-| Customers |
-+-----------+
-| Henry     |
-| Max       |
-+-----------+
-</code></pre>
+        <p>Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.<br><a id="more"></a></p>
+<h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><ul>
+<li>Think backwards, Calculate forward:<ul>
+<li>currentState =  lastState + currentMove</li>
+<li>lastState have various posibilities. We should distinguish the firstState(which also could have multiple choices) to begin with.</li>
+</ul>
+</li>
+<li>Hash table (low time complexity): record every currentState</li>
+</ul>
+<h2 id="Problems-amp-Solutions"><a href="#Problems-amp-Solutions" class="headerlink" title="Problems &amp; Solutions"></a>Problems &amp; Solutions</h2><h3 id="Best-Time-to-Buy-and-Sell-Stock-121"><a href="#Best-Time-to-Buy-and-Sell-Stock-121" class="headerlink" title="Best Time to Buy and Sell Stock (121)"></a>Best Time to Buy and Sell Stock (121)</h3><h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Say you have an array for which the ith element is the price of a given stock on day i.<br>If you were only permitted to complete at most <strong>one</strong> transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.<br>Note that you cannot sell a stock before you buy one.</p>
+<p>Example:</p>
+<pre><code>Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Not 7-1 = 6, as selling price needs to be larger than buying price.</code></pre>
 
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p><strong>Solution 1: Using LEFT JOIN</strong></p>
-<pre><code>SELECT Name AS Customers
-FROM Customers LEFT JOIN Orders
-ON Customers.Id = Orders.CustomerId
-WHERE Orders.CustomerId is NULL;
-</code></pre>
-
-<p><strong>Solution 2: Using sub-query and NOT IN</strong></p>
-<pre><code>SELECT Name AS Customers FROM Customers
-WHERE Customers.Id NOT IN (SELECT CustomerId FROM Orders);
-</code></pre>
-
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="LEFT-JOIN"><a href="#LEFT-JOIN" class="headerlink" title="LEFT JOIN"></a>LEFT JOIN</h3><blockquote>
-<p>The result of a left outer join (or simply left join) for tables A and B always contains all rows of the “left” table (A), even if the join-condition does not find any matching row in the “right” table (B).</p>
-</blockquote>
-<p>See Related Knowledge in <a href="https://jacquelinewang.github.io/2018/05/10/LeetCode-Database-175-Combine-Two-Tables/">175 Combine Two Tables</a> for more information on JOIN clauses.</p>
-<h3 id="IN-amp-NOT-IN"><a href="#IN-amp-NOT-IN" class="headerlink" title="IN &amp; NOT IN"></a>IN &amp; NOT IN</h3><p>The MySQL <code>[NOT] IN</code> condition is used to help reduce the need to use multiple <code>OR</code> conditions.<br>The syntax for the <code>[NOT] IN</code> condition in MySQL is:<br>expression [NOT] IN (value1, value2, …. value_n);<br>Note that we can also use a sub-query after the keyword <code>[NOT]IN</code>, just like what we did in Solution 2.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The intuition for Solution 1 is to think of the vein diagram for this problem.<br>For Solution 2, we frist find out customers who have ordered. Then, we can use <code>NOT IN</code> to query the customers who are not in this list.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.techonthenet.com/mysql/in.php" target="_blank" rel="noopener">1. MySQL: IN Condition</a><br><a href="https://leetcode.com/problems/customers-who-never-order/solution/" target="_blank" rel="noopener">2. Customers Who Never Order - Solution</a></p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">maxProfit, minPrice = <span class="number">0</span>, float(<span class="string">'inf'</span>)</span><br><span class="line"><span class="keyword">for</span> price <span class="keyword">in</span> prices:</span><br><span class="line">minPrice = min(minPrice, price)   <span class="comment"># deciding buying price</span></span><br><span class="line">maxProfit = max(maxProfit, price - minPrice) <span class="comment"># for a given buying price, find the selling price(after buying price) which maximize the profit</span></span><br><span class="line"><span class="keyword">return</span> maxProfit</span><br></pre></td></tr></table></figure>
+<h3 id="Best-Time-to-Buy-and-Sell-Stock-II-122"><a href="#Best-Time-to-Buy-and-Sell-Stock-II-122" class="headerlink" title="Best Time to Buy and Sell Stock II (122)"></a>Best Time to Buy and Sell Stock II (122)</h3><h4 id="Problem-1"><a href="#Problem-1" class="headerlink" title="Problem"></a>Problem</h4><p>Say you have an array for which the ith element is the price of a given stock on day i.<br>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock <strong>multiple</strong> times).</p>
+<p>Example:</p>
+<p><pre><code>Input: [7,1,5,3,6,4]<br>Output: 7<br>Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.<br>Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</code></pre><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">:type prices: List[int]</span></span><br><span class="line"><span class="string">:rtype: int</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">if</span> len(prices) == <span class="number">0</span> <span class="keyword">or</span> len(prices) == <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">maxProfit = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(prices)):</span><br><span class="line">diff = prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">if</span> diff &gt; <span class="number">0</span>:</span><br><span class="line">maxProfit += diff</span><br><span class="line"><span class="keyword">return</span> maxProfit</span><br><span class="line"></span><br><span class="line"><span class="comment"># maxProfit = SUM(positive differences)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="noopener">1. Dynamic programming - Wikipedia</a><br><a href="https://www.cdn.geeksforgeeks.org/dynamic-programming/" target="_blank" rel="noopener">2. Dynamic programming - GeeksforGeeks</a><br><a href="https://www.sohu.com/a/153858619_466939" target="_blank" rel="noopener">3. 漫画：什么是动态规划？</a></p>
 
       
     </div>
@@ -409,7 +382,7 @@ WHERE Customers.Id NOT IN (SELECT CustomerId FROM Orders);
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            <a href="/tags/Database/" rel="tag"># Database</a>
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
           
         </div>
       
@@ -422,8 +395,8 @@ WHERE Customers.Id NOT IN (SELECT CustomerId FROM Orders);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/11/LeetCode-Database-181-Employees-Earning-More-Than-Their-Managers/" rel="next" title="[LeetCode/Database] 181 Employees Earning More Than Their Managers">
-                <i class="fa fa-chevron-left"></i> [LeetCode/Database] 181 Employees Earning More Than Their Managers
+              <a href="/2018/06/01/Udacity-Data-Analyst-Advanced-Data-Wrangling/" rel="next" title="[Udacity/DA] 1 Data Wrangling">
+                <i class="fa fa-chevron-left"></i> [Udacity/DA] 1 Data Wrangling
               </a>
             
           </div>
@@ -431,10 +404,6 @@ WHERE Customers.Id NOT IN (SELECT CustomerId FROM Orders);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/12/Exchange-At-Toronto/" rel="prev" title="Toronto | 记多伦多大学交换">
-                Toronto | 记多伦多大学交换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -606,7 +575,7 @@ WHERE Customers.Id NOT IN (SELECT CustomerId FROM Orders);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LEFT-JOIN"><span class="nav-number">3.1.</span> <span class="nav-text">LEFT JOIN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IN-amp-NOT-IN"><span class="nav-number">3.2.</span> <span class="nav-text">IN &amp; NOT IN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problems-amp-Solutions"><span class="nav-number">2.</span> <span class="nav-text">Problems &amp; Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-121"><span class="nav-number">2.1.</span> <span class="nav-text">Best Time to Buy and Sell Stock (121)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">2.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">2.1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-II-122"><span class="nav-number">2.2.</span> <span class="nav-text">Best Time to Buy and Sell Stock II (122)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Problem</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
