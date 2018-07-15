@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Udacity, R," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="blablabla">
+<meta name="keywords" content="Udacity, R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Udacity&#x2F;DA] 2 EDA">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="blablabla">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-09T06:48:04.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Udacity&#x2F;DA] 2 EDA">
+<meta name="twitter:description" content="blablabla">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/"/>
+
+
+
+
+
+  <title>[Udacity/DA] 2 EDA | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Udacity/DA] 2 EDA</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T09:34:32+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>blablabla<br><a id="more"></a></p>
+<h2 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><h3 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h3><h2 id="R"><a href="#R" class="headerlink" title="R"></a>R</h2><h3 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h3><ul>
+<li>Command+Enter: run selected r script lines</li>
+<li>remove variables: rm(variable)</li>
+<li>Directory: getwd(), setwd(‘path/file’)</li>
+<li>Read data: stateInfo &lt;- read.csv(‘filename’), read.delim(‘pseudo_facebook.tsv’)</li>
+<li><p>query:</p>
+<ul>
+<li>get column: subset(dataSet, COLUMNS)   –  subset(statesInfo, state.region == 1)</li>
+<li>dataSet[dataSet\$ROWS, dataSet\$COLUMS]   –  statesInfo[statesInfo$state.region == 1,  ]</li>
+<li><p>delete variables: subset(dataSet, select = -COLUMNS)</p>
+<ul>
+<li>number of rows: nrow()</li>
+<li>number of columns: length()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>and/or: &amp; / |</li>
+<li><p>if else</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mtcars$wt</span><br><span class="line">cond &lt;- mtcars$wt &lt; <span class="number">3</span></span><br><span class="line">cond</span><br><span class="line">mtcars$weight_class &lt;- ifelse(cond, <span class="string">'light'</span>, <span class="string">'average'</span>)</span><br><span class="line">mtcars$weight_class</span><br><span class="line">cond &lt;- mtcars$wt &gt; <span class="number">3.5</span></span><br><span class="line">mtcars$weight_class &lt;- ifelse(cond, <span class="string">'heavy'</span>, mtcars$weight_class)</span><br><span class="line">mtcars$weight_class</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ordered factor variables</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reddit$age.range &lt;- ordered(reddit$age.range, levels = c(<span class="string">"Under 18"</span>, <span class="string">"18-24"</span>, <span class="string">"25-34"</span>, <span class="string">"35-44"</span>, <span class="string">"45-54"</span>, <span class="string">"55-64"</span>, <span class="string">"65 or Above"</span>))</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">reddit$age.range &lt;- factor(reddit$age.range, levels = c(<span class="string">"Under 18"</span>, <span class="string">"18-24"</span>, <span class="string">"25-34"</span>, <span class="string">"35-44"</span>, <span class="string">"45-54"</span>, <span class="string">"55-64"</span>, <span class="string">"65 or Above"</span>), ordered=<span class="literal">T</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Exploring-Single-Variable"><a href="#Exploring-Single-Variable" class="headerlink" title="Exploring Single Variable"></a>Exploring Single Variable</h3><p>library:ggplot<br>dataset: pseudo_facebook.tsv<br><code>library(ggplot2)<br>pf &lt;- read.csv(‘pseudo_facebook.tsv’, sep=’\t’)</code></p>
+<h4 id="Call-plot-function"><a href="#Call-plot-function" class="headerlink" title="Call plot function"></a>Call plot function</h4><p><code>ggplot(aes(x = dob_day), data = pf)</code></p>
+<ul>
+<li>handle missing values (using subset)<br><code>ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender)))</code></li>
+<li>count -&gt; proportion<br>  <code>ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = pf)</code><br>  Note: sum(..count..) 将跨颜色进行总计，因此，显示的百分比是总用户数的百分比。要在每个组内绘制百分比，应使用y = ..density…</li>
+</ul>
+<h4 id="Add-layers"><a href="#Add-layers" class="headerlink" title="Add layers"></a>Add layers</h4><p>Plots:</p>
+<ul>
+<li>Histogram<br>  bin width, color(outline), fill:<br>  <code>geom_histogram(binwidth = 1, color = ‘black’, fill = ‘#099DD9’))</code></li>
+<li>Frequency Polygon<br>  <code>geom_freqpoly(aes(color = gender), binwidth=10)</code></li>
+<li>Box Plot<br><code>ggplot(aes(x = gender, y = friend_count), data = subset(pf, !is.na(gender))) +<br>geom_boxplot() </code> – notice we add parameter y to ggplot()</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>axis range &amp;  breaks<br>  adjust axis to smaller range (since there might be outliers: bad/good, extreme/non-extreme)<br>  <code>xlim(low, high)</code><br>  <code>scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50))</code> – delete data points<br>  <code>coord_cartesian(ylim=c(0,1000)</code> – does not delete data points, different when using box_plot</li>
+<li>Split up data by variable(s)<br>  <code>facet_wrap(~variable, scales = ‘free_y’)</code><br>  <code>facet_grid(vertical_variable~horizontal_variable)</code></li>
+<li>axis transformation<br>  <code>scale_x_log10()<br>  scale_x_sqrt()</code></li>
+<li>coordinate transformation<br>  <code>coord_trans(x = “log10”, y = “log10”)</code></li>
+<li><p>Multiple plots<br><code>library(gridExtra)<br>p1 &lt;- ggplot(aes(x = friend_count), data = pf) + geom_histogram()<br>p2 &lt;- p1 + scale_x_log10()<br>p3 &lt;- p1 + scale_x_sqrt()<br>grid.arrange(p1, p2, p3, ncol=1)</code></p>
+</li>
+<li><p>labeles<br><code> xlab(‘Num of Friends’)<br>ylab(‘Percentage of users with that friend count’)</code></p>
+</li>
+</ul>
+<p>Statistics:<br>by(variable, split_by, output_statistic)   output_statistic=summary, sum, etc.</p>
+<p>summary(variable/condition)<br>sum(variable)<br>length(variable)</p>
+<ul>
+<li>value counts<br>  <code>table(pf$gender)</code><br>  <code>by(pf$friend_count, pf$gender, sum)</code></li>
+<li><p>min, max, med, etc.<br>  <code>by(pf$friend_count, pf$gender, summary)</code></p>
+<p>  <code>summary(pf$friend_count)</code><br>  transformations:<br>  <code>summary(log10(pf$friend_count+1))</code>   – add 1 to avoid -INF<br>  <code>summary(sqrt(pf$friend_count))</code></p>
+</li>
+<li>IQR<br>  <code>IQR(subset(diamonds, price &lt;1000)$price) </code></li>
+</ul>
+<p>save image:<br><code>ggsave(‘priceHistogram.png’)</code></p>
+<h3 id="Exploring-Two-Variables"><a href="#Exploring-Two-Variables" class="headerlink" title="Exploring Two Variables"></a>Exploring Two Variables</h3><ul>
+<li>Point Plot<br><code>ggplot(aes(x = age, y = friend_count), data = pf) +<br>geom_point()</code><ul>
+<li>transparency: <code>geom_point(alpha=1/20)</code> – 20 data points = 1 point in the plot, to reduce over plottings</li>
+<li>jitter: <code>geom_jitter(alpha=1/20, position=position_jitter(h=0))</code> – add noise, discrete-&gt;continuous; position_jitter set the min height<br>-connect the dots<code>geom_line</code></li>
+</ul>
+</li>
+<li>create derived dataframe<br>using <code>library(dplyr)</code><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pf.fc_by_age &lt;- pf %.%</span><br><span class="line">    group_by(age)  %.%</span><br><span class="line">    summarise(friend_count_mean = mean(friend_count),</span><br><span class="line">              friend_count_median = median(friend_count),</span><br><span class="line">              n = n()) %.%</span><br><span class="line">    arrange(age)</span><br><span class="line"></span><br><span class="line">head(pf.fc_by_age,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>or<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">age_groups &lt;- group_by(pf, age)</span><br><span class="line"></span><br><span class="line">pf.fc_by_age &lt;- summarise(age_groups,</span><br><span class="line">friend_count_mean = mean(friend_count),</span><br><span class="line">friend_count_median = median(friend_count),</span><br><span class="line">n = n()) <span class="comment"># count values</span></span><br><span class="line"></span><br><span class="line">pf.fc_by_age &lt;- arrange(pf.fc_by_age, age)</span><br><span class="line"></span><br><span class="line">head(pf.fc_by_age,<span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.statmethods.net" target="_blank" rel="noopener">1. Quick R</a><br><a href="http://flowingdata.com/2015/02/18/loading-data-and-basic-formatting-in-r/" target="_blank" rel="noopener">2. Loading Data and Basic Formatting in R</a><br><a href="http://www.cookbook-r.com" target="_blank" rel="noopener">3. Cookbook for R</a><br><a href="https://ggplot2.tidyverse.org/reference/coord_trans.html" target="_blank" rel="noopener">4. Transformed Cartesian coordinate system</a><br><a href="https://blog.rstudio.com/2014/01/17/introducing-dplyr/" target="_blank" rel="noopener">5. Introducing dplyr</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Udacity-R/" rel="tag"># Udacity, R</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/02/My-Life-As-A-Quant-note-1/" rel="next" title="[My Life as a Quant] Reading Note 1">
+                <i class="fa fa-chevron-left"></i> [My Life as a Quant] Reading Note 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/Stats/" rel="prev" title="[Online Review/Statistics]  Unit 1 Working with Data in R">
+                [Online Review/Statistics]  Unit 1 Working with Data in R <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA"><span class="nav-number">1.</span> <span class="nav-text">EDA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goal"><span class="nav-number">1.2.</span> <span class="nav-text">Goal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R"><span class="nav-number">2.</span> <span class="nav-text">R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">Basic Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Single-Variable"><span class="nav-number">2.2.</span> <span class="nav-text">Exploring Single Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-plot-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">Call plot function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-layers"><span class="nav-number">2.2.2.</span> <span class="nav-text">Add layers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Two-Variables"><span class="nav-number">2.3.</span> <span class="nav-text">Exploring Two Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

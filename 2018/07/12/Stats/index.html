@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke, R," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This unit introduces the basic building blocks of the R programming language – data objects. Specifically, it will introduce how to create the data objects available in R and how to select elements fr">
+<meta name="keywords" content="Duke, R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Statistics]  Unit 1 Working with Data in R">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/12/Stats/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="This unit introduces the basic building blocks of the R programming language – data objects. Specifically, it will introduce how to create the data objects available in R and how to select elements fr">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/dataFiles.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/concatenation.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/merging.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/reshape.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/variableTpyes.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/sp.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/dp.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/sdp.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/hist.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/box.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/trans.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/intensitymap.png">
+<meta property="og:updated_time" content="2018-07-15T05:24:17.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Statistics]  Unit 1 Working with Data in R">
+<meta name="twitter:description" content="This unit introduces the basic building blocks of the R programming language – data objects. Specifically, it will introduce how to create the data objects available in R and how to select elements fr">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/12/Stats/dataFiles.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/12/Stats/"/>
+
+
+
+
+
+  <title>[Online Review/Statistics]  Unit 1 Working with Data in R | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/12/Stats/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Statistics]  Unit 1 Working with Data in R</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-12T11:01:24+08:00">
+                2018-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This unit introduces the basic building blocks of the R programming language – data objects. Specifically, it will introduce how to create the data objects available in R and how to select elements from these objects.<br>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Introduction-to-R-and-RStudio"><a href="#Introduction-to-R-and-RStudio" class="headerlink" title="Introduction to R and RStudio"></a>Introduction to R and RStudio</h1><p>R: language<br>R-Studio: IDE</p>
+<hr>
+<h1 id="Data-Objects-in-R"><a href="#Data-Objects-in-R" class="headerlink" title="Data Objects in R"></a>Data Objects in R</h1><h2 id="Meta-information"><a href="#Meta-information" class="headerlink" title="Meta-information"></a>Meta-information</h2><ul>
+<li>Data dictionary that describes each variable, its potential/expected values, its mapping to meaningful labels (if applicable), and its derivation (if applicable)</li>
+<li>Description of the study that generated the data set</li>
+<li>Description of connection/link between multiple data sets from the same study</li>
+<li>Programs used to process and work with the data set</li>
+</ul>
+<h2 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h2><p>Think of data objects as a container plus the elements that fill the container.<br>For example, consider a set of numeric values stored as a matrix:</p>
+<ul>
+<li>Elements = Numeric data values (mode)</li>
+<li>Container = Matrix (class)</li>
+<li>Object = Numeric Matrix</li>
+</ul>
+<h3 id="Modes"><a href="#Modes" class="headerlink" title="Modes"></a>Modes</h3><ul>
+<li>Numerical: integer, double</li>
+<li>Character: quoted by ‘ ‘</li>
+<li>Factor: char with class, does NOT have ‘ ‘ when printed</li>
+<li>Logical: TRUE, FALSE<ul>
+<li>availabel operators: &lt;, &lt;=, &gt;, &gt;=, ==, !=, !, &amp;, |</li>
+<li>T and F are shorthand for the logical values TRUE and FALSE, respectively. However, they are NOT reserved strings in R and, as such, can be overwritten by the user.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h3><h4 id="Vector-1D-same-mode"><a href="#Vector-1D-same-mode" class="headerlink" title="Vector [1D, same mode]"></a>Vector [1D, same mode]</h4><p><strong>Create</strong></p>
+<ul>
+<li><code>c(A, B, C, D, E)</code>. A-E could be value/vector</li>
+<li>create a vector containing B copies of the vector A: <code>rep(A, B)</code></li>
+<li>numeric-only<ul>
+<li>create a numeric vector containing all of the integers within [A, B]: <code>A:B</code></li>
+<li>create a numeric vector containing all numbers within [A, B] with a caliper of C:  <code>seq(A, B, C)</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Indexing</strong></p>
+<ul>
+<li>numeric<ul>
+<li>start with 1, not 0</li>
+<li>negative index: drop the value stored in that position. <code>V[-1]</code> will return a length(V)-1 vector since the 1st value stored in V was dropped.</li>
+<li>vector as index:<code>V[c(5,1)]</code> will return the data values stored in the 5th and 1st position of V</li>
+<li>out of bound index: return NA</li>
+</ul>
+</li>
+<li>logical<ul>
+<li>return values stored in the 2nd position of the vector V: <code>V[c(F,T,F,F,F)]</code></li>
+<li>useful when selecting values from one object based on values in another object</li>
+</ul>
+</li>
+</ul>
+<p>Length: <code>length()</code></p>
+<h4 id="Matrix-2D-same-mode"><a href="#Matrix-2D-same-mode" class="headerlink" title="Matrix [2D, same mode]"></a>Matrix [2D, same mode]</h4><p><strong>Create</strong></p>
+<ul>
+<li><p>Reshape vector A into a matrix with B rows and C columns: <code>matrix(A, nrow=B, ncol=C)</code><br>  Note the sequence of number:</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; V = matrix(<span class="number">1</span>:<span class="number">4</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">&gt; V</span><br><span class="line">[,<span class="number">1</span>] [,<span class="number">2</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">3</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">4</span></span><br><span class="line"><span class="comment"># because by default, byrow=FALSE</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>combine vectors into matrix</p>
+<ul>
+<li>by row: <code>rbind(x, y, z)</code></li>
+<li>by column: <code>cbind()</code><br>The names of the vector objects used in the rbind() or the cbind() function call are inherited as the row or column names.</li>
+</ul>
+</li>
+<li>name of dimensions<ul>
+<li>add name<br>  <code>rownames(myMatrix) &lt;- c(‘row1’, ‘row2’)</code><br>  <code>colnames(myMatrix) &lt;- c(‘col1’, ‘col2’, ‘col3’, ‘col4’)</code></li>
+<li>delete name:<br>  <code>rownames(myMatrix) &lt;- NULL</code><br>  <code>colnames(myMatrix) &lt;- NULL</code></li>
+</ul>
+</li>
+<li>diagnal matrix  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; Matrix=diag(seq(-<span class="number">20</span>,<span class="number">10</span>,by=<span class="number">10</span>))</span><br><span class="line">&gt; Matrix</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]  -<span class="number">20</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">0</span>  -<span class="number">10</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span>   <span class="number">10</span></span><br><span class="line"></span><br><span class="line">&gt; o5 &lt;- diag(<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line">&gt; o5</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">0</span>    <span class="number">1</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Indexing</strong></p>
+<ul>
+<li><p>Numeric</p>
+<ul>
+<li>select a row/column: <code> A[B, ]</code>, <code>A[, C]<code></code></code></li>
+<li><p>negative index</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt; M</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">4</span>    <span class="number">7</span>   <span class="number">10</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">5</span>    <span class="number">8</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">6</span>    <span class="number">9</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">&gt; M[-<span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>] <span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt; M[<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>]  <span class="number">4</span>  <span class="number">7</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line">&gt; M[-<span class="number">1</span>,-<span class="number">1</span>]</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">5</span>    <span class="number">8</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">6</span>    <span class="number">9</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">&gt; M[-<span class="number">1</span>, ]</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">2</span>    <span class="number">5</span>    <span class="number">8</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">3</span>    <span class="number">6</span>    <span class="number">9</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">&gt; M[, -<span class="number">1</span>]</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">4</span>    <span class="number">7</span>   <span class="number">10</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">5</span>    <span class="number">8</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">6</span>    <span class="number">9</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">&gt; M[-<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>]  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span>  <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>out of bound index: return error</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Name</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; x &lt;- rep(<span class="number">1</span>, <span class="number">5</span>)</span><br><span class="line">&gt; y &lt;- rep(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">&gt; z &lt;- rep(<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">&gt; M.row &lt;- rbind(x, y, z)</span><br><span class="line">&gt; M.row</span><br><span class="line">    [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>] [,<span class="number">5</span>]</span><br><span class="line">x    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">y    <span class="number">2</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">2</span>    <span class="number">2</span></span><br><span class="line">z    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt; M.row[c(<span class="string">'x'</span>, <span class="string">'z'</span>), <span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">    [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">x    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">z    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Logical</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; M &lt;- matrix(<span class="number">1</span>:<span class="number">12</span>, nrow = <span class="number">3</span>, ncol = <span class="number">4</span>)</span><br><span class="line">&gt; M</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">4</span>    <span class="number">7</span>   <span class="number">10</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">5</span>    <span class="number">8</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">6</span>    <span class="number">9</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">&gt; M[<span class="number">1</span>, c(<span class="literal">F</span>, <span class="literal">T</span>, <span class="literal">F</span>, <span class="literal">F</span>)]</span><br><span class="line">[<span class="number">1</span>] <span class="number">4</span></span><br><span class="line"></span><br><span class="line">&gt; M[c(<span class="literal">F</span>, <span class="literal">T</span>, <span class="literal">F</span>), ]</span><br><span class="line">[<span class="number">1</span>]  <span class="number">2</span>  <span class="number">5</span>  <span class="number">8</span> <span class="number">11</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Dimension: <code>dim()</code><br>Matrix multiplication: %<em>%<br>Element-wise multiplication: </em></p>
+<h4 id="Array-gt-3D-same-mode"><a href="#Array-gt-3D-same-mode" class="headerlink" title="Array [&gt;=3D, same mode]"></a>Array [&gt;=3D, same mode]</h4><p><strong>Create</strong></p>
+<ul>
+<li>reshape the vector A into D matrices with B rows and C columns<br>  <code>array(A, dim=(B, C, D), dimnames = list(row.names, col.names, mat.names))</code><ul>
+<li>If the length of vector A is less than B*C*D, the elements of A will be re-cycled when filling the elements of the matrix object.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Indexing</strong><br>Numeric, logical, and name indexing work in exactly the same way for the array objects as they do for matrix objects. The only difference being a third dimension needs to be specified for arrays.</p>
+<ul>
+<li><p>Numeric<br> Note the reshaping after slicing:</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt; A &lt;- array(<span class="number">1</span>:<span class="number">18</span>, dim = c(<span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">&gt; A</span><br><span class="line">, , <span class="number">1</span></span><br><span class="line"></span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">3</span>    <span class="number">5</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span></span><br><span class="line"></span><br><span class="line">, , <span class="number">2</span></span><br><span class="line"></span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">7</span>    <span class="number">9</span>   <span class="number">11</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">8</span>   <span class="number">10</span>   <span class="number">12</span></span><br><span class="line"></span><br><span class="line">, , <span class="number">3</span></span><br><span class="line"></span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]   <span class="number">13</span>   <span class="number">15</span>   <span class="number">17</span></span><br><span class="line">[<span class="number">2</span>,]   <span class="number">14</span>   <span class="number">16</span>   <span class="number">18</span></span><br><span class="line"></span><br><span class="line">&gt; A[, -<span class="number">3</span>:-<span class="number">2</span> , ]</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">7</span>   <span class="number">13</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">8</span>   <span class="number">14</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Name</p>
+</li>
+<li>Logical</li>
+</ul>
+<p>Dimension: <code>dim()</code></p>
+<h4 id="Data-Frame-2D-different-mode"><a href="#Data-Frame-2D-different-mode" class="headerlink" title="Data Frame [2D, different mode]"></a>Data Frame [2D, different mode]</h4><p>Comparable with matrix.</p>
+<p><strong>Create</strong></p>
+<ul>
+<li><p>create a data frame object of 3 columns, one for each of the vectors objects A, B, and C, and the number of rows equal to the length of the 3 vectors: <code>data.frame(A, B, C)</code></p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; N1 &lt;- <span class="number">1</span>:<span class="number">4</span></span><br><span class="line">&gt; C1 &lt;- c(<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>)</span><br><span class="line">&gt; L1 &lt;- c(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>, <span class="literal">FALSE</span>, <span class="literal">TRUE</span>)</span><br><span class="line"></span><br><span class="line">&gt; D1 &lt;- data.frame(N1, C1, L1)</span><br><span class="line">&gt; D1</span><br><span class="line">  N1 C1    L1</span><br><span class="line"><span class="number">1</span>  <span class="number">1</span>  A  <span class="literal">TRUE</span></span><br><span class="line"><span class="number">2</span>  <span class="number">2</span>  B <span class="literal">FALSE</span></span><br><span class="line"><span class="number">3</span>  <span class="number">3</span>  C <span class="literal">FALSE</span></span><br><span class="line"><span class="number">4</span>  <span class="number">4</span>  D  <span class="literal">TRUE</span></span><br></pre></td></tr></table></figure>
+<p>  <strong>Note that char values does NOT have ‘’ when appeared in data frame</strong></p>
+</li>
+<li>name of dimensions: <code>colnames(myDf)</code> or <code>names(myDf)</code><ul>
+<li>return a char vector</li>
+<li>rename: <code>names(Data1)[names(Data1)==’Gender’] &lt;- ‘Sex’</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Indexing</strong></p>
+<ul>
+<li>Numeric, Logical, Name:</li>
+<li>similar to matrix</li>
+<li>out of bound index: return NULL</li>
+<li>\$ operator: access a column <code>D1$C1</code>. This is equal to <code>D1[, C1]</code></li>
+</ul>
+<p>check the mode of the variables: <code>str()</code></p>
+<h4 id="List-1D-different-mode-for-values-class-for-objects"><a href="#List-1D-different-mode-for-values-class-for-objects" class="headerlink" title="List [1D, different mode( for values)/class(for objects)]"></a>List [1D, different mode( for values)/class(for objects)]</h4><p>Comparable with vector.</p>
+<p><strong>Create</strong></p>
+<ul>
+<li>a list object with 3 elements, one for each of the objects A, B, and C: <code>list(name=A, name2=B, name3=C)</code>  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; O1 &lt;- matrix(<span class="number">1</span>:<span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line">&gt; O2 &lt;- c(<span class="string">"M"</span>, <span class="string">"F"</span>, <span class="string">"F"</span>, <span class="string">"M"</span>)</span><br><span class="line">&gt; O3 &lt;- c(<span class="literal">T</span>, <span class="literal">T</span>, <span class="literal">F</span>, <span class="literal">T</span>)</span><br><span class="line">&gt; L &lt;- list(O1, O2, O3)</span><br><span class="line">&gt; L</span><br><span class="line">[[<span class="number">1</span>]]</span><br><span class="line">      [,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">2</span>    <span class="number">2</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span></span><br><span class="line"></span><br><span class="line">[[<span class="number">2</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="string">"M"</span> <span class="string">"F"</span> <span class="string">"F"</span> <span class="string">"M"</span></span><br><span class="line"></span><br><span class="line">[[<span class="number">3</span>]]</span><br><span class="line">[<span class="number">1</span>]  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Indexing</strong></p>
+<ul>
+<li>[[]]: select <strong>one</strong> element at a time from a list</li>
+<li><p>[]: select <strong>multiple</strong> elements from a list</p>
+</li>
+<li><p>Numeric</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt; L[[<span class="number">2</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="string">"M"</span> <span class="string">"F"</span> <span class="string">"F"</span> <span class="string">"M"</span></span><br><span class="line">&gt; L[[<span class="number">2</span>:<span class="number">3</span>]]</span><br><span class="line">[<span class="number">1</span>] <span class="string">"F"</span>  <span class="comment"># the 3rd value stored in the object in the 2nd position of L</span></span><br><span class="line">&gt; L[[-<span class="number">2</span>]]</span><br><span class="line">Error <span class="keyword">in</span> L[[-<span class="number">2</span>]] :</span><br><span class="line">attempt to select more than one element <span class="keyword">in</span> get1index &lt;real&gt;</span><br><span class="line">&gt; L[<span class="number">2</span>:<span class="number">3</span>]</span><br><span class="line">$Chr.Vec</span><br><span class="line">[<span class="number">1</span>] <span class="string">"M"</span> <span class="string">"F"</span> <span class="string">"F"</span> <span class="string">"M"</span></span><br><span class="line"></span><br><span class="line">$Log.Vec</span><br><span class="line">[<span class="number">1</span>]  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span></span><br><span class="line"></span><br><span class="line">&gt; L[-<span class="number">2</span>]</span><br><span class="line">$Num.Mat</span><br><span class="line">[,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">2</span>    <span class="number">2</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">3</span>    <span class="number">3</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">4</span>    <span class="number">4</span>    <span class="number">4</span></span><br><span class="line"></span><br><span class="line">$Log.Vec</span><br><span class="line">[<span class="number">1</span>]  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Name: <code>L[[“Num.Mat”]]</code>, <code>L[c(‘Log.Vec’, ‘Chr.Vec’)]</code></p>
+</li>
+<li>Logical: only be used with ‘[ ]’</li>
+<li>\$ operator: extract an object from the list <code>L$Chr.Vec</code></li>
+</ul>
+<p>Length: <code>length()</code></p>
+<h4 id="Recycling-amp-Reshaping"><a href="#Recycling-amp-Reshaping" class="headerlink" title="Recycling &amp; Reshaping"></a>Recycling &amp; Reshaping</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&gt; o1 &lt;- <span class="number">1</span>:<span class="number">4</span></span><br><span class="line">&gt; o1</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></span><br><span class="line"></span><br><span class="line">&gt; o3 &lt;- seq(<span class="number">50</span>,<span class="number">0</span>,by=-<span class="number">10</span>)</span><br><span class="line">&gt; o3</span><br><span class="line">[<span class="number">1</span>] <span class="number">50</span> <span class="number">40</span> <span class="number">30</span> <span class="number">20</span> <span class="number">10</span>  <span class="number">0</span></span><br><span class="line"></span><br><span class="line">&gt; o5 &lt;- diag(<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line">&gt; o5</span><br><span class="line">[,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">2</span>,]    <span class="number">0</span>    <span class="number">1</span>    <span class="number">0</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">3</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span>    <span class="number">0</span></span><br><span class="line">[<span class="number">4</span>,]    <span class="number">0</span>    <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; o5-o1</span><br><span class="line">[,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]    <span class="number">0</span>   -<span class="number">1</span>   -<span class="number">1</span>   -<span class="number">1</span></span><br><span class="line">[<span class="number">2</span>,]   -<span class="number">2</span>   -<span class="number">1</span>   -<span class="number">2</span>   -<span class="number">2</span></span><br><span class="line">[<span class="number">3</span>,]   -<span class="number">3</span>   -<span class="number">3</span>   -<span class="number">2</span>   -<span class="number">3</span></span><br><span class="line">[<span class="number">4</span>,]   -<span class="number">4</span>   -<span class="number">4</span>   -<span class="number">4</span>   -<span class="number">3</span></span><br><span class="line"><span class="comment"># the vector o1 is subtracted from each column of o5, because the matrix() fills by column by default.</span></span><br><span class="line"></span><br><span class="line">&gt; o1+o3</span><br><span class="line">[<span class="number">1</span>] <span class="number">51</span> <span class="number">42</span> <span class="number">33</span> <span class="number">24</span> <span class="number">11</span>  <span class="number">2</span></span><br><span class="line">Warning message:</span><br><span class="line">In o1 + o3 :</span><br><span class="line">longer object length is not a multiple of shorter object length</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; o3-o5</span><br><span class="line">[,<span class="number">1</span>] [,<span class="number">2</span>] [,<span class="number">3</span>] [,<span class="number">4</span>]</span><br><span class="line">[<span class="number">1</span>,]   <span class="number">49</span>   <span class="number">10</span>   <span class="number">30</span>   <span class="number">50</span></span><br><span class="line">[<span class="number">2</span>,]   <span class="number">40</span>   -<span class="number">1</span>   <span class="number">20</span>   <span class="number">40</span></span><br><span class="line">[<span class="number">3</span>,]   <span class="number">30</span>   <span class="number">50</span>    <span class="number">9</span>   <span class="number">30</span></span><br><span class="line">[<span class="number">4</span>,]   <span class="number">20</span>   <span class="number">40</span>    <span class="number">0</span>   <span class="number">19</span></span><br><span class="line">Warning message:</span><br><span class="line">In o3 - o5 :</span><br><span class="line">longer object length is not a multiple of shorter object length</span><br></pre></td></tr></table></figure>
+<h3 id="Naming"><a href="#Naming" class="headerlink" title="Naming"></a>Naming</h3><ul>
+<li>A name cannot begin with a number, and it cannot contain any of the following special characters: ^, !, $, @, +, -, /, or *</li>
+<li>R is case- and spelling-sensitive.</li>
+</ul>
+<h3 id="Other-things-to-be-noticed"><a href="#Other-things-to-be-noticed" class="headerlink" title="Other things to be noticed"></a>Other things to be noticed</h3><ul>
+<li>comment operator: #</li>
+<li>R is a <strong>vectorized</strong> language.<br> In<code>11*1:5</code>, the operation 11* was automatically applied element-wise to each value in the vector 1:5 without having to write a looping command. In <code>SEX == ‘Male’</code>, the operation == ‘Male’ was applied to the vector SEX element-wise.</li>
+</ul>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>A function is just a collection of R commands that have been stored in an object and that can be executed sequentially by calling the name of the function instead of the individual commands.</p>
+<ul>
+<li>argument: things inside the <code>()</code></li>
+</ul>
+<p>Useful function</p>
+<ul>
+<li>remove all objects in the workspace: <code>rm(list=ls())</code>.</li>
+<li>determine a data object’s mode/class: <code>mode()</code>, <code>class()</code><ul>
+<li>if the class of a data object is also a mode, you can interpret that to mean the data object is vector. As expected, the strings “matrix” and “data.frame” are returned when the class() function is applied to matrix and data frame objects, respectively.</li>
+<li>install library: <code>install.packages()</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Importing-Data-into-R"><a href="#Importing-Data-into-R" class="headerlink" title="Importing Data into R"></a>Importing Data into R</h1><h2 id="Working-Directory"><a href="#Working-Directory" class="headerlink" title="Working Directory"></a>Working Directory</h2><ul>
+<li>Get: <code>getwd()</code></li>
+<li>Set: <code>setwd()</code><ul>
+<li>the setwd() function will NOT create a directory; if the directory supplied to the function does not exist, an error will be returned.<ul>
+<li>use /, or change the \ to \\ or \/ in the file path</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Import-Data-Files"><a href="#Import-Data-Files" class="headerlink" title="Import Data Files"></a>Import Data Files</h2><p><strong>Asess Data</strong></p>
+<ul>
+<li>Entire Data: <code>View()</code></li>
+<li>Structure &amp; Part of the Content: <code>str()</code></li>
+<li>Part of the Data: <code>head()</code></li>
+</ul>
+<p><strong>Data File Types</strong></p>
+<ul>
+<li>ASCII (.txt)</li>
+<li>Comma Separated Value (.csv)</li>
+<li>Excel (.xlsx)</li>
+<li>SAS (.sas7bdat)<br><img src="/2018/07/12/Stats/dataFiles.png" alt=""></li>
+</ul>
+<h3 id="Import-txt-Files"><a href="#Import-txt-Files" class="headerlink" title="Import txt Files"></a>Import txt Files</h3><p> <code>read.table()</code><br> <strong> Default Arguments</strong></p>
+<ul>
+<li>header=FALSE  (TRUE: assign the first row as variable names)</li>
+<li>sep=’ ‘(one ore more white spaces)<ul>
+<li>‘\t’: tab</li>
+<li>‘,’: comma</li>
+<li>others. eg. ‘/‘ or ‘@’</li>
+</ul>
+</li>
+<li>skip = 0 : number of lines of the data file to skip before beginning to read</li>
+<li>nrows= -1: maximum number of lines to be read</li>
+<li>na.strings=’NA’: a vector containing the missing value indicators. NA and blank spaces are automatically interpreted as missing values. Others must be listed(for example, na.strings=c(‘X’, 999))</li>
+<li>stringsAsFactors=TRUE (FALSE: as character)</li>
+</ul>
+<h3 id="Import-csv-Files"><a href="#Import-csv-Files" class="headerlink" title="Import csv Files"></a>Import csv Files</h3><p><code>read.csv()</code><br>read.csv() is essentially a wrapper for read.table().<br> <strong>Default Arguments</strong></p>
+<ul>
+<li>header = TRUE</li>
+<li>sep=’,’</li>
+<li>na.strings=’NA’</li>
+<li>stringsAsFactors = TRUE</li>
+</ul>
+<h3 id="Import-Excel-Files"><a href="#Import-Excel-Files" class="headerlink" title="Import Excel Files"></a>Import Excel Files</h3><p><code>library(‘openxlsx’)</code><br><code>read.xlsx()</code><br>  <strong>Default Arguments</strong></p>
+<ul>
+<li>colNames= TRUE (like header)</li>
+<li>sheet=1</li>
+<li>na.strings=’NA’</li>
+</ul>
+<p><strong>Converted Data Types</strong></p>
+<ul>
+<li>stores non-numeric data as <strong>character</strong> variable</li>
+<li>able to detect <strong>date</strong>, <strong>monetary</strong>(\$) variable, and stores them as <strong>numeric</strong> (because variable formats can be stored; R convert date strings into a numeric value to represent this order )</li>
+</ul>
+<h3 id="Import-SAS-Files"><a href="#Import-SAS-Files" class="headerlink" title="Import SAS Files"></a>Import SAS Files</h3><p><code>library(‘haven’)</code><br><code>read_sas()</code></p>
+<ul>
+<li>All SAS data files have the same structure, the function does NOT require customization.</li>
+<li>Missing values in SAS data files are indicate by a period (.) for numeric variables, blank space ( ) for character variables.</li>
+<li>The function returns a <strong>tibble</strong> data object.</li>
+</ul>
+<p><strong>Converted Data Types</strong></p>
+<ul>
+<li>stores non-numeric data as <strong>character</strong> variable</li>
+<li><strong>date</strong> as <strong>date</strong> variable</li>
+<li><strong>monetary</strong>(\$) as  <strong>numeric</strong> variable</li>
+</ul>
+<hr>
+<h1 id="Managing-Data-in-R"><a href="#Managing-Data-in-R" class="headerlink" title="Managing Data in R"></a>Managing Data in R</h1><p>Once raw data files are read into R, the next step is to transform them into an “analysis ready” data set. It involves creating new variables within an existing data set or creating new data sets by combining multiple existing data sets.</p>
+<ul>
+<li>column: variable</li>
+<li>row: record</li>
+</ul>
+<h2 id="Work-with-Variables"><a href="#Work-with-Variables" class="headerlink" title="Work with Variables"></a>Work with Variables</h2><ul>
+<li>add variables: <code>D.frame$New.Var &lt;- Temp</code></li>
+<li><p>delete variables: <code>D.frame$V.name &lt;- NULL</code></p>
+</li>
+<li><p>continuous -&gt; categorical: using logical indexing</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ICU$Age_Grps &lt;- <span class="literal">NA</span></span><br><span class="line">ICU$Age_Grps[<span class="number">29</span> &lt; ICU$AGE &amp; ICU$AGE &lt; <span class="number">50</span>] &lt;- <span class="string">'30s/40s'</span></span><br><span class="line">ICU$Age_Grps[<span class="number">49</span> &lt; ICU$AGE &amp; ICU$AGE &lt; <span class="number">70</span>] &lt;- <span class="string">'50s/60s'</span></span><br><span class="line">ICU$Age_Grps[<span class="number">69</span> &lt; ICU$AGE &amp; ICU$AGE &lt; <span class="number">90</span>] &lt;- <span class="string">'70s/80s'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flag variable: 1*(Logical Expression)<br>  <code>ICU$High_Risk <- 1*(icu$sex="=" 'male'="" &="" icu$hra=""> 100)</-></code></p>
+</li>
+<li><p>aggregation</p>
+<ul>
+<li>use mathematical operators<br>  <code>ICU$Sev_Score1 &lt;- ICU$SER + ICU$TYP + (ICU$SYS/100)</code></li>
+<li><p>use <code>apply(A, MARGIN=B, FUN=C, na.rm=FALSE)</code></p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SUB &lt;- data.frame(ICU$SER, ICU$TYP, (ICU$SYS/<span class="number">10</span>))</span><br><span class="line">ICU$Sev_Score2 &lt;- apply(SUB, <span class="number">1</span>, sum, na.rm=<span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>MARGIN: 1–rows, 2–columns</li>
+<li>na.rm=TRUE:  does not assign missing values if any of the underlying variables are missing; instead, it assigns the sum of all <strong>available</strong> values</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>factor variable: <code>factor()</code></p>
+<ul>
+<li>values are sorted <strong>alpha-numerically</strong></li>
+<li>can be converted to numeric variable: <code>as.numeric(factor(ICU$RACE))</code></li>
+<li><code>table(Df$FV)</code>: acquire value counts for factor variable</li>
+</ul>
+</li>
+<li><p>date variable</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">library</span>(<span class="string">'lubridate'</span>)</span><br><span class="line"></span><br><span class="line">&gt; ymd(<span class="string">'1970-01-05'</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"1970-01-05"</span></span><br><span class="line"></span><br><span class="line">&gt; mdy(<span class="string">'January 5, 1970'</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"1970-01-05"</span></span><br><span class="line"></span><br><span class="line">&gt; dmy(<span class="string">'5/1/1970'</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"1970-01-05"</span></span><br><span class="line"></span><br><span class="line">&gt; mdy(<span class="string">'Jan 5 1970'</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"1970-01-05"</span></span><br><span class="line"></span><br><span class="line">&gt; dmy(<span class="string">'05011970'</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"1970-01-05"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>can be converted to numeric variable: <code>as.numeric()</code>. R’s default origin date: 1970-01-01.</li>
+<li>can do ‘-‘ operation, return ? days</li>
+</ul>
+</li>
+<li><p>identify missing values (NA): <code>is.na()</code></p>
+<ul>
+<li>count NA in all variables: <code>apply(is.na(ICU), 2, sum)</code></li>
+<li><p>NA are NOT allowed in indexing dataframe; when indexing vector it works as FALSE</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; LABS$Hb_12 &lt; <span class="number">15</span></span><br><span class="line">[<span class="number">1</span>]  <span class="literal">TRUE</span>    <span class="literal">NA</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span>    <span class="literal">NA</span>  <span class="literal">TRUE</span>    <span class="literal">NA</span>    <span class="literal">NA</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span></span><br><span class="line">[<span class="number">15</span>]    <span class="literal">NA</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span>    <span class="literal">NA</span>    <span class="literal">NA</span> <span class="literal">FALSE</span></span><br><span class="line"></span><br><span class="line">&gt; LABS[LABS$Hb_12 &lt; <span class="number">15</span>] &lt;- <span class="number">0</span></span><br><span class="line">Error <span class="keyword">in</span> `[&lt;-.data.frame`(`*tmp*`, LABS$Hb_12 &lt; <span class="number">15</span>, value = <span class="number">0</span>) :</span><br><span class="line">missing values are not allowed <span class="keyword">in</span> subscripted assignments of data frames</span><br><span class="line"></span><br><span class="line">&gt; Medicare_Age &lt;- rep(<span class="number">1</span>, <span class="number">5</span>)</span><br><span class="line">&gt; Medicare_Age</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt; Medicare_Age[c(<span class="literal">TRUE</span>, <span class="literal">NA</span>, <span class="literal">TRUE</span>, <span class="literal">FALSE</span>, <span class="literal">TRUE</span>)] &lt;- <span class="number">0</span></span><br><span class="line">&gt; Medicare_Age</span><br><span class="line">[<span class="number">1</span>] <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>comparison operators(&lt;, &gt;, !=) do NOT work: return NA</p>
+</li>
+<li>logical operators: if one value is missing and the other value is not, R will only return a missing value if the result of the Boolean comparison cannot be determined; if it can be determined, the appropriate logical value will be returned.<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="literal">NA</span> | <span class="literal">NA</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">NA</span></span><br><span class="line">&gt; <span class="literal">NA</span> &amp; <span class="literal">NA</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">NA</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; <span class="literal">NA</span> | <span class="literal">TRUE</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></span><br><span class="line">&gt; <span class="literal">NA</span> | <span class="literal">FALSE</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">NA</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="literal">NA</span> &amp; <span class="literal">TRUE</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">NA</span></span><br><span class="line">&gt; <span class="literal">NA</span> &amp; <span class="literal">FALSE</span></span><br><span class="line">[<span class="number">1</span>] <span class="literal">FALSE</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>unique()</code>: returns a vector, data frame or array with <strong>duplicate</strong> elements/rows <strong>removed</strong></p>
+</li>
+<li><code>setdiff(a,b)</code>: returns a vector with the elements in a that are not in b</li>
+</ul>
+<h2 id="Concatenate-Data-Sets"><a href="#Concatenate-Data-Sets" class="headerlink" title="Concatenate Data Sets"></a>Concatenate Data Sets</h2><h3 id="Key"><a href="#Key" class="headerlink" title="Key"></a>Key</h3><p>The variable or set of variables in the data set that can be used to uniquely identify individual records AND connect matching records across multiple data sets.</p>
+<ul>
+<li><p>check duplicate key values: <code>duplicated() </code></p>
+<ul>
+<li><p>fromLast=FALSE, check sequentially (first occurrence of the key will not be returned)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment"># Indexing ALL records with duplicate keys</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="comment"># - Step 1 - find dups from first occurence of key</span></span><br><span class="line">&gt; duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>])</span><br><span class="line">[<span class="number">1</span>] <span class="literal">FALSE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="comment"># - Step 2 - find dups from last occurence of key</span></span><br><span class="line">&gt; duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>], fromLast = <span class="literal">TRUE</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="literal">FALSE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="comment"># - Step 3 - create logical vector with value of TRUE</span></span><br><span class="line">&gt; <span class="comment">#            if output of Step 1 or Step 2 is TRUE</span></span><br><span class="line">&gt; duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>]) |</span><br><span class="line">+   duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>], fromLast = <span class="literal">TRUE</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="literal">FALSE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span>  <span class="literal">TRUE</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="comment"># - Step 4 - index data set using output of Step 3</span></span><br><span class="line">&gt; Data2[duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>]) |</span><br><span class="line">+         duplicated(Data2[, <span class="number">1</span>:<span class="number">2</span>], fromLast = <span class="literal">TRUE</span>), ]</span><br><span class="line">Country Year Y_cont Y_bin   V1    V2</span><br><span class="line"><span class="number">2</span>       A <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span> <span class="number">0.32</span> -<span class="number">0.95</span></span><br><span class="line"><span class="number">3</span>       A <span class="number">2001</span>    <span class="number">803</span>     <span class="number">1</span> <span class="number">0.32</span> -<span class="number">0.95</span></span><br><span class="line"><span class="number">7</span>       C <span class="number">2001</span>     <span class="literal">NA</span>    <span class="literal">NA</span>   <span class="literal">NA</span>    <span class="literal">NA</span></span><br><span class="line"><span class="number">8</span>       C <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span> <span class="number">1.18</span> -<span class="number">1.34</span></span><br><span class="line"><span class="number">9</span>       C <span class="number">2001</span>     <span class="literal">NA</span>    <span class="literal">NA</span>   <span class="literal">NA</span>    <span class="literal">NA</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vector: element-wise</p>
+</li>
+<li>dataframe: row-wise</li>
+</ul>
+</li>
+</ul>
+<h3 id="Concatenation"><a href="#Concatenation" class="headerlink" title="Concatenation"></a>Concatenation</h3><p> A <strong>vertical</strong> combining of two data sets. Concatenation typically results in a data set with more records, but containing the same number of variables when compared to the individual datasets that were combined.</p>
+<p> <img src="/2018/07/12/Stats/concatenation.png" alt=""></p>
+<p><code>smartbind(data1, data2, …)</code></p>
+<ul>
+<li>in <code>library(‘gtools’)</code></li>
+<li>assign <strong>NA</strong> for the records in the data set that does not contain the extra variable.</li>
+</ul>
+<p><code>rbind()</code></p>
+<ul>
+<li>return an error if the data frames being combined do not have the same number of columns OR if they do not have the same variable names.</li>
+</ul>
+<h2 id="Merge-Data-Sets"><a href="#Merge-Data-Sets" class="headerlink" title="Merge Data Sets"></a>Merge Data Sets</h2><p>A horizontal combining of two data sets. Merging typically results in a data set with the same number of records, but containing more variables when compared to the individual datasets that were combined.</p>
+<p> <img src="/2018/07/12/Stats/merging.png" alt=""></p>
+<p><code>merge(Obj1, Obj2, by=A)</code>: merge Obj1 and Obj2 based on the key variable(s) listed in the vector A</p>
+<ul>
+<li><p><code>all=FALSE</code></p>
+<ul>
+<li>return only the records in the <strong>INTERSECTION</strong> of the sets of key values</li>
+<li>TRUE:  return the records in the <strong>UNION</strong> of the sets of key values<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; Data1</span><br><span class="line">    Country Year Y_cont  Y_bin  V1    V2</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>  <span class="number">0.28</span> -<span class="number">1.11</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>  <span class="number">0.32</span> -<span class="number">0.95</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span> -<span class="number">0.08</span>  <span class="number">1.43</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>  <span class="number">0.11</span>  <span class="number">1.65</span></span><br><span class="line"><span class="number">5</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>  <span class="number">1.31</span> -<span class="number">1.29</span></span><br><span class="line"><span class="number">6</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>  <span class="number">1.18</span> -<span class="number">1.34</span></span><br><span class="line"></span><br><span class="line">&gt; Data6</span><br><span class="line">    Country Year V3 V4</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt; merge(Data1,Data6,by=c(<span class="string">'Country'</span>,<span class="string">'Year'</span>))</span><br><span class="line">    Country Year  Y_cont  Y_bin  V1    V2   V3 V4</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>   <span class="number">0.28</span>  -<span class="number">1.11</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>   <span class="number">0.32</span>  -<span class="number">0.95</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span>  -<span class="number">0.08</span>   <span class="number">1.43</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>   <span class="number">0.11</span>   <span class="number">1.65</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt; merge(Data1,Data6,by=c(<span class="string">'Country'</span>,<span class="string">'Year'</span>), all=<span class="literal">TRUE</span>)</span><br><span class="line">    Country Year  Y_cont Y_bin    V1    V2  V3 V4</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>    <span class="number">0.28</span> -<span class="number">1.11</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>    <span class="number">0.32</span> -<span class="number">0.95</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span>   -<span class="number">0.08</span>  <span class="number">1.43</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>    <span class="number">0.11</span>  <span class="number">1.65</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"><span class="number">5</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>    <span class="number">1.31</span> -<span class="number">1.29</span> <span class="literal">NA</span> <span class="literal">NA</span></span><br><span class="line"><span class="number">6</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>    <span class="number">1.18</span> -<span class="number">1.34</span> <span class="literal">NA</span> <span class="literal">NA</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>using wrong key: results in twice the number of records in the merged data set</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&gt; Data1</span><br><span class="line">    Country Year  Y_cont Y_bin  V1    V2</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>  <span class="number">0.28</span> -<span class="number">1.11</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>  <span class="number">0.32</span> -<span class="number">0.95</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span> -<span class="number">0.08</span>  <span class="number">1.43</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>  <span class="number">0.11</span>  <span class="number">1.65</span></span><br><span class="line"><span class="number">5</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>  <span class="number">1.31</span> -<span class="number">1.29</span></span><br><span class="line"><span class="number">6</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>  <span class="number">1.18</span> -<span class="number">1.34</span></span><br><span class="line"></span><br><span class="line">&gt; Data5</span><br><span class="line">    Country Year V3 V4</span><br><span class="line"><span class="number">1</span>      A    <span class="number">2000</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">2</span>      A    <span class="number">2001</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">3</span>      B    <span class="number">2000</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">4</span>      B    <span class="number">2001</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"><span class="number">5</span>      C    <span class="number">2000</span>  <span class="number">0</span>  <span class="number">5</span></span><br><span class="line"><span class="number">6</span>      C    <span class="number">2001</span>  <span class="number">5</span>  <span class="number">8</span></span><br><span class="line"></span><br><span class="line">&gt; merge(Data1,Data5,by=<span class="string">'Country'</span>)</span><br><span class="line">     Country Year.x Y_cont Y_bin V1    V2  Year.y V3 V4</span><br><span class="line"><span class="number">1</span>        A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>  <span class="number">0.28</span> -<span class="number">1.11</span>   <span class="number">2000</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">2</span>        A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>  <span class="number">0.28</span> -<span class="number">1.11</span>   <span class="number">2001</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">3</span>        A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>  <span class="number">0.32</span> -<span class="number">0.95</span>   <span class="number">2000</span> <span class="number">10</span>  <span class="number">1</span></span><br><span class="line"><span class="number">4</span>        A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>  <span class="number">0.32</span> -<span class="number">0.95</span>   <span class="number">2001</span>  <span class="number">7</span>  <span class="number">1</span></span><br><span class="line"><span class="number">5</span>        B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span> -<span class="number">0.08</span>  <span class="number">1.43</span>   <span class="number">2000</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">6</span>        B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span> -<span class="number">0.08</span>  <span class="number">1.43</span>   <span class="number">2001</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"><span class="number">7</span>        B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>  <span class="number">0.11</span>  <span class="number">1.65</span>   <span class="number">2000</span>  <span class="number">7</span>  <span class="number">9</span></span><br><span class="line"><span class="number">8</span>        B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>  <span class="number">0.11</span>  <span class="number">1.65</span>   <span class="number">2001</span>  <span class="number">1</span>  <span class="number">2</span></span><br><span class="line"><span class="number">9</span>        C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>  <span class="number">1.31</span> -<span class="number">1.29</span>   <span class="number">2000</span>  <span class="number">0</span>  <span class="number">5</span></span><br><span class="line"><span class="number">10</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>  <span class="number">1.31</span> -<span class="number">1.29</span>   <span class="number">2001</span>  <span class="number">5</span>  <span class="number">8</span></span><br><span class="line"><span class="number">11</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>  <span class="number">1.18</span> -<span class="number">1.34</span>   <span class="number">2000</span>  <span class="number">0</span>  <span class="number">5</span></span><br><span class="line"><span class="number">12</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>  <span class="number">1.18</span> -<span class="number">1.34</span>   <span class="number">2001</span>  <span class="number">5</span>  <span class="number">8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>merge by key variables with different names</p>
+<ul>
+<li>using <code>merge(Data1,Data7, by.x=c(‘Country’,’Year’), by.y=c(‘Nation’,’Time’))</code>, output will keep x’s names</li>
+<li>change the key var names in one of the data set</li>
+</ul>
+</li>
+<li><p>one-to-many merging: records with less keys are repeated across the matching records</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; Data1</span><br><span class="line">    Country Year Y_cont   Y_bin  V1    V2</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>  <span class="number">0.28</span> -<span class="number">1.11</span></span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>  <span class="number">0.32</span> -<span class="number">0.95</span></span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span> -<span class="number">0.08</span>  <span class="number">1.43</span></span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>  <span class="number">0.11</span>  <span class="number">1.65</span></span><br><span class="line"><span class="number">5</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>  <span class="number">1.31</span> -<span class="number">1.29</span></span><br><span class="line"><span class="number">6</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>  <span class="number">1.18</span> -<span class="number">1.34</span></span><br><span class="line">&gt; Data9</span><br><span class="line">    Country Capital</span><br><span class="line"><span class="number">1</span>       A   City1</span><br><span class="line"><span class="number">2</span>       B   City2</span><br><span class="line"><span class="number">3</span>       C   City3</span><br><span class="line"></span><br><span class="line">&gt; merge(Data1,Data9,by=<span class="string">'Country'</span>)</span><br><span class="line">    Country Year  Y_cont  Y_bin    V1    V2   Capital</span><br><span class="line"><span class="number">1</span>       A   <span class="number">2000</span>   <span class="number">1343</span>     <span class="number">1</span>     <span class="number">0.28</span> -<span class="number">1.11</span>   City1</span><br><span class="line"><span class="number">2</span>       A   <span class="number">2001</span>  -<span class="number">1900</span>     <span class="number">0</span>     <span class="number">0.32</span> -<span class="number">0.95</span>   City1</span><br><span class="line"><span class="number">3</span>       B   <span class="number">2000</span>  -<span class="number">5935</span>     <span class="number">0</span>    -<span class="number">0.08</span>  <span class="number">1.43</span>   City2</span><br><span class="line"><span class="number">4</span>       B   <span class="number">2001</span>   -<span class="number">712</span>     <span class="number">0</span>     <span class="number">0.11</span>  <span class="number">1.65</span>   City2</span><br><span class="line"><span class="number">5</span>       C   <span class="number">2000</span>   <span class="number">1292</span>     <span class="number">1</span>     <span class="number">1.31</span> -<span class="number">1.29</span>   City3</span><br><span class="line"><span class="number">6</span>       C   <span class="number">2001</span>  -<span class="number">3416</span>     <span class="number">0</span>     <span class="number">1.18</span> -<span class="number">1.34</span>   City3</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>complete.cases()</code>: return a logical vector indicating records that have non-missing values for all variables</li>
+</ul>
+</li>
+</ul>
+<p><code>cbind()</code></p>
+<ul>
+<li>merge based on row number; simple horizontal concatenation</li>
+<li>if the number of records are different for two data sets, use re-cycling mechanism</li>
+</ul>
+<h2 id="Transform-Data-Sets"><a href="#Transform-Data-Sets" class="headerlink" title="Transform Data Sets"></a>Transform Data Sets</h2><p><img src="/2018/07/12/Stats/reshape.png" alt=""></p>
+<ul>
+<li>wide/short</li>
+<li>long/skinny/narrow</li>
+</ul>
+<hr>
+<h1 id="Summarize-Data-in-R"><a href="#Summarize-Data-in-R" class="headerlink" title="Summarize Data in R"></a>Summarize Data in R</h1><p><img src="/2018/07/12/Stats/variableTpyes.png" alt=""></p>
+<h2 id="Numeric-Data"><a href="#Numeric-Data" class="headerlink" title="Numeric Data"></a>Numeric Data</h2><h3 id="Scattered-Plot"><a href="#Scattered-Plot" class="headerlink" title="Scattered Plot"></a>Scattered Plot</h3><p><img src="/2018/07/12/Stats/sp.png" alt=""></p>
+<h3 id="Dot-Plot"><a href="#Dot-Plot" class="headerlink" title="Dot Plot"></a>Dot Plot</h3><p><img src="/2018/07/12/Stats/dp.png" alt=""><br><img src="/2018/07/12/Stats/sdp.png" alt=""></p>
+<h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><p>showing data density.<br><strong>Skew</strong> (long tail)</p>
+<ul>
+<li>right skewed</li>
+<li>left skewed</li>
+<li>symmetric</li>
+</ul>
+<p><strong>Mode</strong> (prominent peak)</p>
+<ul>
+<li>unimodal</li>
+<li>bimodal</li>
+<li>multimodal<br><img src="/2018/07/12/Stats/hist.png" alt=""></li>
+</ul>
+<p>Calculate the bin width: find the minimum and maximum data vsalue, subtract them, and then divide by the number of bins you want in the histogram to get the bin the width.</p>
+<h3 id="Box-Plot"><a href="#Box-Plot" class="headerlink" title="Box Plot"></a>Box Plot</h3><p><img src="/2018/07/12/Stats/box.png" alt=""></p>
+<ul>
+<li>outliers: distant observations</li>
+<li>Interquartile range: IQR = Q3 - Q1</li>
+<li>upper whisker = Q3 + 1.5*IQR</li>
+<li>lower whisker = Q1 -  1.5*IQR<br>In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</li>
+</ul>
+<h3 id="Mean-amp-Variance-Std"><a href="#Mean-amp-Variance-Std" class="headerlink" title="Mean &amp; Variance (Std)"></a>Mean &amp; Variance (Std)</h3><ul>
+<li>Mean: the center of a data set</li>
+<li>Deviation: the distance of an observation from its mean</li>
+<li>Variance: the <strong>average squared distance</strong> from the mean</li>
+<li>Standard deviation: the square root of the variance<br>variance and Std are used as a means to an end, where the “end” is being able to accurately estimate the <strong>uncertainty</strong> associated with a sample statistic.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align:center">Sample</th>
+<th style="text-align:center">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean</td>
+<td style="text-align:center">\overline(x)</td>
+<td style="text-align:center">μ<sub>x</sub></td>
+</tr>
+<tr>
+<td>Deviation (偏差)</td>
+<td style="text-align:center">$x<sub>i</sub> - \overline(x)$</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>Variance (方差)</td>
+<td style="text-align:center">s<sup>2</sup> = $\sum_{n=1}^N{\dfrac{x<sub>i</sub> - \overline(x}N}}$</td>
+<td style="text-align:center">σ<sup>2</sup></td>
+</tr>
+<tr>
+<td>Standard Deviation(标准差/均方差)</td>
+<td style="text-align:center">s = 根号s<sup>2</sup></td>
+<td style="text-align:center">σ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Robust-Statistics"><a href="#Robust-Statistics" class="headerlink" title="Robust Statistics"></a>Robust Statistics</h3><p>Robust statistics means extreme observations have little effect on their values<br><strong>Robust</strong>: median, IQR<br><strong>Unrobust</strong>: mean, standard deviation</p>
+<h3 id="Transforming-Data"><a href="#Transforming-Data" class="headerlink" title="Transforming Data"></a>Transforming Data</h3><p>A transformation is a rescaling of the data using a function. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much <strong>less skewed</strong> and outliers are usually <strong>less extreme</strong>.</p>
+<ul>
+<li>y - log(x)</li>
+<li>log(y) - log(x)<br><img src="/2018/07/12/Stats/trans.png" alt=""></li>
+<li>根号x</li>
+<li>1/x</li>
+</ul>
+<h3 id="Mapping-Data"><a href="#Mapping-Data" class="headerlink" title="Mapping Data"></a>Mapping Data</h3><p>Intensity map: colors are used to show higher and lower values of a variable.<br><img src="/2018/07/12/Stats/intensitymap.png" alt=""></p>
+<h2 id="Categorical-Data"><a href="#Categorical-Data" class="headerlink" title="Categorical Data"></a>Categorical Data</h2><ul>
+<li>Nominal</li>
+<li>Ordinal</li>
+</ul>
+<h3 id="Contingency-Table-联列表"><a href="#Contingency-Table-联列表" class="headerlink" title="Contingency Table 联列表"></a>Contingency Table 联列表</h3><h3 id="Bar-Plot"><a href="#Bar-Plot" class="headerlink" title="Bar Plot"></a>Bar Plot</h3><hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://www.statmethods.net/advstats/matrix.html" target="_blank" rel="noopener">Matrix Algebra</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke-R/" rel="tag"># Duke, R</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/" rel="next" title="[Udacity/DA] 2 EDA">
+                <i class="fa fa-chevron-left"></i> [Udacity/DA] 2 EDA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-R-and-RStudio"><span class="nav-number">1.</span> <span class="nav-text">Introduction to R and RStudio</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Objects-in-R"><span class="nav-number">2.</span> <span class="nav-text">Data Objects in R</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Meta-information"><span class="nav-number">2.1.</span> <span class="nav-text">Meta-information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objects"><span class="nav-number">2.2.</span> <span class="nav-text">Objects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Modes"><span class="nav-number">2.2.1.</span> <span class="nav-text">Modes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Classes"><span class="nav-number">2.2.2.</span> <span class="nav-text">Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector-1D-same-mode"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">Vector [1D, same mode]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matrix-2D-same-mode"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Matrix [2D, same mode]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Array-gt-3D-same-mode"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">Array [&gt;=3D, same mode]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Frame-2D-different-mode"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">Data Frame [2D, different mode]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-1D-different-mode-for-values-class-for-objects"><span class="nav-number">2.2.2.5.</span> <span class="nav-text">List [1D, different mode( for values)/class(for objects)]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Recycling-amp-Reshaping"><span class="nav-number">2.2.2.6.</span> <span class="nav-text">Recycling &amp; Reshaping</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming"><span class="nav-number">2.2.3.</span> <span class="nav-text">Naming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-things-to-be-noticed"><span class="nav-number">2.2.4.</span> <span class="nav-text">Other things to be noticed</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">2.3.</span> <span class="nav-text">Functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Importing-Data-into-R"><span class="nav-number">3.</span> <span class="nav-text">Importing Data into R</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Working-Directory"><span class="nav-number">3.1.</span> <span class="nav-text">Working Directory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Import-Data-Files"><span class="nav-number">3.2.</span> <span class="nav-text">Import Data Files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-txt-Files"><span class="nav-number">3.2.1.</span> <span class="nav-text">Import txt Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-csv-Files"><span class="nav-number">3.2.2.</span> <span class="nav-text">Import csv Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Excel-Files"><span class="nav-number">3.2.3.</span> <span class="nav-text">Import Excel Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-SAS-Files"><span class="nav-number">3.2.4.</span> <span class="nav-text">Import SAS Files</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-Data-in-R"><span class="nav-number">4.</span> <span class="nav-text">Managing Data in R</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Work-with-Variables"><span class="nav-number">4.1.</span> <span class="nav-text">Work with Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concatenate-Data-Sets"><span class="nav-number">4.2.</span> <span class="nav-text">Concatenate Data Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key"><span class="nav-number">4.2.1.</span> <span class="nav-text">Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concatenation"><span class="nav-number">4.2.2.</span> <span class="nav-text">Concatenation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merge-Data-Sets"><span class="nav-number">4.3.</span> <span class="nav-text">Merge Data Sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform-Data-Sets"><span class="nav-number">4.4.</span> <span class="nav-text">Transform Data Sets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summarize-Data-in-R"><span class="nav-number">5.</span> <span class="nav-text">Summarize Data in R</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numeric-Data"><span class="nav-number">5.1.</span> <span class="nav-text">Numeric Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scattered-Plot"><span class="nav-number">5.1.1.</span> <span class="nav-text">Scattered Plot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dot-Plot"><span class="nav-number">5.1.2.</span> <span class="nav-text">Dot Plot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">5.1.3.</span> <span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Box-Plot"><span class="nav-number">5.1.4.</span> <span class="nav-text">Box Plot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mean-amp-Variance-Std"><span class="nav-number">5.1.5.</span> <span class="nav-text">Mean &amp; Variance (Std)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Robust-Statistics"><span class="nav-number">5.1.6.</span> <span class="nav-text">Robust Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transforming-Data"><span class="nav-number">5.1.7.</span> <span class="nav-text">Transforming Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping-Data"><span class="nav-number">5.1.8.</span> <span class="nav-text">Mapping Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Categorical-Data"><span class="nav-number">5.2.</span> <span class="nav-text">Categorical Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Contingency-Table-联列表"><span class="nav-number">5.2.1.</span> <span class="nav-text">Contingency Table 联列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bar-Plot"><span class="nav-number">5.2.2.</span> <span class="nav-text">Bar Plot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
