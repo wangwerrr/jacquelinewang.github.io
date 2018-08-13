@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Udacity, R," />
+  <meta name="keywords" content="R,Udacity," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="blablabla">
-<meta name="keywords" content="Udacity, R">
+<meta name="keywords" content="R,Udacity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Udacity&#x2F;DA] 2 EDA">
 <meta property="og:url" content="https://jacquelinewang.github.io/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
 <meta property="og:description" content="blablabla">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-09T06:48:04.749Z">
+<meta property="og:updated_time" content="2018-08-09T11:39:40.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Udacity&#x2F;DA] 2 EDA">
 <meta name="twitter:description" content="blablabla">
@@ -282,7 +282,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T09:34:32+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T09:34:32-04:00">
                 2018-07-04
               </time>
             
@@ -368,7 +368,8 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reddit$age.range &lt;- ordered(reddit$age.range, levels = c(<span class="string">"Under 18"</span>, <span class="string">"18-24"</span>, <span class="string">"25-34"</span>, <span class="string">"35-44"</span>, <span class="string">"45-54"</span>, <span class="string">"55-64"</span>, <span class="string">"65 or Above"</span>))</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">reddit$age.range &lt;- factor(reddit$age.range, levels = c(<span class="string">"Under 18"</span>, <span class="string">"18-24"</span>, <span class="string">"25-34"</span>, <span class="string">"35-44"</span>, <span class="string">"45-54"</span>, <span class="string">"55-64"</span>, <span class="string">"65 or Above"</span>), ordered=<span class="literal">T</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="Exploring-Single-Variable"><a href="#Exploring-Single-Variable" class="headerlink" title="Exploring Single Variable"></a>Exploring Single Variable</h3><p>library:ggplot<br>dataset: pseudo_facebook.tsv<br><code>library(ggplot2)<br>pf &lt;- read.csv(‘pseudo_facebook.tsv’, sep=’\t’)</code></p>
+<h3 id="Exploring-Single-Variable"><a href="#Exploring-Single-Variable" class="headerlink" title="Exploring Single Variable"></a>Exploring Single Variable</h3><p>library:ggplot<br>dataset: pseudo_facebook.tsv<br><code>library(ggplot2)
+pf &lt;- read.csv(&#39;pseudo_facebook.tsv&#39;, sep=&#39;\t&#39;)</code></p>
 <h4 id="Call-plot-function"><a href="#Call-plot-function" class="headerlink" title="Call plot function"></a>Call plot function</h4><p><code>ggplot(aes(x = dob_day), data = pf)</code></p>
 <ul>
 <li>handle missing values (using subset)<br><code>ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender)))</code></li>
@@ -376,42 +377,76 @@
 </ul>
 <h4 id="Add-layers"><a href="#Add-layers" class="headerlink" title="Add layers"></a>Add layers</h4><p>Plots:</p>
 <ul>
-<li>Histogram<br>  bin width, color(outline), fill:<br>  <code>geom_histogram(binwidth = 1, color = ‘black’, fill = ‘#099DD9’))</code></li>
+<li>Histogram<br>  bin width, color(outline), fill:<br>  <code>geom_histogram(binwidth = 1, color = &#39;black&#39;, fill = &#39;#099DD9&#39;))</code></li>
 <li>Frequency Polygon<br>  <code>geom_freqpoly(aes(color = gender), binwidth=10)</code></li>
-<li>Box Plot<br><code>ggplot(aes(x = gender, y = friend_count), data = subset(pf, !is.na(gender))) +<br>geom_boxplot() </code> – notice we add parameter y to ggplot()</li>
+<li>Box Plot<br><code>ggplot(aes(x = gender, y = friend_count), data = subset(pf, !is.na(gender))) +
+geom_boxplot()</code> – notice we add parameter y to ggplot()</li>
 </ul>
 <p>Features:</p>
 <ul>
-<li>axis range &amp;  breaks<br>  adjust axis to smaller range (since there might be outliers: bad/good, extreme/non-extreme)<br>  <code>xlim(low, high)</code><br>  <code>scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50))</code> – delete data points<br>  <code>coord_cartesian(ylim=c(0,1000)</code> – does not delete data points, different when using box_plot</li>
-<li>Split up data by variable(s)<br>  <code>facet_wrap(~variable, scales = ‘free_y’)</code><br>  <code>facet_grid(vertical_variable~horizontal_variable)</code></li>
-<li>axis transformation<br>  <code>scale_x_log10()<br>  scale_x_sqrt()</code></li>
-<li>coordinate transformation<br>  <code>coord_trans(x = “log10”, y = “log10”)</code></li>
-<li><p>Multiple plots<br><code>library(gridExtra)<br>p1 &lt;- ggplot(aes(x = friend_count), data = pf) + geom_histogram()<br>p2 &lt;- p1 + scale_x_log10()<br>p3 &lt;- p1 + scale_x_sqrt()<br>grid.arrange(p1, p2, p3, ncol=1)</code></p>
+<li>axis range &amp;  breaks<br>  adjust axis to smaller range (since there might be outliers: bad/good, extreme/non-extreme)<br>  <code>xlim(low, high)</code><br>  <code>scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50))</code> – delete data points (or <code>scale_x_discrete</code>)<br>  <code>coord_cartesian(ylim=c(0,1000)</code> – does not delete data points, different when using box_plot</li>
+<li>Split up data by variable(s)<br>  <code>facet_wrap(~variable, scales = &#39;free_y&#39;)</code><br>  <code>facet_grid(vertical_variable~horizontal_variable)</code></li>
+<li>axis transformation<br>  <code>scale_x_log10()
+  scale_x_sqrt()</code></li>
+<li>coordinate transformation<br>  <code>coord_trans(x = &quot;log10&quot;, y = &quot;log10&quot;)</code></li>
+<li><p>Multiple plots<br><code>library(gridExtra)
+p1 &lt;- ggplot(aes(x = friend_count), data = pf) + geom_histogram()
+p2 &lt;- p1 + scale_x_log10()
+p3 &lt;- p1 + scale_x_sqrt()
+grid.arrange(p1, p2, p3, ncol=1)</code></p>
 </li>
-<li><p>labeles<br><code> xlab(‘Num of Friends’)<br>ylab(‘Percentage of users with that friend count’)</code></p>
+<li><p>labeles<br><code>xlab(&#39;Num of Friends&#39;)
+ylab(&#39;Percentage of users with that friend count&#39;)</code></p>
 </li>
 </ul>
-<p>Statistics:<br>by(variable, split_by, output_statistic)   output_statistic=summary, sum, etc.</p>
-<p>summary(variable/condition)<br>sum(variable)<br>length(variable)</p>
+<p>Statistics:<br><code>by(variable, split_by, output_statistic)</code>   output_statistic=summary, sum, etc.</p>
+<p><code>summary(variable/condition)</code><br><code>sum(variable)</code><br><code>length(variable)</code><br><code>table(variable)</code></p>
 <ul>
 <li>value counts<br>  <code>table(pf$gender)</code><br>  <code>by(pf$friend_count, pf$gender, sum)</code></li>
 <li><p>min, max, med, etc.<br>  <code>by(pf$friend_count, pf$gender, summary)</code></p>
 <p>  <code>summary(pf$friend_count)</code><br>  transformations:<br>  <code>summary(log10(pf$friend_count+1))</code>   – add 1 to avoid -INF<br>  <code>summary(sqrt(pf$friend_count))</code></p>
 </li>
-<li>IQR<br>  <code>IQR(subset(diamonds, price &lt;1000)$price) </code></li>
+<li>IQR<br>  <code>IQR(subset(diamonds, price &lt;1000)$price)</code></li>
 </ul>
-<p>save image:<br><code>ggsave(‘priceHistogram.png’)</code></p>
-<h3 id="Exploring-Two-Variables"><a href="#Exploring-Two-Variables" class="headerlink" title="Exploring Two Variables"></a>Exploring Two Variables</h3><ul>
-<li>Point Plot<br><code>ggplot(aes(x = age, y = friend_count), data = pf) +<br>geom_point()</code><ul>
+<p>save image:<br><code>ggsave(&#39;priceHistogram.png&#39;)</code></p>
+<h3 id="Exploring-Two-Variables"><a href="#Exploring-Two-Variables" class="headerlink" title="Exploring Two Variables"></a>Exploring Two Variables</h3><p><strong>Scatter Plot</strong><br><code>ggplot(aes(x = age, y = friend_count), data = pf) + geom_point()</code></p>
+<ul>
+<li>aes: aesthetic wrapper</li>
 <li>transparency: <code>geom_point(alpha=1/20)</code> – 20 data points = 1 point in the plot, to reduce over plottings</li>
-<li>jitter: <code>geom_jitter(alpha=1/20, position=position_jitter(h=0))</code> – add noise, discrete-&gt;continuous; position_jitter set the min height<br>-connect the dots<code>geom_line</code></li>
+<li>jitter: <code>geom_jitter(alpha=1/20, position=position_jitter(h=0))</code> – add noise, discrete-&gt;continuous; position_jitter set the min height</li>
+<li>represent another feature of the point by size:<code>geom_point(aes(size = feature))</code></li>
+</ul>
+<p><strong>Summaries</strong></p>
+<ul>
+<li>connect the dots: <code>+ geom_line(color=&#39;orange&#39;, linetype=2)</code><ul>
+<li>mean: <code>geom_line(stat = &#39;summary&#39;, fun.y = mean)</code></li>
+<li>quantile:  <code>geom_line(stat = &#39;summary&#39;, fun.y = quantile, probs=.9)</code></li>
 </ul>
 </li>
-<li>create derived dataframe<br>using <code>library(dplyr)</code><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pf.fc_by_age &lt;- pf %.%</span><br><span class="line">    group_by(age)  %.%</span><br><span class="line">    summarise(friend_count_mean = mean(friend_count),</span><br><span class="line">              friend_count_median = median(friend_count),</span><br><span class="line">              n = n()) %.%</span><br><span class="line">    arrange(age)</span><br><span class="line"></span><br><span class="line">head(pf.fc_by_age,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<li>horizontal line: <code>geom_hline(yintercept=1, alpha=0.3)</code></li>
+<li><p>smoother: <code>geom_smooth(method=&#39;lm&#39;, color=&#39;red&#39;)</code>, lm for linear model</p>
+</li>
+<li><p>create derived dataframe<br>using <code>library(dplyr)</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pf.fc_by_age &lt;- pf %.%</span><br><span class="line">    filter(!is.na(age)) %.%</span><br><span class="line">    group_by(age)  %.%</span><br><span class="line">    summarise(friend_count_mean = mean(friend_count),</span><br><span class="line">              friend_count_median = median(friend_count),</span><br><span class="line">              n = n()) %.%</span><br><span class="line">    arrange(age)</span><br><span class="line"></span><br><span class="line">head(pf.fc_by_age,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>or<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">age_groups &lt;- group_by(pf, age)</span><br><span class="line"></span><br><span class="line">pf.fc_by_age &lt;- summarise(age_groups,</span><br><span class="line">friend_count_mean = mean(friend_count),</span><br><span class="line">friend_count_median = median(friend_count),</span><br><span class="line">n = n()) <span class="comment"># count values</span></span><br><span class="line"></span><br><span class="line">pf.fc_by_age &lt;- arrange(pf.fc_by_age, age)</span><br><span class="line"></span><br><span class="line">head(pf.fc_by_age,<span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.statmethods.net" target="_blank" rel="noopener">1. Quick R</a><br><a href="http://flowingdata.com/2015/02/18/loading-data-and-basic-formatting-in-r/" target="_blank" rel="noopener">2. Loading Data and Basic Formatting in R</a><br><a href="http://www.cookbook-r.com" target="_blank" rel="noopener">3. Cookbook for R</a><br><a href="https://ggplot2.tidyverse.org/reference/coord_trans.html" target="_blank" rel="noopener">4. Transformed Cartesian coordinate system</a><br><a href="https://blog.rstudio.com/2014/01/17/introducing-dplyr/" target="_blank" rel="noopener">5. Introducing dplyr</a></p>
+<ul>
+<li>correlation coefficient (linear): <code>cor.test(df$x, df$y, method=&#39;pearson&#39;)</code> or <code>with(df, cor.test(x, y, method=&#39;pearson))</code>, spearman</li>
+</ul>
+<h3 id="Exploring-3-Variables"><a href="#Exploring-3-Variables" class="headerlink" title="Exploring 3+ Variables"></a>Exploring 3+ Variables</h3><p><strong>Scatter Plot by Gender</strong><br>eg. x = age, y = friend_count, color = gender<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(aes(x = age, y = friend_count),</span><br><span class="line">     data = subset(pf, !is.na(gender))) +</span><br><span class="line">     geom_line(aes(color = gender), stat = <span class="string">'summary'</span>, fun.y = median)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Reshape Data</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(reshape2)</span><br><span class="line"></span><br><span class="line">pf.fc_by_age_gender.wide &lt;- dcast(pf.fc_by_age_gender,</span><br><span class="line">                            age ~ gender,</span><br><span class="line">                            value.var = <span class="string">'median_friend_count'</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Cut a Variable</strong>: from continuous to discrete<br><code>cut(pf$year_joined, breaks = int or seq)</code></p>
+<p><strong>Transform</strong></p>
+<ul>
+<li>addition of columns: <code>yo &lt;- transform(yo, all.purchases = strawberry + blueberry + plain)</code></li>
+</ul>
+<p><code>x %in% y</code> 返回一个长度与 x 相同的逻辑（布尔）向量，该向量指出 x 中的每一个条目是否都出现在 y 中。也就是说，对于 x 中的每一个条目，该向量都会检查这一条目是否也出现在 y 中。</p>
+<p><strong>Plot Matrices</strong><br><code>library(GGally)</code><br><code>ggpairs(data)</code></p>
+<p><strong>Heat Map</strong><br><code>ggplot(aes(y,x,fill), data)
+    geom_tile() +
+    scale_fill_gradientn(colours=colorRampPalette(c(&#39;blue&#39;, &#39;red&#39;))(100))</code></p>
+<h3 id="Linear-Model"><a href="#Linear-Model" class="headerlink" title="Linear Model"></a>Linear Model</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.statmethods.net" target="_blank" rel="noopener">1. Quick R</a><br><a href="http://flowingdata.com/2015/02/18/loading-data-and-basic-formatting-in-r/" target="_blank" rel="noopener">2. Loading Data and Basic Formatting in R</a><br><a href="http://www.cookbook-r.com" target="_blank" rel="noopener">3. Cookbook for R</a><br><a href="https://ggplot2.tidyverse.org/reference/coord_trans.html" target="_blank" rel="noopener">4. Transformed Cartesian coordinate system</a><br><a href="https://blog.rstudio.com/2014/01/17/introducing-dplyr/" target="_blank" rel="noopener">5. Introducing dplyr</a><br><a href="https://ggplot2.tidyverse.org" target="_blank" rel="noopener">6. ggplot2</a></p>
 
       
     </div>
@@ -429,7 +464,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Udacity-R/" rel="tag"># Udacity, R</a>
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/Udacity/" rel="tag"># Udacity</a>
           
         </div>
       
@@ -452,7 +489,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/12/Stats/" rel="prev" title="[Online Review/Statistics]  Unit 1 Working with Data in R">
+              <a href="/2018/07/12/Stats1/" rel="prev" title="[Online Review/Statistics]  Unit 1 Working with Data in R">
                 [Online Review/Statistics]  Unit 1 Working with Data in R <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -535,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -546,7 +583,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -557,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -626,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA"><span class="nav-number">1.</span> <span class="nav-text">EDA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goal"><span class="nav-number">1.2.</span> <span class="nav-text">Goal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R"><span class="nav-number">2.</span> <span class="nav-text">R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">Basic Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Single-Variable"><span class="nav-number">2.2.</span> <span class="nav-text">Exploring Single Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-plot-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">Call plot function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-layers"><span class="nav-number">2.2.2.</span> <span class="nav-text">Add layers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Two-Variables"><span class="nav-number">2.3.</span> <span class="nav-text">Exploring Two Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#EDA"><span class="nav-number">1.</span> <span class="nav-text">EDA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goal"><span class="nav-number">1.2.</span> <span class="nav-text">Goal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R"><span class="nav-number">2.</span> <span class="nav-text">R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">Basic Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Single-Variable"><span class="nav-number">2.2.</span> <span class="nav-text">Exploring Single Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Call-plot-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">Call plot function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-layers"><span class="nav-number">2.2.2.</span> <span class="nav-text">Add layers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Two-Variables"><span class="nav-number">2.3.</span> <span class="nav-text">Exploring Two Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-3-Variables"><span class="nav-number">2.4.</span> <span class="nav-text">Exploring 3+ Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Model"><span class="nav-number">2.5.</span> <span class="nav-text">Linear Model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

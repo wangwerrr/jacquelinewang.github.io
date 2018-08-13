@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke,Linear Algebra," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="…">
+<meta name="keywords" content="Duke,Linear Algebra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Linear Algebra] Cheat Sheet">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/rref.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/1.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/2.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/3.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/ga.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/proj.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/diag.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/diag2.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/st.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/center.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/od.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/or.png">
+<meta property="og:updated_time" content="2018-07-30T07:44:49.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Linear Algebra] Cheat Sheet">
+<meta name="twitter:description" content="…">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/rref.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/"/>
+
+
+
+
+
+  <title>[Online Review/Linear Algebra] Cheat Sheet | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Linear Algebra] Cheat Sheet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-30T15:44:26-04:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Vector-and-Matrix-Algebra"><a href="#Vector-and-Matrix-Algebra" class="headerlink" title="Vector and Matrix Algebra"></a>Vector and Matrix Algebra</h1><h2 id="Span"><a href="#Span" class="headerlink" title="Span"></a>Span</h2><p>The span of a list of vectors {v1,…, vk} in R<sup>n</sup><br>is the collection of all linear combinations of {v1,…, vk}. Geometrically, Span{v1,…, vk} consists of all vectors that can be “reached” by taking linear combinations of {v1,…, vk}</p>
+<h2 id="Upper-and-Lower-Triangular-Matrices"><a href="#Upper-and-Lower-Triangular-Matrices" class="headerlink" title="Upper and Lower Triangular Matrices"></a>Upper and Lower Triangular Matrices</h2><p>Upper Triangular means that the entries of A “below the diagonal are zero.<br>Lower Triangular means that the entries of A “above” the diagonal are zero.<br>not just for SQUARE matrices</p>
+<h1 id="Systems-of-Linear-Equations-and-Nonsigular-Matrices"><a href="#Systems-of-Linear-Equations-and-Nonsigular-Matrices" class="headerlink" title="Systems of Linear Equations and Nonsigular Matrices"></a>Systems of Linear Equations and Nonsigular Matrices</h1><h2 id="Reduced-Row-Echelon-Form-rref"><a href="#Reduced-Row-Echelon-Form-rref" class="headerlink" title="Reduced Row Echelon Form (rref)"></a>Reduced Row Echelon Form (rref)</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>A matrix A is in reduced row echelon form (rref) if each of the following is satisfied:</p>
+<ol>
+<li>Any zero-rows occur at the bottom.</li>
+<li>The first nonzero entry of a nonzero row is a 1 (called a pivot).</li>
+<li>Every pivot occurs to the right of the pivots above it.</li>
+<li>All nonpivot entries in a column containing a pivot are zero.</li>
+</ol>
+<h3 id="Rank-and-Nullity"><a href="#Rank-and-Nullity" class="headerlink" title="Rank and Nullity"></a>Rank and Nullity</h3><p>Rank : the number of pivot columns. –&gt; dependent variables<br>Nullity: the number of nonpivot columns.  –&gt; independent variables (free)</p>
+<h2 id="rref-Systems"><a href="#rref-Systems" class="headerlink" title="rref Systems"></a>rref Systems</h2><h3 id="Consistent-and-Inconsistent"><a href="#Consistent-and-Inconsistent" class="headerlink" title="Consistent and Inconsistent"></a>Consistent and Inconsistent</h3><p>consistent (or solvable): the augmented column contains no pivot.<br>inconsistent (or unsolvable): the augmented column contains a pivot.</p>
+<h3 id="Number-of-Solutions"><a href="#Number-of-Solutions" class="headerlink" title="Number of Solutions"></a>Number of Solutions</h3><p>A consistent rref system has:<br><strong>exactly one solution</strong> if it has no free variables. This means that<br>rank = number of variables and nullity = 0<br><strong>infinitely many solutions</strong> if it has free variables. This means that<br>rank &lt; number of variables and nullity &gt; 0<br>An inconsistent system has <strong>no solutions</strong>.</p>
+<h2 id="Gauss-Jordan-Elimination"><a href="#Gauss-Jordan-Elimination" class="headerlink" title="Gauss-Jordan Elimination"></a>Gauss-Jordan Elimination</h2><ol>
+<li>If aij = 0, switch the ith row with the first row below it whose jth entry is nonzero. If no such row exists, increase j by one and repeat this step.</li>
+<li>Multiply the ith row by 1/aij to make a pivot entry in the position (i,j).</li>
+<li>Eliminate all other entries in the jth column by subtracting suitable multiples of the ith row from the other rows.</li>
+<li>Increase i and j by one and return to Step 1.<br>The algorithm terminates after the last row or last column is processed. The output of this algorithm is the reduced row echelon form rref(A) of A.<br><img src="/2018/07/30/LinearAlgebra/rref.png" alt=""></li>
+</ol>
+<h2 id="Nonsingular-Matrices"><a href="#Nonsingular-Matrices" class="headerlink" title="Nonsingular Matrices"></a>Nonsingular Matrices</h2><p>x=A<sup>-1</sup>b</p>
+<p>inverse / reciprocal. 逆<br>可逆性 A n × n matrix A is invertible / nonsingular if and only if   rank(A) = n  .</p>
+<p><strong>Gauss-Jordan Algorithm for Computing A<sup>-1</sup></strong><br>Let A be a n × n matrix. The following steps will compute A<sup>-1</sup> or determine that A<sup>-1</sup>exists.</p>
+<ol>
+<li>Form the augmented matrix [A | IA<sub>n</sub>].</li>
+<li>Use Gauss-Jordan elimination to row reduce [A | In] to [rref(A) | B].</li>
+<li>If rref(A) ̸= In, then A is not invertible.</li>
+<li>If rref(A) = In, then A is invertible and B = A<sup>-1</sup>.</li>
+</ol>
+<p><strong>Matrix Inverse Rules</strong><br>Involution Rule: If A is invertible, then (A<sup>-1</sup>)<sup>-1</sup> = A.<br>Transposition Rule: If A is invertible, then (A<sup>-1</sup>)  = (A )<sup>-1</sup>.<br>Reverse Multiplication Rule: If A and B are invertible, then (AB)<sup>-1</sup> = B<sup>-1</sup>A<sup>-1</sup>.<br>Scaling Rule: If A is invertible and c ̸= 0, then (c · A)<sup>-1</sup> = (1/c) · A<sup>-1</sup>.</p>
+<h1 id="Least-Squares-Approximations"><a href="#Least-Squares-Approximations" class="headerlink" title="Least Squares Approximations"></a>Least Squares Approximations</h1><h2 id="Fitting-Lines-to-Data"><a href="#Fitting-Lines-to-Data" class="headerlink" title="Fitting Lines to Data"></a>Fitting Lines to Data</h2><p><img src="/2018/07/30/LinearAlgebra/1.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/2.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/3.png" alt=""></p>
+<h2 id="Linear-Independence"><a href="#Linear-Independence" class="headerlink" title="Linear Independence"></a>Linear Independence</h2><p>Let {v1, v2,…, vk} be the columns of a matrix A = [v1, v2,…, vk]<br>The list of vectors {v1, v2,…, vk} is<br><strong>linearly independent</strong> if rank(A) = the number of columns of A<br><strong>linearly dependent</strong> if rank(A) &lt; the number of columns of A<br>A matrix A whose columns are linearly independent (rank(A) equals the number of columns of A) is said to have <strong>full column rank</strong>.</p>
+<p><strong>Nonsingularity of A<sup>T</sup>A</strong><br>If A has full column rank, then A<sup>T</sup>A is nonsingular.<br>This means that the system   A<sup>T</sup>Ax = A<sup>T</sup>b   has a unique solution x , even if   Ax = b   has no solution.</p>
+<h2 id="The-Method-of-Least-Squares"><a href="#The-Method-of-Least-Squares" class="headerlink" title="The Method of Least Squares"></a>The Method of Least Squares</h2><p>When   Ax = b   has no solution,multiplyby A<sup>T</sup> and solve   A<sup>T</sup>Ax =A<sup>T</sup>b   for x .<br>The vector x  is called the <strong>least squares approximate solution</strong> to Ax = b .<br>This approximate solution makes the error   E = ∥Ax − b∥A<sup>2</sup>   as small as possible.</p>
+<h2 id="Gram-Schmidt-Orthogonalization-and-QR-Factorization"><a href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization" class="headerlink" title="Gram-Schmidt Orthogonalization and QR-Factorization"></a>Gram-Schmidt Orthogonalization and QR-Factorization</h2><p>Inversion:   (AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup><br>Transposition:   (AB)<sup>-1</sup> = B<sup>-1</sup>A<sup>-1</sup><br>orthogonal.<br>orthonormal.</p>
+<p><strong>Orthonormal List of Vectors</strong><br>A list of vectors {q1, q2,…, qk} is called orthonormal if each vector is a <strong>unit</strong> vector and each pair of vectors is <strong>orthogonal</strong>.</p>
+<p><strong>Matrices with Orthonormal Columns</strong><br>Matrices with <strong>orthonormal</strong> columns satisfies   Q<sup>T</sup>Q = I  . (proved by its definition)<br>Note that these matrices need not be square.<br>But when Q is a <strong>square</strong> matrix, the relation   Q<sup>T</sup>Q = I   means that   Q<sup>T</sup> = Q<sup>-1</sup>  . Such matrices are called <strong>orthogonal</strong> matrices.<br>如果正方形矩阵的列向量是orthonormal（相互orthogonal且长度都为1）的，则该矩阵是orthogonal的。</p>
+<p><strong>Least-Squares Approximationof Qx = b</strong><br>The least-squares approximation x of   Q x = b   is   x = Q<sup>T</sup>b   .<br>Consequently, if   Qx = QQ<sup>T</sup>b != b   then the system   Qx = b   is inconsistent.</p>
+<p><strong>QR-Decompositions</strong><br>Given   A = QR  , the least squares approximate solution to   Ax = b   is the solution x to the upper-triangular system   Rx = Q<sup>T</sup>b  .</p>
+<p><strong>Using Gram-Schmidt Algorithm to Compute A=QR</strong><br>Input: A matrix A with linearly independent columns (rank(A) equals the number of<br>columns of A).<br>Output: A QR-decomposition   A = QR  .<br><img src="/2018/07/30/LinearAlgebra/ga.png" alt=""></p>
+<p>Projecting a Vector v onto Another Vector w<br><img src="/2018/07/30/LinearAlgebra/proj.png" alt=""></p>
+<p>Summary<br>  Ax=b -&gt; QRx = b -&gt; Rx = Q<sup>T</sup>b</p>
+<h1 id="Elgenvalues"><a href="#Elgenvalues" class="headerlink" title="Elgenvalues"></a>Elgenvalues</h1><h2 id="Eigenvalues-amp-Eigenvectors"><a href="#Eigenvalues-amp-Eigenvectors" class="headerlink" title="Eigenvalues &amp; Eigenvectors"></a>Eigenvalues &amp; Eigenvectors</h2><p>Eigenvalues. 特征值<br>递推关系<br><strong>Eigenvalues</strong><br>A scalar λ is an eigenvalue of an n×n matrix A if the matrix   A−λ·I<sub>n</sub>   is singular.</p>
+<ul>
+<li>Calculate λ:   |A − λ · I<sub>n</sub>| = 0</li>
+<li>Test to Determine if λ is an Eigenvalue of A: a scalar λ is an eigenvalue of an n × n matrix A if and only if   rank(A − λ · I<sub>n</sub>) &lt; n  .</li>
+</ul>
+<p><strong>Eigenvectors</strong><br>  Suppose that λ is an eigenvalue of a matrix A. An eigenvector of A associated to the eigenvalue λ is a vector v satisfying the equation   Av = λ·v</p>
+<ul>
+<li><p>Test to Determine if v is an Eigenvector of A: A vector v != 0 is an eigen vector of A if and only if   Av =λ·v   for some scalar λ. In this situation, λ is an eigenvalue of A.</p>
+<p><strong>Eigenpair</strong><br>An eigenpair of a matrix A is a pair (λ,v) where λ is an eigen value of A and v is an eigenvector of A corresponding to the eigenvalue λ.<br>many different eigenvectors may be associated to the same eigenvalue.</p>
+</li>
+</ul>
+<h2 id="Pivot-Basis"><a href="#Pivot-Basis" class="headerlink" title="Pivot Basis"></a>Pivot Basis</h2><p><strong>Geometric Multiplicity</strong><br>  The geometric multiplicity of λ as an eigenvalue of A is a number that measures the number of <strong>linearly independent</strong>(nonpivot columns) eigenvectors of A associated to λ.    gm<sub>A</sub>(λ) = nullity(A−λ·I<sub>n</sub>)  .</p>
+<p>  <strong>The Pivot Basis Associated to an Eigenvalue</strong><br>  Suppose that λ is an eigenvalue of an n×n matrix A. To find the pivot basis associated to λ, start by considering the system of linear equations given by   (A − λ · I<sub>n</sub>) x = 0  .<br> Use the reduced row echelon form   rref[A − λ · I<sub>n</sub> | 0 ]   to write the general solution to   (A−λ·I<sub>n</sub>)x = 0   as   x = c1·v1 + c2·v2 +···+cg·vg  . The list of vectors   {v1, v2,…, vg}   is called the <strong>pivot basis</strong> associated to λ. (but not the eigenvector associated to λ)</p>
+<p><strong>Eigenvectors are Linear Combinations of the Pivot Basis</strong><br>The eigenvectors of A associated to λ are the linear combinations of the pivot basis {v1, v2,…, vg}. That is, every eigenvector of A associated to λ is of the form   v = c1 · v1 + c2 · v2 + · · · + cg · vg   where c1,c2,…,cg are scalars.</p>
+<h2 id="Diagonalization"><a href="#Diagonalization" class="headerlink" title="Diagonalization"></a>Diagonalization</h2><p><strong>Diagonalizable</strong><br>An n × n matrix A is diagonalizable if it is possible to find an invertible n × n matrix P and an n × n diagonal matrix D satisfying   A = PDP<sup>−1</sup>  .<br>The matrix power A<sub>k</sub> is given by   A<sub>k</sub> = PD<sub>k</sub>P<sup>−1</sup></p>
+<ul>
+<li>A is diagonalizable if and only if the sum of the geometric multiplicities of each eigenvalue of A is equal to n.<br><img src="/2018/07/30/LinearAlgebra/diag.png" alt=""></li>
+</ul>
+<p><strong>Algorithm for Diagonalizing a Matrix</strong><br>Let A be a diagonalizable matrix. To find a diagonalization   A = PDP<sup>−1</sup>  ., start with two empty n × n matrices P and D. Then complete the following steps for each eigenvalue λ of A.</p>
+<ol>
+<li>Find the pivot basis {v1, v2,…, vg} associated to λ.</li>
+<li>Insert each vector from the <strong>pivot basis</strong> { v 1, v 2, . . . , v g} into the first available columns of P.</li>
+<li>Insert <strong>λ</strong> onto the first available diagonal entries of D a total number of gm<sub>A</sub>(λ) times.<br><img src="/2018/07/30/LinearAlgebra/diag2.png" alt=""></li>
+</ol>
+<h2 id="Spectral-Theorem-and-Principal-Component-Analysis"><a href="#Spectral-Theorem-and-Principal-Component-Analysis" class="headerlink" title="Spectral Theorem and Principal Component Analysis"></a>Spectral Theorem and Principal Component Analysis</h2><p>symmetric:   A<sup>T</sup> = A<br>orthogonal:   Q<sup>T</sup> = Q&lt;<sup>-1</sup></p>
+<p><strong>Spectral Theorem (Diagonalization of Symmetric Matrices)</strong><br>Let A be a symmetric matrix, so   A<sup>T</sup> = A  . Then there is a diagonalization   A = QDQ<sup>T</sup>    where Q is an orthogonal matrix   Q<sup>T</sup>= Q<sup>-1</sup>  .<br>The spectral theorem guarantees that any given symmetric matrix is diagonalizable and that the eigenvectors chosen during the diagonalization process may be chosen to be or- thonormal.<br>作用：如果能够找到orthogonal的Q，就无需求Q-1了，直接求QT就好。<br><img src="/2018/07/30/LinearAlgebra/st.png" alt=""></p>
+<p><strong>The Covariance Matrix</strong><br>A -&gt; A<sub>c</sub>: <strong>centered</strong> data.<br>when we use a line to approximate centered data, the line is always of the form f (x) = m · x. That is, the line always passes through the origin.<br><img src="/2018/07/30/LinearAlgebra/center.png" alt=""></p>
+<p>Suppose that data is stored in an   n × p   matrix A, where each column corresponds to a variable. The covariance matrix of A is defined as the new matrix Σ (sigma) given by<br>  Σ= 1/(n-1) <em> A<sub>c</sub><sup>T</sup> </em> A<sub>c</sub><br>Features : positive definite</p>
+<ul>
+<li>symmetric:   Σ<sup>T</sup> = Σ   -&gt; spectral theory -&gt; orthonormal eigenvectors</li>
+<li>eigenvalues of the covariance matrix are <strong>positive</strong> numbers</li>
+</ul>
+<p><strong>Orthogonal Distance</strong></p>
+<ul>
+<li>least squares: use <strong>vertical</strong> distance to measure the error (linear regression)</li>
+<li>principal component analysis (PCA): use <strong>orthogonal</strong> distance to measure the error (orthogonal regression)<br><img src="/2018/07/30/LinearAlgebra/od.png" alt=""></li>
+</ul>
+<p><strong>The Orthogonal Error in Approximating Centered Data by f (x) = m · x</strong><br>Consider the problem of using a line f(x) = m · x to approximate a centered data set, whose points are listed as vectors { p1, p2, . . . , pn}. The orthogonal error in using f (x) = m · x to approximate the data set is the sum of the squares of the orthogonal<br>distances from each of these points to the vector w = ⟨1, m⟩.<br>That is, the orthogonal error is<br>  E=∥p1 −proj<sub>w</sub>(p1)∥<sup>2</sup> +∥p2 −proj<sub>w</sub>(p2)∥<sup>2</sup> +···+∥pn −<sub>w</sub>(pn)∥<sup>2</sup></p>
+<p><strong>Orthogonal Regression</strong></p>
+<ul>
+<li><p>Goal: Given a data set, find the line that minimizes the orthogonal error.</p>
+</li>
+<li><p>First Principal Component:  Suppose that λ1 is the largest eigenvalue of the covariance matrix Σ(which is positive definite). A first principal component of Σ is an eigenpair (λ1, v1) of Σ.</p>
+</li>
+<li><p>Technique:  Let A be a matrix whose rows consist of data points. Let (λ1, v1) be a first principal component of the covariance matrix Σ. Write the vector v1 in coordinates   v1 = ⟨x, y⟩   and define   m = y/x  . Then the line   f (x) = m · x   minimizes the orthogonal error.<br><img src="/2018/07/30/LinearAlgebra/or.png" alt=""></p>
+</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://jingyan.baidu.com/article/27fa7326afb4c146f8271ff3.html" target="_blank" rel="noopener">如何求特征值和特征向量</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke/" rel="tag"># Duke</a>
+          
+            <a href="/tags/Linear-Algebra/" rel="tag"># Linear Algebra</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/19/Python/" rel="next" title="[Online Review/Python] Cheat Sheet ">
+                <i class="fa fa-chevron-left"></i> [Online Review/Python] Cheat Sheet 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/31/Stats3/" rel="prev" title="[Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables">
+                [Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector-and-Matrix-Algebra"><span class="nav-number">1.</span> <span class="nav-text">Vector and Matrix Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Span"><span class="nav-number">1.1.</span> <span class="nav-text">Span</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upper-and-Lower-Triangular-Matrices"><span class="nav-number">1.2.</span> <span class="nav-text">Upper and Lower Triangular Matrices</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Systems-of-Linear-Equations-and-Nonsigular-Matrices"><span class="nav-number">2.</span> <span class="nav-text">Systems of Linear Equations and Nonsigular Matrices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduced-Row-Echelon-Form-rref"><span class="nav-number">2.1.</span> <span class="nav-text">Reduced Row Echelon Form (rref)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">2.1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rank-and-Nullity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Rank and Nullity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rref-Systems"><span class="nav-number">2.2.</span> <span class="nav-text">rref Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Consistent-and-Inconsistent"><span class="nav-number">2.2.1.</span> <span class="nav-text">Consistent and Inconsistent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-of-Solutions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Number of Solutions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gauss-Jordan-Elimination"><span class="nav-number">2.3.</span> <span class="nav-text">Gauss-Jordan Elimination</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nonsingular-Matrices"><span class="nav-number">2.4.</span> <span class="nav-text">Nonsingular Matrices</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Least-Squares-Approximations"><span class="nav-number">3.</span> <span class="nav-text">Least Squares Approximations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fitting-Lines-to-Data"><span class="nav-number">3.1.</span> <span class="nav-text">Fitting Lines to Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Independence"><span class="nav-number">3.2.</span> <span class="nav-text">Linear Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Method-of-Least-Squares"><span class="nav-number">3.3.</span> <span class="nav-text">The Method of Least Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization"><span class="nav-number">3.4.</span> <span class="nav-text">Gram-Schmidt Orthogonalization and QR-Factorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elgenvalues"><span class="nav-number">4.</span> <span class="nav-text">Elgenvalues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eigenvalues-amp-Eigenvectors"><span class="nav-number">4.1.</span> <span class="nav-text">Eigenvalues &amp; Eigenvectors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pivot-Basis"><span class="nav-number">4.2.</span> <span class="nav-text">Pivot Basis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diagonalization"><span class="nav-number">4.3.</span> <span class="nav-text">Diagonalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spectral-Theorem-and-Principal-Component-Analysis"><span class="nav-number">4.4.</span> <span class="nav-text">Spectral Theorem and Principal Component Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

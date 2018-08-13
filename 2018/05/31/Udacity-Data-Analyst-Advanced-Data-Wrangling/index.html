@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Udacity,pandas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Note for Udacity’s Data Analyst (Advanced) Nanodegree Program.Gather data from a variety of sources and in a variety of formats, assess its quality and tidiness, then clean it.">
+<meta name="keywords" content="Udacity,pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Udacity&#x2F;DA] 1 Data Wrangling">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/31/Udacity-Data-Analyst-Advanced-Data-Wrangling/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="Note for Udacity’s Data Analyst (Advanced) Nanodegree Program.Gather data from a variety of sources and in a variety of formats, assess its quality and tidiness, then clean it.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-17T08:20:57.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Udacity&#x2F;DA] 1 Data Wrangling">
+<meta name="twitter:description" content="Note for Udacity’s Data Analyst (Advanced) Nanodegree Program.Gather data from a variety of sources and in a variety of formats, assess its quality and tidiness, then clean it.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/31/Udacity-Data-Analyst-Advanced-Data-Wrangling/"/>
+
+
+
+
+
+  <title>[Udacity/DA] 1 Data Wrangling | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/31/Udacity-Data-Analyst-Advanced-Data-Wrangling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Udacity/DA] 1 Data Wrangling</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-31T19:24:32-04:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Note for Udacity’s Data Analyst (Advanced) Nanodegree Program.<br>Gather data from a variety of sources and in a variety of formats, assess its quality and tidiness, then clean it.</p>
+<a id="more"></a>
+<hr>
+<h2 id="GATHER"><a href="#GATHER" class="headerlink" title="GATHER"></a>GATHER</h2><h3 id="Web-Scraping"><a href="#Web-Scraping" class="headerlink" title="Web Scraping"></a>Web Scraping</h3><h4 id="Mining-from-html-file-text"><a href="#Mining-from-html-file-text" class="headerlink" title="Mining from html file text"></a>Mining from html file text</h4><ul>
+<li>BeautifulSoup: find(), find_all(), .contents()</li>
+<li>API: eg.wiki — wptools.page().get().data</li>
+</ul>
+<h4 id="Downloading-files-from-the-internet"><a href="#Downloading-files-from-the-internet" class="headerlink" title="Downloading files from the internet"></a>Downloading files from the internet</h4><ul>
+<li>requests: get().content</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://example.com/img.png'</span></span><br><span class="line">response = requests.get(url, stream=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'img.png'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> out_file:</span><br><span class="line">    shutil.copyfileobj(response.raw, out_file)</span><br><span class="line"><span class="keyword">del</span> response</span><br></pre></td></tr></table></figure>
+<h3 id="Reading-Different-Data-Format"><a href="#Reading-Different-Data-Format" class="headerlink" title="Reading Different Data Format"></a>Reading Different Data Format</h3><h4 id="Open-Save-files"><a href="#Open-Save-files" class="headerlink" title="Open/Save files"></a>Open/Save files</h4><ul>
+<li>os: path.exist(), path.join(a, b, mode = ‘wb’), makedirs(), listdir()</li>
+<li>glob: glob(‘pathname/*.txt’)</li>
+<li>with open(path, encoding=‘utf-8’) as file:   —返回Iterator</li>
+<li>file.read() / readline()<h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4></li>
+<li>JSON — store data in the form of dictionay<ul>
+<li>JSON object — dict</li>
+<li>JSON array   — list (a list of values of a certain key)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reading json into dataframe</span></span><br><span class="line">tweet_list=[]</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'tweet_json.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">  <span class="keyword">for</span> row <span class="keyword">in</span> f:</span><br><span class="line">      json_dict= json.loads(row)  </span><br><span class="line">      to_append= &#123;</span><br><span class="line">          <span class="string">'tweet_id'</span>:json_dict[<span class="string">'id'</span>],</span><br><span class="line">          <span class="string">'retweet_count'</span>:json_dict[<span class="string">'retweet_count'</span>],</span><br><span class="line">          <span class="string">'favorite_count'</span>:json_dict[<span class="string">'favorite_count'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">      tweet_list.append(to_append)</span><br><span class="line">df_json=pd.DataFrame(tweet_list, columns=[<span class="string">'tweet_id'</span>,<span class="string">'retweet_count'</span>,<span class="string">'favorite_count'</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h4><ul>
+<li>RDBMS (Relational Database Management System) — use SQL to intereact with</li>
+<li>与sql db交互:from sqlalchemy import create_engine</li>
+<li>初始化数据库 engine = create_engine(’sqlite:///bestofrt.db’)</li>
+<li>写入 df.to_sql(‘master’, engine, index=False)</li>
+<li>读取 pd.read_sql(’SELECT * FROM master’, engine)<h4 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h4></li>
+<li>read_csv(filename, ‘r’)</li>
+<li>df.to_csv(‘filename’, index=False)</li>
+</ul>
+<h3 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h3><p>Unicode — a Character Sets (char : number)<br>UTF-8 — an Encoding (number to 0/1)</p>
+<hr>
+<h2 id="ASSESS"><a href="#ASSESS" class="headerlink" title="ASSESS"></a>ASSESS</h2><h3 id="Issue-Types"><a href="#Issue-Types" class="headerlink" title="Issue Types"></a>Issue Types</h3><h4 id="Completeness"><a href="#Completeness" class="headerlink" title="Completeness"></a>Completeness</h4><p>df[df.column].isnull()]</p>
+<h4 id="Tidiness"><a href="#Tidiness" class="headerlink" title="Tidiness"></a>Tidiness</h4><p>Structural issue</p>
+<h4 id="Quality"><a href="#Quality" class="headerlink" title="Quality"></a>Quality</h4><ul>
+<li>Validity</li>
+<li>Inaccuracy</li>
+<li>Consistency</li>
+</ul>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><ul>
+<li>df.head(), df.tail(), df.sample()</li>
+<li>list(df)</li>
+<li>df.info()</li>
+<li><p>df.duplicated()</p>
+</li>
+<li><p>pd.Series.value_counts()</p>
+</li>
+<li>pd.Series.describe()</li>
+<li>pd.Series.isnull(), pd.Series.notnull()</li>
+</ul>
+<hr>
+<h2 id="CLEAN"><a href="#CLEAN" class="headerlink" title="CLEAN"></a>CLEAN</h2><ul>
+<li>Define: what to do according to Completeness/Quality / Tidiness issues we recorded during ASSESS.</li>
+<li>Code: make a copy first — df_clean = df.copy(); then do according to Define</li>
+<li>Test: Reassess the data to see if changes have been made</li>
+</ul>
+<h3 id="Completeness-1"><a href="#Completeness-1" class="headerlink" title="Completeness"></a>Completeness</h3><ul>
+<li>Concatenate two tables: pd.concat([df1, df2], axis=0, ignore_index=True)      [row-wise]</li>
+<li>Add a column: df.col_new = …..</li>
+</ul>
+<h3 id="Tidiness-1"><a href="#Tidiness-1" class="headerlink" title="Tidiness"></a>Tidiness</h3><ul>
+<li>Select rows by index: df.ilocs[st:ed]</li>
+<li>Select columns: df[[col1, col2, … ]]</li>
+<li>Drop a column: df.drop(col, axis=1) or  df = df[condition]</li>
+<li>Drop a row: df[df.col != condition]</li>
+<li>2 variables in one column(): <ul>
+<li>In need of extraction: pd.Series.str.extract(pat, expand=True)      [when True, return df]</li>
+<li>Already splitted: pd.Series.str.split(pat=whitespace, n=-1, expand=False )</li>
+</ul>
+</li>
+<li>3 variables in two column(): pd.melt(id_ vars, var_name, value_name)</li>
+<li>Merge two tables: pd.merge(df1, df2, left_on = ‘col1’, right_on=’col2’, how=‘inner’)       [column-wise]</li>
+<li>Lowercase, Uppercase: str.lower(), str.upper()</li>
+<li>Change column name: </li>
+</ul>
+<h3 id="Quality-1"><a href="#Quality-1" class="headerlink" title="Quality"></a>Quality</h3><ul>
+<li>List unique values in a columne: pd.Series.unique()</li>
+<li><p>Covert to another type</p>
+<ul>
+<li>pd.Series.astype(type)  [int, str, ‘category’ ]</li>
+<li>pd.to_datetime(pd.Series)</li>
+</ul>
+</li>
+<li><p>Slice: pd.Series.str[start:end]</p>
+</li>
+<li>Strip: pd.Series.str.strip(to_strip)</li>
+<li>Pad: pd.Series.str.pad(num, side=’left’, fillchar=’ ‘)</li>
+<li>Replace: pd.Series.replace(to_replace, value)</li>
+<li><p>Apply Function: df.apply(func, axis=0, **kwds)<br>eg. Convert full names to abbreviations for States</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dictionary for states and their abbreviations</span></span><br><span class="line">state_abbrev = &#123;<span class="string">'California'</span>: <span class="string">'CA'</span>,</span><br><span class="line">				<span class="string">'New York'</span>: <span class="string">'NY'</span>,</span><br><span class="line">				<span class="string">'Illinois'</span>: <span class="string">'IL'</span>,</span><br><span class="line">                <span class="string">'Florida'</span>: <span class="string">'FL'</span>,</span><br><span class="line">                <span class="string">'Nebraska'</span>: <span class="string">'NE'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># func to be used</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">abbreviate_state</span><span class="params">(patient)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> patient[<span class="string">'state'</span>] <span class="keyword">in</span> state_abbrev.keys():</span><br><span class="line">        abbrev = state_abbrev[patient[<span class="string">'state'</span>]]</span><br><span class="line">        <span class="keyword">return</span> abbrev</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> patient[<span class="string">'state'</span>]</span><br><span class="line"><span class="comment"># apply</span></span><br><span class="line">patients_clean[<span class="string">'state'</span>] = patients_clean.apply(abbreviate_state, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Modify a cell</p>
+<ul>
+<li>mask = patients_clean.locating_column == locating_column_value    [find the row] </li>
+<li>column_name = ‘weight’   [find the column]</li>
+<li>df.loc[mask, column_name] = blablabla   [modify the cell]<br>eg. Change ‘weight’ from kg to lbs for ‘Zaitseva’<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">weight_kg = patients_clean.weight.sort_values()[<span class="number">0</span>]</span><br><span class="line">mask = patients_clean.surname == <span class="string">'Zaitseva'</span></span><br><span class="line">column_name = <span class="string">'weight'</span></span><br><span class="line">patients_clean.loc[mask, column_name] = weight_kg * <span class="number">2.20462</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Void value: np.nan</p>
+</li>
+</ul>
+<h2 id="Read-More"><a href="#Read-More" class="headerlink" title="Read More"></a>Read More</h2><p><a href="https://regexone.com/lesson/capturing_groups?" target="_blank" rel="noopener">1. Regular Expressions</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Udacity/" rel="tag"># Udacity</a>
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/17/LeetCode-Database-176-Second-Highest-Salary/" rel="next" title="[LeetCode/Database] 176 Second Highest Salary">
+                <i class="fa fa-chevron-left"></i> [LeetCode/Database] 176 Second Highest Salary
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/18/Algorithms-DynamicProgramming/" rel="prev" title="[Algorithms] Dynamic Programming">
+                [Algorithms] Dynamic Programming <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GATHER"><span class="nav-number">1.</span> <span class="nav-text">GATHER</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Scraping"><span class="nav-number">1.1.</span> <span class="nav-text">Web Scraping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mining-from-html-file-text"><span class="nav-number">1.1.1.</span> <span class="nav-text">Mining from html file text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Downloading-files-from-the-internet"><span class="nav-number">1.1.2.</span> <span class="nav-text">Downloading files from the internet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reading-Different-Data-Format"><span class="nav-number">1.2.</span> <span class="nav-text">Reading Different Data Format</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Open-Save-files"><span class="nav-number">1.2.1.</span> <span class="nav-text">Open/Save files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">1.2.2.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">1.2.3.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSV"><span class="nav-number">1.2.4.</span> <span class="nav-text">CSV</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoding"><span class="nav-number">1.3.</span> <span class="nav-text">Encoding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASSESS"><span class="nav-number">2.</span> <span class="nav-text">ASSESS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Issue-Types"><span class="nav-number">2.1.</span> <span class="nav-text">Issue Types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Completeness"><span class="nav-number">2.1.1.</span> <span class="nav-text">Completeness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tidiness"><span class="nav-number">2.1.2.</span> <span class="nav-text">Tidiness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Quality"><span class="nav-number">2.1.3.</span> <span class="nav-text">Quality</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Methods"><span class="nav-number">2.2.</span> <span class="nav-text">Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CLEAN"><span class="nav-number">3.</span> <span class="nav-text">CLEAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Completeness-1"><span class="nav-number">3.1.</span> <span class="nav-text">Completeness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tidiness-1"><span class="nav-number">3.2.</span> <span class="nav-text">Tidiness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quality-1"><span class="nav-number">3.3.</span> <span class="nav-text">Quality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Read-More"><span class="nav-number">4.</span> <span class="nav-text">Read More</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

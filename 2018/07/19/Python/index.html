@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke,Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Life is short and I use python…">
+<meta name="keywords" content="Duke,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Python] Cheat Sheet ">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/19/Python/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="Life is short and I use python…">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/19/Python/format.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/19/Python/indexing.png">
+<meta property="og:updated_time" content="2018-07-30T07:45:48.885Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Python] Cheat Sheet ">
+<meta name="twitter:description" content="Life is short and I use python…">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/19/Python/format.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/19/Python/"/>
+
+
+
+
+
+  <title>[Online Review/Python] Cheat Sheet  | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/19/Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Python] Cheat Sheet </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-19T10:03:56-04:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Life is short and I use python<br>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Built-in-Functions"><a href="#Built-in-Functions" class="headerlink" title="Built-in Functions"></a>Built-in Functions</h1><p><code>format()</code><br><img src="/2018/07/19/Python/format.png" alt=""></p>
+<p><code>input(&#39;words to pump&#39;)</code>: use a variable to get the returned input</p>
+<p><code>any()</code>, <code>all()</code>: These logical functions are helpful tools to check whether any or all elements in a container are true.</p>
+<p><code>enumerate()</code>:  Enumerate adds the ability to have an index that corresponds to each value in a collection and iterate over both. It makes a sequence of tuples that contain the index and the corresponding value.</p>
+<p><code>isinstance(a,b)</code>: checks to see whether a is an instance of, or is of type  b.</p>
+<p><code>if __name__ == &#39;__main__&#39;</code></p>
+<ul>
+<li>当.py文件被直接运行时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块将被运行</li>
+<li>当.py文件以模块形式被导入时，if <strong>name</strong> == ‘<strong>main</strong>‘之下的代码块不被运行</li>
+</ul>
+<p><code>sorted()</code>:could be used with pairs<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pairs = [(<span class="number">2</span>,<span class="number">7</span>),(<span class="number">2</span>,<span class="number">6</span>),(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">print(sorted(pairs))</span><br></pre></td></tr></table></figure></p>
+<p>output:[(1, 4), (2, 6), (2, 7)]</p>
+<p><code>list.drop()</code>: 不能边for index 边delete list 里头的元素！！！！这样index会出错</p>
+<h1 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h1><p>primes.py<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def is_prime(number):</span><br><span class="line"><span class="string">""</span><span class="string">"Return True if *number* is prime."</span><span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> range(number):</span><br><span class="line">        <span class="keyword">if</span> number % element == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> False</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> True</span><br></pre></td></tr></table></figure></p>
+<p>test_primes.py<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line">from primes import is_prime</span><br><span class="line"></span><br><span class="line">class PrimesTestCase(unittest.TestCase):</span><br><span class="line">    <span class="string">""</span><span class="string">"Tests for `primes.py`."</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">    def test_is_five_prime(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"Is five successfully determined to be prime?"</span><span class="string">""</span></span><br><span class="line">        self.assertTrue(is_prime(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></p>
+<p>The file creates a unit test with a single test case: <code>test_is_five_prime</code>. Using Python’s built-in unittest framework, any member function whose name begins with <code>test</code> in a class deriving from <code>unittest</code>.TestCase will be run, and its assertions checked, when <code>unittest.main()</code> is called.</p>
+<h1 id="Computational-Programming"><a href="#Computational-Programming" class="headerlink" title="Computational Programming"></a>Computational Programming</h1><h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p><strong>Array Features</strong><br>a is a numpy array<br><code>a.ndim</code>:<br><code>a.shape</code>: (row, col)<br><code>a.dtype</code></p>
+<p><code>len(a)</code>: length of 1st dim</p>
+<p><code>np.unique(row_values, return_counts=False)</code><br><code>np.where(a==value)</code>: return an index that is a numpy array inside a tuple; to get the index number, use [0][0]</p>
+<p><strong>Creating arrays</strong><br><code>np.arrange(a, b, step_length)</code>: [a,b)<br><code>np.linspace(a, b, num_of_steps)</code>: [a,b]</p>
+<p><code>np.full(value, repeat)</code>: make an array of all the same value</p>
+<p><strong>Random number generation</strong><br><code>np.random.seed(int)</code><br><code>np.random.rand(size)</code>: uniform<br><code>np.random.randn(size)</code>: nromal (gaussian)<br><code>np.random.randint(low, high, size)</code>: [low, high)</p>
+<p><strong>Statistics</strong><br><code>np.percentile(x, percentile)</code>: Compute the percentile of x<br><code>hist, bin_edges = np.histogram(x, bins=10)</code>: hist : array, the values of the histogram; bin_edges : array, the correspondding bin edges</p>
+<p><code>np.meshgrid()</code>: Return coordinate matrices from coordinate vectors<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvalues = <span class="number">5</span></span><br><span class="line">xvalues = np.linspace(-<span class="number">4</span>,<span class="number">4</span>,nvalues)</span><br><span class="line">yvalues = np.linspace(-<span class="number">4</span>,<span class="number">4</span>,nvalues)</span><br><span class="line">np.meshgrid(xvalues,yvalues)</span><br></pre></td></tr></table></figure></p>
+<p>output:<br>[<br>array([[-4., -2.,  0.,  2.,  4.],<br>[-4., -2.,  0.,  2.,  4.],<br>[-4., -2.,  0.,  2.,  4.],<br>[-4., -2.,  0.,  2.,  4.],<br>[-4., -2.,  0.,  2.,  4.]]),</p>
+<p>array([[-4., -4., -4., -4., -4.],<br>[-2., -2., -2., -2., -2.],<br>[ 0.,  0.,  0.,  0.,  0.],<br>[ 2.,  2.,  2.,  2.,  2.],<br>[ 4.,  4.,  4.,  4.,  4.]])<br>]</p>
+<p><strong>Indexing and slicing</strong><br><code>a[start:end:step]</code>: to <strong>reverse</strong> a sequence, use <code>a[::-1]</code><br>A slicing operation creates a view on the original array, which is just a way of accessing array data. Thus the original array is not copied in memory. When modifying the view, the original array is modified as well.<br>2D array:<br><img src="/2018/07/19/Python/indexing.png" alt=""></p>
+<p><strong>Copy</strong><br><code>a[::2].copy()</code></p>
+<p><strong>Matrix Operations</strong><br>Element-wise multiplication: <code>matrix1 * matrix2</code></p>
+<p>Matrix multiplication:<br><code>matrix1 @ matrix2</code><br><code>matrix1.dot(matrix2)</code><br><code>np.dot(matrix1,matrix2)</code></p>
+<p>Transpose: <code>x.T</code></p>
+<p>Outer Product: <code>np.outer(x,x)</code> so that you can do matrix multiplication for 2 vector, since row vector cannot be transposed in to col vector,<br>or we can use: <code>x.reshape((row, 1)</code> to force x into a col vector</p>
+<p><code>np.cumsum()</code>: cumulative sum</p>
+<h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><p><a href="https://matplotlib.org/index.html" target="_blank" rel="noopener"><code>matplotlib</code></a> is a plotting library for Python that builds heavily on NumPy. This package can be used to make publication-quality plots and graphics and is highly customizable. While <code>matplotlib</code> is one of the most well-established Python plotting libraries, there are a number of other plotting packages that you may find useful for your work:</p>
+<ul>
+<li><a href="https://seaborn.pydata.org/" target="_blank" rel="noopener"><code>Seaborn</code></a>. Creates beautiful plots easily and is built on <code>matplotlib</code></li>
+<li><a href="http://ggplot.yhathq.com/" target="_blank" rel="noopener"><code>ggplot</code></a>. For lovers of R’s plotting system, <code>ggplot2</code>, this library translates much of that functionality from R to Python. It’s based on the “Grammar of Graphics” theory of data visualization.</li>
+</ul>
+<p><a href="https://matplotlib.org/users/pyplot_tutorial.html" target="_blank" rel="noopener">Pyplot tutorial</a></p>
+<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><p>From <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html#min" target="_blank" rel="noopener">10 Minutes to pandas</a>‘</p>
+<p><strong>Use date as index</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">45</span>]: s1 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], index=pd.date_range(<span class="string">'20130102'</span>, periods=<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: s1</span><br><span class="line">Out[<span class="number">46</span>]:</span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">02</span>    <span class="number">1</span></span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">03</span>    <span class="number">2</span></span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">04</span>    <span class="number">3</span></span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">05</span>    <span class="number">4</span></span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">06</span>    <span class="number">5</span></span><br><span class="line"><span class="number">2013</span>-<span class="number">01</span>-<span class="number">07</span>    <span class="number">6</span></span><br><span class="line">Freq: D, dtype: int64</span><br></pre></td></tr></table></figure></p>
+<p><strong>Features</strong><br><code>df.dtypes</code><br><code>df.index</code>(row), <code>df.columns</code><br><code>df.values</code></p>
+<p><strong>Statistics</strong><br><code>df.describe()</code>: count, mean, std, min, 25%, 50%, 75%, max<br><code>df.mean(axis=0)</code></p>
+<p><code>df.T</code>: transpose<br><strong>Sort</strong><br><code>df.sort_index(axis=0, ascending=True)</code>: 0–row, 1–col<br><code>df.sort_values(by=&#39;col_name&#39;)</code></p>
+<p><strong>Selection</strong><br><code>df.loc[:,[&#39;A&#39;,&#39;B&#39;]]</code>: by column name<br><code>df.iloc[3:5,0:2]</code>: by position</p>
+<p><code>df.shift()</code>: shift up / down data, NaN 补全<br><code>df.apply(function, axis=0)</code></p>
+<p><code>pd.Series.value_counts()</code></p>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/text.html#text-string-methods" target="_blank" rel="noopener"><strong>str methods</strong></a><br><code>pd.Series.str.lower()</code><br><code>pd.Series.str.len()</code></p>
+<p><code>pd.Series.str.strip()</code><br><code>pd.Series.str.replace(old, new, case=None)</code><br><code>pd.Series.str.split(split_with)</code>: split str into list<br><code>pd.Series.str.cat(sep=None, na_rep=None)</code>: concatenate strs to a longer str<br><code>pd.Series.str.extract(regex)</code><br><code>pd.Series.str.contains(pat)</code></p>
+<p><strong>Merge</strong><br><code>pd.concat([a, b], axis=0)</code>: concatenate rows(0)/ columns(1)<br><code>pd.merge(left, right, how=&#39;inner&#39;, on=None )</code><br><code>df.append(rows)</code>: append rows to a df</p>
+<p><strong>Group</strong><br><code>df.groupby(by)</code>: can be a list; then we can do sum() or some other aggregations</p>
+<p><strong>Reshape</strong><br><code>df.stack()</code>: Stack the prescribed level(s) from columns to index.<br><code>df.unstack()</code>: reverse operation<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df_single_level_cols</span><br><span class="line">      weight height</span><br><span class="line">cat       <span class="number">0</span>      <span class="number">1</span></span><br><span class="line">dog       <span class="number">2</span>      <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df_single_level_cols.stack()</span><br><span class="line">cat  weight    <span class="number">0</span></span><br><span class="line">     height    <span class="number">1</span></span><br><span class="line">dog  weight    <span class="number">2</span></span><br><span class="line">     height    <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Pivot Tables</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">105</span>]: df = pd.DataFrame(&#123;<span class="string">'A'</span> : [<span class="string">'one'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>] * <span class="number">3</span>,</span><br><span class="line">.....:                    <span class="string">'B'</span> : [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>] * <span class="number">4</span>,</span><br><span class="line">.....:                    <span class="string">'C'</span> : [<span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'bar'</span>, <span class="string">'bar'</span>] * <span class="number">2</span>,</span><br><span class="line">.....:                    <span class="string">'D'</span> : np.random.randn(<span class="number">12</span>),</span><br><span class="line">.....:                    <span class="string">'E'</span> : np.random.randn(<span class="number">12</span>)&#125;)</span><br><span class="line">.....:</span><br><span class="line"></span><br><span class="line">In [<span class="number">106</span>]: df</span><br><span class="line">Out[<span class="number">106</span>]:</span><br><span class="line">      A    B    C      D         E</span><br><span class="line"><span class="number">0</span>     one  A  foo  <span class="number">1.418757</span> <span class="number">-0.179666</span></span><br><span class="line"><span class="number">1</span>     one  B  foo <span class="number">-1.879024</span>  <span class="number">1.291836</span></span><br><span class="line"><span class="number">2</span>     two  C  foo  <span class="number">0.536826</span> <span class="number">-0.009614</span></span><br><span class="line"><span class="number">3</span>   three  A  bar  <span class="number">1.006160</span>  <span class="number">0.392149</span></span><br><span class="line"><span class="number">4</span>     one  B  bar <span class="number">-0.029716</span>  <span class="number">0.264599</span></span><br><span class="line"><span class="number">5</span>     one  C  bar <span class="number">-1.146178</span> <span class="number">-0.057409</span></span><br><span class="line"><span class="number">6</span>     two  A  foo  <span class="number">0.100900</span> <span class="number">-1.425638</span></span><br><span class="line"><span class="number">7</span>   three  B  foo <span class="number">-1.035018</span>  <span class="number">1.024098</span></span><br><span class="line"><span class="number">8</span>     one  C  foo  <span class="number">0.314665</span> <span class="number">-0.106062</span></span><br><span class="line"><span class="number">9</span>     one  A  bar <span class="number">-0.773723</span>  <span class="number">1.824375</span></span><br><span class="line"><span class="number">10</span>    two  B  bar <span class="number">-1.170653</span>  <span class="number">0.595974</span></span><br><span class="line"><span class="number">11</span>  three  C  bar  <span class="number">0.648740</span>  <span class="number">1.167115</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">107</span>]: pd.pivot_table(df, values=<span class="string">'D'</span>, index=[<span class="string">'A'</span>, <span class="string">'B'</span>], columns=[<span class="string">'C'</span>])</span><br><span class="line"></span><br><span class="line">Out[<span class="number">107</span>]:</span><br><span class="line">C            bar       foo</span><br><span class="line">A     B</span><br><span class="line">one   A <span class="number">-0.773723</span>  <span class="number">1.418757</span></span><br><span class="line">      B <span class="number">-0.029716</span> <span class="number">-1.879024</span></span><br><span class="line">      C <span class="number">-1.146178</span>  <span class="number">0.314665</span></span><br><span class="line">three A  <span class="number">1.006160</span>       NaN</span><br><span class="line">      B       NaN <span class="number">-1.035018</span></span><br><span class="line">      C  <span class="number">0.648740</span>       NaN</span><br><span class="line">two   A       NaN  <span class="number">0.100900</span></span><br><span class="line">      B <span class="number">-1.170653</span>       NaN</span><br><span class="line">      C       NaN  <span class="number">0.536826</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/timeseries.html#timeseries" target="_blank" rel="noopener"><strong>Date Functionality</strong></a></p>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/categorical.html#categorical" target="_blank" rel="noopener"><strong>Categoricals</strong></a></p>
+<p><code>pd.set_option(&#39;float_format&#39;, &#39;{:f}&#39;.format)</code>: display entire number</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://jeffknupp.com/blog/2013/12/09/improve-your-python-understanding-unit-testing/" target="_blank" rel="noopener">Understanding Unit Testing</a><br><a href="https://pandas.pydata.org/pandas-docs/stable/api.html" target="_blank" rel="noopener">pandas-docs 0.23.3</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke/" rel="tag"># Duke</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/17/Stats2/" rel="next" title="[Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference">
+                <i class="fa fa-chevron-left"></i> [Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/30/LinearAlgebra/" rel="prev" title="[Online Review/Linear Algebra] Cheat Sheet">
+                [Online Review/Linear Algebra] Cheat Sheet <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Built-in-Functions"><span class="nav-number">1.</span> <span class="nav-text">Built-in Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unit-Testing"><span class="nav-number">2.</span> <span class="nav-text">Unit Testing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Computational-Programming"><span class="nav-number">3.</span> <span class="nav-text">Computational Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy"><span class="nav-number">3.1.</span> <span class="nav-text">Numpy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matplotlib"><span class="nav-number">3.2.</span> <span class="nav-text">matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas"><span class="nav-number">3.3.</span> <span class="nav-text">pandas</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

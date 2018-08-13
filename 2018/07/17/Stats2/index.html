@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke,R," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This unit will introduce the concept of statistical inference, why we do it, and the building blocks of statistical inference: sampling variability, confidence intervals, and hypothesis testing.…">
+<meta name="keywords" content="Duke,R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Statistics]  Unit 2 Basice Principles of Statistical Inference">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/17/Stats2/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="This unit will introduce the concept of statistical inference, why we do it, and the building blocks of statistical inference: sampling variability, confidence intervals, and hypothesis testing.…">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/ht.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/error.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/contrast.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/z.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/norm.png">
+<meta property="og:updated_time" content="2018-07-31T13:44:53.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Statistics]  Unit 2 Basice Principles of Statistical Inference">
+<meta name="twitter:description" content="This unit will introduce the concept of statistical inference, why we do it, and the building blocks of statistical inference: sampling variability, confidence intervals, and hypothesis testing.…">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/17/Stats2/ht.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/17/Stats2/"/>
+
+
+
+
+
+  <title>[Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/17/Stats2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-17T16:19:17-04:00">
+                2018-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This unit will introduce the concept of statistical inference, why we do it, and the building blocks of statistical inference: sampling variability, confidence intervals, and hypothesis testing.<br>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Building-Blocks-of-Statistical-Inference"><a href="#Building-Blocks-of-Statistical-Inference" class="headerlink" title="Building Blocks of Statistical Inference"></a>Building Blocks of Statistical Inference</h1><h2 id="CLT-Central-Limit-Therom"><a href="#CLT-Central-Limit-Therom" class="headerlink" title="CLT (Central Limit Therom)"></a>CLT (Central Limit Therom)</h2><p>For sufficiently large samples (&gt;=30), the sample mean 𝐗̅ will be normally distributed with mean = 𝛍 and standard deviation = 𝛔√𝐧⁄ where  𝛍 is the population mean, 𝛔 the population standard deviation, and n is the sample size.</p>
+<p>The CLT can be used to say that the sample means of sufficiently large samples are normally distributed regardless of the distribution of the underlying population; the underlying population could be skewed or symmetric and could be unimodal or bimodal and the results of the CLT will still hold.</p>
+<h2 id="Estimation"><a href="#Estimation" class="headerlink" title="Estimation"></a>Estimation</h2><ul>
+<li>Point Estimate:</li>
+<li>Interval Estimate: to determine <strong>a range of plausible values</strong> for a population parameter. The confidence interval is found by going 2 standard deviations out from the sample mean, it accounts for the sampling variability in the sample mean.<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3>Name|Notation|Example Value | Explaination<br>-: | : | : | -:<br>confidence level | (1-α) * 100% | 95% | We are 95% confident  that the interval captures the true value of the population parameter.(although cl is written as 1-α, it has nothing to do with significance level: cl is used for estimation, sl is used for testing)<br>confidence level multiplier | C<sub>α</sub> | 2(1.96) | in estimation: multiplier, in testing: z-score</li>
+</ul>
+<p><strong>Interpretation of 95% confidence value</strong><br>Even though the confidence interval was derived using a probability statement, the probability really only applies to the sample mean. The sample mean is called a random variable because its value is unknown until the sample is actually selected; however, its behavior can be predicted (that is, it follows a normal distribution) and, as such, the probability it takes on certain values can be derived. This is not true for the population mean. It is a fixed, but unknown, value and, as such, making probabilistic statements about its value does not make sense. (Note: This a frequentist view of statistics; Bayesian statistics takes the view that parameters are random.) It is also NOT correct to say the sample mean or the sample values fall in the confidence interval with 95% probability or confidence; the confidence applies to the population mean only!<br>What does “95% confidence” really mean? There is no guarantee that a confidence interval will actually capture the true value of a population parameter. Consider again the example shown in Figure 5. What if the sample mean had been 4.4 instead of 4.6 with a sample standard deviation of 1? The 95% confidence interval would have been (4.1, 4.7). This interval estimate would have missed the true value of the population mean. This happens because 4.4, while a plausible value of the sample mean, is an unlikely value of the sample mean for this sampling distribution. The mathematical notation for the confidence interval is shown below in Figure 6 along with a visual representation of the interval estimate overlaid onto the sampling distribution in our example.<br>Because a confidence interval is an estimate based on a sample from the population, there is a chance that it could miss the true value of the parameter. This is the reality of sample-based research and inference. What do we do about it? We derive inferential methods that allow us to minimize the chance of such an error. This concept underlies what “95% confidence” in an interval estimate really means.   The confidence level is the proportion of samples in which the calculated confidence interval would be expected to contain the true value of the parameter if the process of randomly selecting a sample from the population and computing the interval estimated were repeated many times. For example, if we selected 20 random samples from the population and computed a 95% confidence interval for each sample, we would expect that 1 (that is, 5%) confidence interval would miss the true value of the population parameter. This miss will occur because we have a 5% chance of selecting one of the possible-but-unusually small/large sample means from the sampling distribution like the one examined in Figure 6. This result is depicted in Figure 7.<br>In practice, we will not know the true value of the population parameter, and we will not be able to determine if the confidence interval based on our sample captures the value of the population parameter. Put another way, we will never know if our confidence interval is one of the black interval estimates or the blue interval estimate in Figure 7. We construct confidence intervals using this approach so that we can minimize, not eliminate, the chance of making such an error. When doing sample-based research, it is not possible to eliminate this kind of error.</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><p>???</p>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>Hypothesis Testing: to determine whether <strong>a claim</strong> about a population parameter is supported by the sample data.</p>
+<h3 id="Concepts-1"><a href="#Concepts-1" class="headerlink" title="Concepts"></a>Concepts</h3><table>
+<thead>
+<tr>
+<th style="text-align:right">Name</th>
+<th>Notation</th>
+<th>Example Value</th>
+<th style="text-align:right">Explaination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">z-score</td>
+<td>Z</td>
+<td>&gt;+1.96 or &lt; -1.96</td>
+<td style="text-align:right">the number of <strong>standard deviations</strong> it falls above or below the mean. We compute the Z-score for an observation x that follows a distribution with mean μ and standard deviation σ using <code>(Z = x- μ) / σ</code></td>
+</tr>
+<tr>
+<td style="text-align:right">p-value</td>
+<td>p</td>
+<td>&lt;0.05</td>
+<td style="text-align:right">the <strong>probability</strong> of observing a sample statistic as extreme or more extreme than the one observed, assuming the null hypothesis is true</td>
+</tr>
+<tr>
+<td style="text-align:right">significance level</td>
+<td></td>
+<td>0.05</td>
+<td style="text-align:right">a threshold. we have a 5% chance of observing one sample means from the sampling distribution that is far enough away from the claimed value in the null hypothesis to lead to it being rejected</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation of 0.05 Significance</strong></p>
+<h3 id="Steps-1"><a href="#Steps-1" class="headerlink" title="Steps"></a>Steps</h3><p><img src="/2018/07/17/Stats2/ht.png" alt=""><br><img src="/2018/07/17/Stats2/error.png" alt=""></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h3 id="Hypothesis-Testing-vs-Interval-Estimation"><a href="#Hypothesis-Testing-vs-Interval-Estimation" class="headerlink" title="Hypothesis Testing vs. Interval Estimation"></a>Hypothesis Testing vs. Interval Estimation</h3><p><img src="/2018/07/17/Stats2/contrast.png" alt=""><br>up: ht<br>down: ie</p>
+<h3 id="Steps-of-Inference"><a href="#Steps-of-Inference" class="headerlink" title="Steps of Inference"></a>Steps of Inference</h3><p>Once a significant signal is detected with a hypothesis test, the next step is often to report a point and interval estimate to understand that signal.<br>For example, suppose the hypothesis test found evidence that θ is bigger than 10. What is your next question? Ok – how much bigger than 10? The interval estimate would allow you to address that question. As such, estimation and hypothesis testing are often used in tandem when performing inference; they are two parts of the whole.</p>
+<hr>
+<h1 id="Basic-Probability"><a href="#Basic-Probability" class="headerlink" title="Basic Probability"></a>Basic Probability</h1><p>Too simple.</p>
+<h1 id="Random-Variables"><a href="#Random-Variables" class="headerlink" title="Random Variables"></a>Random Variables</h1><h2 id="Concepts-2"><a href="#Concepts-2" class="headerlink" title="Concepts"></a>Concepts</h2><h3 id="Expected-Value-amp-Variance"><a href="#Expected-Value-amp-Variance" class="headerlink" title="Expected Value &amp; Variance"></a>Expected Value &amp; Variance</h3><p>μ = E(X) = sum{ x<sub>i</sub> * P(X = x<sub>i</sub>) }<br>σ<sup>2</sup> = Var(X) = sum{ (x<sub>i</sub> - μ)<sup>2</sup> * P(X = x<sub>i</sub>) }</p>
+<p>Linear Combination:<br>for aX + bY<br>μ = a*E(X) + b*E(Y)<br>σ<sup>2</sup> = a<sup>2</sup>*Var(X) + b<sup>2</sup>*Var(Y)</p>
+<h3 id="PDF-probability-distribution-function"><a href="#PDF-probability-distribution-function" class="headerlink" title="PDF: probability distribution function"></a>PDF: probability distribution function</h3><ul>
+<li>define a function: <code>fx &lt;- function(x) {2/(1+x)^3}</code></li>
+<li>calculate the probability: <code>integrate(f_x, lower, upper)</code>. The default output of the integrate() function is not a number; extract the value using <code>$value</code></li>
+</ul>
+<h2 id="Distributions"><a href="#Distributions" class="headerlink" title="Distributions"></a>Distributions</h2><h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p><strong>normal probability table</strong><br>row, col: Z-scores<br>inside: p-values<br><img src="/2018/07/17/Stats2/z.png" alt=""></p>
+<p><img src="/2018/07/17/Stats2/norm.png" alt=""></p>
+<h3 id="Uniform-Distribution"><a href="#Uniform-Distribution" class="headerlink" title="Uniform Distribution"></a>Uniform Distribution</h3><p>𝐸(𝑋)=(𝑎+𝑏)/2<br>𝑉𝑎𝑟(𝑋)=(𝑏−𝑎)<sup>2</sup>/12</p>
+<h2 id="Explore-Distributions-in-R"><a href="#Explore-Distributions-in-R" class="headerlink" title="Explore Distributions in R"></a>Explore Distributions in R</h2><p><strong>Distribution</strong></p>
+<ul>
+<li>Normal distribution: <code>norm(x, mean=0, sd=1)</code></li>
+<li>Exponential distribution: <code>exp(x, rate=1)</code></li>
+<li>Uniform distribution: <code>unif(x, min=0, max=1)</code></li>
+<li>Binomial distribution: <code>binom(x, size, prob)</code></li>
+<li>Poisson distribution: <code>pois(x, lambda)</code></li>
+<li>T distribution: <code>t(t, df)</code></li>
+</ul>
+<p><strong>Prefix</strong></p>
+<ul>
+<li>Probability density function (PDF): <code>d</code> （给x值求对应的概率）</li>
+<li>Cumulative distribution function (CDF, probabilities): <code>p</code> （给X求对应的累计概率）</li>
+<li>Percentiles from the distribution (quantiles): <code>q</code>  （给累计概率求对应的X）</li>
+<li>Random number generation from the distribution: <code>r</code> (产生随机数)</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke/" rel="tag"># Duke</a>
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/Stats1/" rel="next" title="[Online Review/Statistics]  Unit 1 Working with Data in R">
+                <i class="fa fa-chevron-left"></i> [Online Review/Statistics]  Unit 1 Working with Data in R
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/19/Python/" rel="prev" title="[Online Review/Python] Cheat Sheet ">
+                [Online Review/Python] Cheat Sheet  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-Blocks-of-Statistical-Inference"><span class="nav-number">1.</span> <span class="nav-text">Building Blocks of Statistical Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CLT-Central-Limit-Therom"><span class="nav-number">1.1.</span> <span class="nav-text">CLT (Central Limit Therom)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimation"><span class="nav-number">1.2.</span> <span class="nav-text">Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concepts"><span class="nav-number">1.2.1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">1.2.2.</span> <span class="nav-text">Steps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing"><span class="nav-number">1.3.</span> <span class="nav-text">Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Concepts-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">Steps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.4.</span> <span class="nav-text">Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypothesis-Testing-vs-Interval-Estimation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Hypothesis Testing vs. Interval Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-of-Inference"><span class="nav-number">1.4.2.</span> <span class="nav-text">Steps of Inference</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Probability"><span class="nav-number">2.</span> <span class="nav-text">Basic Probability</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Random-Variables"><span class="nav-number">3.</span> <span class="nav-text">Random Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts-2"><span class="nav-number">3.1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Expected-Value-amp-Variance"><span class="nav-number">3.1.1.</span> <span class="nav-text">Expected Value &amp; Variance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDF-probability-distribution-function"><span class="nav-number">3.1.2.</span> <span class="nav-text">PDF: probability distribution function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distributions"><span class="nav-number">3.2.</span> <span class="nav-text">Distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Distribution"><span class="nav-number">3.2.1.</span> <span class="nav-text">Normal Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform-Distribution"><span class="nav-number">3.2.2.</span> <span class="nav-text">Uniform Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explore-Distributions-in-R"><span class="nav-number">3.3.</span> <span class="nav-text">Explore Distributions in R</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

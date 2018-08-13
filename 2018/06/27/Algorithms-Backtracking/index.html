@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LeetCode,Algorithms," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Backtracking is an algorithmic paradigm that tries different solutions until finds a solution that “works”. It works in incremental way and is an optimization over the Naive solution where all possibl">
+<meta name="keywords" content="LeetCode,Algorithms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Algorithms] Backtracking">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/06/27/Algorithms-Backtracking/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="Backtracking is an algorithmic paradigm that tries different solutions until finds a solution that “works”. It works in incremental way and is an optimization over the Naive solution where all possibl">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/06/28/Algorithms-Backtracking/8-queens.png">
+<meta property="og:updated_time" content="2018-07-03T04:07:25.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Algorithms] Backtracking">
+<meta name="twitter:description" content="Backtracking is an algorithmic paradigm that tries different solutions until finds a solution that “works”. It works in incremental way and is an optimization over the Naive solution where all possibl">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/06/28/Algorithms-Backtracking/8-queens.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/06/27/Algorithms-Backtracking/"/>
+
+
+
+
+
+  <title>[Algorithms] Backtracking | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/27/Algorithms-Backtracking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Algorithms] Backtracking</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T19:46:39-04:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Backtracking is an algorithmic paradigm that tries different solutions until finds a solution that “works”. It works in incremental way and is an optimization over the Naive solution where all possible configurations are generated and tried.</p>
+<a id="more"></a>
+<hr>
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p>Backtracking works in an incremental way to attack problems.<br>Typically, we start from an empty solution vector and one by one add items. When we add an item, we check if adding the current item violates the problem constraint, if it does then we remove the item and try other alternatives. If none of the alternatives work out then we go to previous stage and remove the item added in the previous stage.<br>If we reach the initial stage back then we say that no solution exists. If adding an item doesn’t violate constraints then we recursively add items one by one. If the solution vector becomes complete then we print the solution.</p>
+<h3 id="Psudo-Code"><a href="#Psudo-Code" class="headerlink" title="Psudo Code"></a>Psudo Code</h3><p>Following is the Backtracking algorithm for <a href="https://en.wikipedia.org/wiki/Knight%27s_tour" target="_blank" rel="noopener">Knight’s tour</a> problem.</p>
+<pre><code>
+IF all squares are visited
+print the solution
+ELSE
+a) Add one of the next moves to solution vector and recursively
+check if this move leads to a solution. (A Knight can make maximum
+eight moves. We choose one of the 8 moves in this step).
+b) If the move chosen in the above step doesn't lead to a solution
+then remove this move from the solution vector and try other
+alternative moves.
+c) If none of the alternatives work then return false (Returning false
+will remove the previously added item in recursion and if false is
+returned by the initial call of recursion then "no solution exists" )</code></pre>
+
+<h2 id="Sample-Problems-from-LeetCode"><a href="#Sample-Problems-from-LeetCode" class="headerlink" title="Sample Problems (from LeetCode)"></a>Sample Problems (from LeetCode)</h2><h3 id="N-Queens-51"><a href="#N-Queens-51" class="headerlink" title="N-Queens (51)"></a>N-Queens (51)</h3><p>Problem:<br>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.<br><img src="/2018/06/28/Algorithms-Backtracking/8-queens.png" alt=""><br>Given an integer n, return all distinct solutions to the n-queens puzzle.<br>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively.</p>
+<p>Example:</p>
+<pre><code>
+Input: 4
+Output: [
+[".Q..",  // Solution 1
+"...Q",
+"Q...",
+"..Q."],
+
+["..Q.",  // Solution 2
+"Q...",
+"...Q",
+".Q.."]
+]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.</code></pre>
+
+<p>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ugly but easy to understand</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recurse columnly, from left to right. So columns &amp; right rows/diagnals are good. Just check the left rows &amp; left diagnals.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSafe</span><span class="params">(self, n, board, row, col)</span>:</span></span><br><span class="line">        <span class="comment"># left row</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(col):</span><br><span class="line">            <span class="keyword">if</span> board[row][i] == <span class="string">'Q'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="comment"># left upper diagonal</span></span><br><span class="line">        <span class="keyword">for</span> i,j <span class="keyword">in</span> zip(range(row,<span class="number">-1</span>,<span class="number">-1</span>), range(col,<span class="number">-1</span>,<span class="number">-1</span>)):</span><br><span class="line">            <span class="keyword">if</span> board[i][j] == <span class="string">'Q'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="comment"># left lower diagonal</span></span><br><span class="line">        <span class="keyword">for</span> i,j <span class="keyword">in</span> zip(range(row,n,<span class="number">1</span>), range(col,<span class="number">-1</span>,<span class="number">-1</span>)):</span><br><span class="line">            <span class="keyword">if</span> board[i][j] == <span class="string">'Q'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># solveNQUtil() places queen for each column</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solveNQUtil</span><span class="params">(self, n, board, col, res)</span>:</span></span><br><span class="line">        <span class="comment"># base case: If all queens are placed, append to res &amp; return</span></span><br><span class="line">        <span class="keyword">if</span> col &gt;= n:</span><br><span class="line">            <span class="comment"># res.append(board) is wrong. board will change afterwards</span></span><br><span class="line">            board_copy = copy.deepcopy(board)</span><br><span class="line">            res.append(board_copy)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Consider every row(i) of this col: only when isSafe(), place the queen at this row</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> self.isSafe(n, board, i, col):</span><br><span class="line">                board[i][col] = <span class="string">'Q'</span></span><br><span class="line">                self.solveNQUtil(n, board, col+<span class="number">1</span>, res)</span><br><span class="line">                board[i][col] = <span class="string">'.'</span> <span class="comment"># backtracking</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solveNQueens</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        board = [[<span class="string">'.'</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n)]</span><br><span class="line">        <span class="comment"># board = [['.'] * n] * n is WRONG. '* n' is not deep copy. shoud not use it to initialize board.</span></span><br><span class="line">        res = []</span><br><span class="line">        self.solveNQUtil(n, board, <span class="number">0</span>, res)</span><br><span class="line">        res = [[<span class="string">''</span>.join(row) <span class="keyword">for</span> row <span class="keyword">in</span> board] <span class="keyword">for</span> board <span class="keyword">in</span> res]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<h3 id="Word-Search-79"><a href="#Word-Search-79" class="headerlink" title="Word Search(79)"></a>Word Search(79)</h3><p>Problem:<br>Given a 2D board and a word, find if the word exists in the grid.<br>The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+<p>Example:</p>
+<pre><code>
+board =
+[
+['A','B','C','E'],
+['S','F','C','S'],
+['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.</code></pre>
+
+<p>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">util</span><span class="params">(self, board, used, word, l, i, j)</span>:</span></span><br><span class="line">        <span class="comment"># base case: If all characters are placed, return true</span></span><br><span class="line">        <span class="keyword">if</span> l &gt;= len(word):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="comment"># same letter cell may not be used more than once.</span></span><br><span class="line">        <span class="comment"># consider edges</span></span><br><span class="line">        <span class="keyword">if</span> j - <span class="number">1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> board[i][j - <span class="number">1</span>] == word[l] <span class="keyword">and</span> used[i][j - <span class="number">1</span>] == <span class="number">0</span>:</span><br><span class="line">            used[i][j - <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.util(board, used, word, l + <span class="number">1</span>, i, j - <span class="number">1</span>) == <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            used[i][j - <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        <span class="comment"># shouldn't use elif!!! or if one is False, it will not enter another condition</span></span><br><span class="line">        <span class="keyword">if</span> j + <span class="number">1</span> &lt; len(board[<span class="number">0</span>]) <span class="keyword">and</span> board[i][j + <span class="number">1</span>] == word[l] <span class="keyword">and</span> used[i][j + <span class="number">1</span>] == <span class="number">0</span>:</span><br><span class="line">            used[i][j + <span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.util(board, used, word, l + <span class="number">1</span>, i, j + <span class="number">1</span>) == <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            used[i][j + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> i - <span class="number">1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> board[i - <span class="number">1</span>][j] == word[l] <span class="keyword">and</span> used[i - <span class="number">1</span>][j] == <span class="number">0</span>:</span><br><span class="line">            used[i - <span class="number">1</span>][j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.util(board, used, word, l + <span class="number">1</span>, i - <span class="number">1</span>, j) == <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            used[i - <span class="number">1</span>][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> i + <span class="number">1</span> &lt; len(board) <span class="keyword">and</span> board[i + <span class="number">1</span>][j] == word[l] <span class="keyword">and</span> used[i + <span class="number">1</span>][j] == <span class="number">0</span>:</span><br><span class="line">            used[i + <span class="number">1</span>][j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.util(board, used, word, l + <span class="number">1</span>, i + <span class="number">1</span>, j) == <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            used[i + <span class="number">1</span>][j] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exist</span><span class="params">(self, board, word)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type board: List[List[str]]</span></span><br><span class="line"><span class="string">        :type word: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = np.where(</span><br><span class="line">        np.array(board) == word[<span class="number">0</span>])  <span class="comment"># 2D array, start[0] contains the row idxs, start[1] contains col idxs</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(start[<span class="number">0</span>]) == <span class="number">0</span> <span class="keyword">or</span> len(board)*len(board[<span class="number">0</span>])&lt; len(word):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> zip(start[<span class="number">0</span>], start[<span class="number">1</span>]):</span><br><span class="line">            used = np.zeros((len(board), len(board[<span class="number">0</span>])))</span><br><span class="line">            used[i][j] = <span class="number">1</span></span><br><span class="line">            a = self.util(board, used, word, <span class="number">1</span>, i, j)</span><br><span class="line">            res.append(a)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span> <span class="keyword">if</span> <span class="keyword">True</span> <span class="keyword">in</span> res <span class="keyword">else</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><p>Using the solution of N-Queen as a template to solve all backtracking problems.<br>First we should figure out what does the backtracking function do. In N-Queen, it is a function casted over each column:</p>
+<ul>
+<li>columns:  1st loop. examine one column per backtracking function call.</li>
+</ul>
+<p>Then, in the backtracking function:</p>
+<ul>
+<li>row: 2nd loop. check every row of a certain col to find all possible next move.</li>
+<li>neighborhood: 3rd loop: check if the neighbors of (row,col) is valid for further move.</li>
+</ul>
+<h3 id="Return-Types"><a href="#Return-Types" class="headerlink" title="Return Types"></a>Return Types</h3><ul>
+<li>return all possible solutions – N-Queen</li>
+<li>return if exist any solution – Word Search<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><a href="https://practice.geeksforgeeks.org/problems/n-queen-problem/0" target="_blank" rel="noopener">1. N-Queen Problem - GeeksforGeeks</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/18/Algorithms-DynamicProgramming/" rel="next" title="[Algorithms] Dynamic Programming">
+                <i class="fa fa-chevron-left"></i> [Algorithms] Dynamic Programming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/02/My-Life-As-A-Quant-note-1/" rel="prev" title="[My Life as a Quant] Reading Note 1">
+                [My Life as a Quant] Reading Note 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Psudo-Code"><span class="nav-number">1.1.</span> <span class="nav-text">Psudo Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Problems-from-LeetCode"><span class="nav-number">2.</span> <span class="nav-text">Sample Problems (from LeetCode)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N-Queens-51"><span class="nav-number">2.1.</span> <span class="nav-text">N-Queens (51)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Word-Search-79"><span class="nav-number">2.2.</span> <span class="nav-text">Word Search(79)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">3.1.</span> <span class="nav-text">Steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return-Types"><span class="nav-number">3.2.</span> <span class="nav-text">Return Types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

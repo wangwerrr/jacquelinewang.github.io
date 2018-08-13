@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke,R," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This unit will introduce simple linear regression, a statistical inference method that allows data analysts to model the relationship between a continuous response variable and a predictor variable, w">
+<meta name="keywords" content="Duke,R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Statistics]  Unit 3.2 Simple Linear Regression  ">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="This unit will introduce simple linear regression, a statistical inference method that allows data analysts to model the relationship between a continuous response variable and a predictor variable, w">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/conditions.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/rsd.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/r.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/lrtb.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/1.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/residual.png">
+<meta property="og:updated_time" content="2018-08-13T03:10:40.155Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Statistics]  Unit 3.2 Simple Linear Regression  ">
+<meta name="twitter:description" content="This unit will introduce simple linear regression, a statistical inference method that allows data analysts to model the relationship between a continuous response variable and a predictor variable, w">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/conditions.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/31/Stats3c/"/>
+
+
+
+
+
+  <title>[Online Review/Statistics]  Unit 3.2 Simple Linear Regression   | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/31/Stats3c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Statistics]  Unit 3.2 Simple Linear Regression  </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T18:07:27-04:00">
+                2018-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This unit will introduce simple linear regression, a statistical inference method that allows data analysts to model the relationship between a continuous response variable and a predictor variable, which can be continuous or categorical.<br>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>Linear regression attempts to explain or predict how the mean value of the response variable changes with the value of a predictor variable.</p>
+<p><strong>Conditions</strong></p>
+<ul>
+<li><strong>Linearity</strong>. The data should show a linear trend.</li>
+<li><strong>Nearly normal residuals</strong>. Generally the residuals must be nearly normal. When this condition is found to be unreasonable, it is usually because of outliers or concerns about influential points.</li>
+<li><strong>Constant variability</strong>. The variability of points around the least squares line remains roughly constant.</li>
+<li><strong>Independent observations</strong>. Be cautious about applying regression to <em>time series</em> data, which are sequential observations in time such as a stock price each day. Such data may have an underlying structure that should be considered in a model and analysis. There are also other instances where correlations within the data are important.<br><img src="/2018/07/31/Stats3c/conditions.png" alt=""></li>
+</ul>
+<p><strong>Residual</strong><br>difference between observed and expected<br>e<sub>i</sub> = y<sub>i</sub>i − yˆ<sub>i</sub></p>
+<p>Data = Fit + Residual<br><img src="/2018/07/31/Stats3c/rsd.png" alt=""></p>
+<p><strong>Correlation</strong><br>Describes the <strong>strength</strong> of the linear relationship between two variables. We denote the correlation by R.<br><img src="/2018/07/31/Stats3c/r.png" alt=""></p>
+<p>R: correlation coefficient<br>R<sup>2</sup>: determination coefficient. describes the amount of variation in the response that is explained by the least squares line.<br>eg. the R2 value was again found to be 0.2486 demonstrating that using a student’s family income to estimate their expected financial aid amount reduced the uncertainty in the estimate by explaining approximately 25% of the variability in the response. However, 75% of the variability in the response is left unexplained by the fitted regression model suggesting that other factors play a role in determining a student’s financial aid amount.<br>b1: slope coefficient</p>
+<p><strong>Least Squares Line</strong><br>choose the line that minimizes the sum of the squared residuals:<br>e<sub>1</sub><sup>2</sup> + e<sub>2</sub><sup>2</sup> +···+ e<sub>n</sub><sup>2</sup></p>
+<p><strong>Point Estimate</strong><br>We use b<sub>0</sub> and b<sub>1</sub> to represent the point estimates of the parameters β<sub>0</sub> and β<sub>1</sub>.</p>
+<p>Find LSL by applying two properties of the least squares line:</p>
+<ul>
+<li>The slope of the least squares line can be estimated by<br>b<sub>1</sub> = (s<sub>y</sub> / s<sub>x</sub>) * R</li>
+<li>(x ̄, y ̄) is on the least squares line:  y − y ̄ = b<sub>1</sub> ( x − x ̄ )</li>
+</ul>
+<p><strong>Inference</strong><br>table for Linear Regression<br><img src="/2018/07/31/Stats3c/lrtb.png" alt=""></p>
+<p>Regression coefficients:<br>row 1: b0<br>row 2: b1</p>
+<p>The p-values for testing whether or not the regression coefficients(b0, b1) are different from 0</p>
+<p><strong>Equivalence between Linear Regression and T-tests / ANOVA</strong><br>linear regression 的 input 是 continuous, t-tests &amp; ANOVA 的 input 是 discrete</p>
+<ul>
+<li>LR with a single indicator variable for group (1 vs. 2)  = a two sample t-test<br><img src="/2018/07/31/Stats3c/1.png" alt=""></li>
+<li>MLR(multivariable linear regression) with K-1 indicator variables for group (1, 2, …, K-1 vs. K) = ANOVA for K groups</li>
+<li>MLR with an indicator variable for which measurement (eg. pre vs. post) of the response variable is being considered and with n – 1 indicators for pair membership = a paired t-test.</li>
+</ul>
+<p><strong>Types of Outliers</strong><br><img src="/2018/07/31/Stats3c/residual.png" alt=""><br>(1) one outlier, though it only slightly influence the line.<br>(2) one outlier, though it is quite close to the least squares line, wasn’t very influential.<br>(3) one point far away from the cloud, and this outlier appears to pull the least squares line up on the right.<br>(4) a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least square line fit poorly almost everywhere.<br>(5) no obvious trend in the main cloud of points, the outlier on the right appears to largely control the slope of the least squares line.<br>(6) one outlier far from the cloud, but falls quite close to the least squares line and does not appear to be very influential.</p>
+<p>There is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).</p>
+<p><strong>Leverage</strong>: Points that fall <strong>horizontally* away from the center of the cloud tend to pull harder on the line, so we call them points with high leverage.<br>If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in cases (3), (4), and (5) of Example 7.23 – then we call it an </strong>influential point**</p>
+<p>If there are outliers in the data, they should not be removed or ignored without a good reason. Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.</p>
+<h1 id="Implemeting-in-R"><a href="#Implemeting-in-R" class="headerlink" title="Implemeting in R"></a>Implemeting in R</h1><ul>
+<li>correlation: <code>cor(x, y, na.rm=FALSE)</code><br>  na.rm is an optional argument that indicates whether or not missing values should be removed when computing the summary measure.<ul>
+<li>compute p-value give T-score: <code>pt(t-stat, df)</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Inference</strong><br>      <code>fit &lt;- lm(Y~X, data=MyData)</code><br>      <code>summary(fit)</code></p>
+<ul>
+<li>It is not possible in the lm() function to specify the claimed value for the hypothesis test involving the regression coefficients or to specify a <strong>less than</strong> or <strong>greater than</strong> alternative hypothesis.<ul>
+<li>when fitting a regression line to a data set, only observations with non-missing values for both X and Y will be included in the analysis. T</li>
+</ul>
+</li>
+</ul>
+<p><strong>Confidence Interval</strong><br><code>confint(fit, level=0.95)</code></p>
+<p><strong>Inside the fit list</strong><br><code>lm()</code> object is a list that stores all of the output generated by the function call, and we can apply the <code>names()</code> function to the list object to determine what elements are stored in the list. </p>
+<ul>
+<li><code>fit$coefficients</code> will print a length 2 vector containing the estimated regression coefficients.</li>
+<li><code>fit$fitted.values[1]</code></li>
+<li><p><code>fit$residuals[1]</code></p>
+</li>
+<li><p>plot the regression line: <code>abline(fit, col=&#39;blue&#39;, lwd = 3)</code></p>
+</li>
+<li>highlight a point: <code>points(X_value, X_variable, col=&#39;red&#39;, pch = 19)</code></li>
+</ul>
+<p><strong>Check Conditions</strong></p>
+<ul>
+<li>Linearity: <code>plot(x, y)</code> or <code>plot(y ~ x)</code></li>
+<li>Normality:  y-y ̄ (residual quantile)~ y ̄ (theoretical quantile) QQ Plot <code>qqPlot(fit$residuals)</code></li>
+<li>Constant Variance: abs(residuals) ~ fitted value <code>plot(fit$vfitted.values, abs(fit$residuals))</code></li>
+<li>Independence: residuals ~ order vector 1:n where n is the sample size <code>plot(1:dim(Mydata)[1], fit$residuals)</code><br>  When creating this plot, we have to assume that the observations are listed in the order they were collected in the data set, unless there is variable containing the time and date of when each observation was collected.</li>
+</ul>
+<p>or simply: <code>plot(fit)</code>: will yield 4 plots 第四个图干啥的？</p>
+<ul>
+<li>The first plot that R creates can be used to check the linearity assumption. The plot is scatter plot of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. if the linearity assumption is met, the LOESS curve should be a horizontal line at zero. If linearity assumption is not met, the LOESS curve will have a non-linear shape</li>
+<li>The second plot that R creates can be used to check the normality assumption. If all of the points fall near the line of identity, the normality assumption is met for this data set.</li>
+<li>The third plot that R creates can be used to check the constant variance assumption. The plot is scatter plot of the square root of the absolute value of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. If the constant variance assumption is met, the LOESS curve should be a flat line.</li>
+<li>R will not create the independence diagnostic plot. Instead it creates a plot of the residuals against a measure of leverage. This plot can be used to determine if any of the data points are potential influential points because this plot includes contours lines for Cook’s distance. Be wary of data points with Cook’s distance values above 0.5 or 1. If observations in the data set have values near or above these limits, a contour line will appear in the diagnostic plot to alter you to their presence. If no contour lines appear in the plot, you may infer that there is no evidence of influential points in the data set. </li>
+</ul>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke/" rel="tag"># Duke</a>
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/31/Stats3/" rel="next" title="[Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables">
+                <i class="fa fa-chevron-left"></i> [Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implemeting-in-R"><span class="nav-number">2.</span> <span class="nav-text">Implemeting in R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Duke,R," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This unit will introduce statistical methods for comparing population means between 2 or more groups.…">
+<meta name="keywords" content="Duke,R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Online Review&#x2F;Statistics]  Unit 3 Inference for Continuous Response Variables">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/07/31/Stats3/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="This unit will introduce statistical methods for comparing population means between 2 or more groups.…">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/roadmap.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/td.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/ttable.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/tstt.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/mean.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/se.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/ptt.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/septt.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/anova.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/msgmse.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/f.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/anvtable.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/rmanova.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/rmf.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/anovatable.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/Users/jacqueline/hexo/source/_posts/Stats3/septt.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/Users/jacqueline/hexo/source/_posts/Stats3/se.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/aaa.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/mse.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/anv.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/td.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/f-dist.png">
+<meta property="og:updated_time" content="2018-08-13T03:09:39.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Online Review&#x2F;Statistics]  Unit 3 Inference for Continuous Response Variables">
+<meta name="twitter:description" content="This unit will introduce statistical methods for comparing population means between 2 or more groups.…">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3/roadmap.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/07/31/Stats3/"/>
+
+
+
+
+
+  <title>[Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/31/Stats3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Online Review/Statistics]  Unit 3 Inference for Continuous Response Variables</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-31T18:07:27-04:00">
+                2018-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This unit will introduce statistical methods for comparing population means between 2 or more groups.<br>…</p>
+<a id="more"></a>
+<hr>
+<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>因<strong>predictor variable(explanatory variable/covariate)</strong>: the random variables used in the model for the response variable. This is the variable we are interested in learning about through inference.<br>果<strong>response variable(response variable/outcome/independent variable)</strong>: to explain or predict the value of a continuous random variable based on its relationship with another set of random variables. The random variable being modeled.</p>
+<p>Road Map<br><img src="/2018/07/31/Stats3/roadmap.png" alt=""></p>
+<p><strong>Parameter</strong>: mean<br><strong>Statistics</strong>: Z-score(normal dist), T-score(t-test), F-score(anova)</p>
+<p> a T-test will tell you if a single variable is statistically significant and an F-test will tell you if a group of variables are jointly significant.</p>
+<h1 id="T-distribution"><a href="#T-distribution" class="headerlink" title="T-distribution"></a>T-distribution</h1><p><strong>Conditions for using t-distribution</strong><br>-<strong>Independence</strong> of observations. collect a simple random sample from less than 10% of the population.</p>
+<ul>
+<li>Observations come from a nearly <strong>normal distribution</strong>.</li>
+</ul>
+<p><strong>Degrees of freedom (df)</strong><br>describe the shape of the t-distribution. The <strong>larger</strong> the degrees of freedom, the more closely the distribution approximates the <strong>normal model</strong>. (n&gt;=30, normal)<br><img src="/2018/07/31/Stats3/td.png" alt=""><br>If the sample has n observations and we are examining a single mean, then we use the t-distribution with <code>df = n − 1</code> degrees of freedom.</p>
+<p><strong>t-table</strong><br>row: p-values (like p-values in normal distribution)<br>col: df<br>inside: T-score (like multiplier/Z-scores in normal distribution)<br><img src="/2018/07/31/Stats3/ttable.png" alt=""></p>
+<p><strong>test statistic</strong><br>Each hypothesis test has an associate test statistic. Z-score for normal dist. , T-score for T dist.</p>
+<ul>
+<li>It compares the sample statistic to the claimed value of the parameter.</li>
+<li>It is used to determine if the numerical difference, if any, between the sample statistic and the claimed value of the parameter is large enough to suggest that the difference is not due to random chance alone. That is, it is used to measure how “significant” the difference is between the sample statistic and the claimed value of the parameter.</li>
+</ul>
+<h1 id="One-Sample-T-Test"><a href="#One-Sample-T-Test" class="headerlink" title="One Sample T-Test"></a>One Sample T-Test</h1><p>A one sample t-test is used when researchers are interested in making inference about a single population mean and want to compare the population mean to a benchmark value.<br><code>For example, is the mean weight of babies born to mothers who smoke less than the national average of 7 pounds?</code></p>
+<p><strong>Hypothesis Testing</strong></p>
+<ul>
+<li>write H0, HA</li>
+<li>verify conditions for using t-distribution</li>
+<li>write down μ; x_mean, s</li>
+<li>compute df = n - 1</li>
+<li>compute t<sub>df</sub>= (x_mean - μ) / σ = (x_mean - μ) / s</li>
+<li>look up t-table using t<sub>df</sub> &amp; df to get <strong>p-value</strong>, compare it with the significance value α (0.05)</li>
+<li>p&gt; α: do not reject H<sub>0</sub>; p&lt; α:reject H<sub>0</sub></li>
+</ul>
+<p><strong>Confidence Intervals</strong></p>
+<ul>
+<li>verify conditions for using t-distribution</li>
+<li>write down μ; x_mean, s</li>
+<li>compute SE = σ/sqrt(n) = s/sqrt(n)</li>
+<li>compute df = n -1</li>
+<li>look up t-table using confidence level(95% -&gt; 0.05) &amp; df to get <strong>t<sub>df</sub></strong></li>
+<li>confidence interval: x_mean - t<sub>df</sub>SE, x_mean + t<sub>df</sub>SE</li>
+</ul>
+<h1 id="Two-Sample-T-Test"><a href="#Two-Sample-T-Test" class="headerlink" title="Two Sample T-Test"></a>Two Sample T-Test</h1><p>A two sample t-test is used when researchers are interested in making inference about the population means from two independent groups and want to compare the population means between the two groups.<br><code>For example, is the mean weight of babies born to mothers who smoke different from the mean weight of babies born to mothers who did not smoke?</code><br><img src="/2018/07/31/Stats3/tstt.png" alt=""></p>
+<p><strong>Conditions</strong></p>
+<ul>
+<li>each sample meets the conditions for using the t-distribution</li>
+<li>the samples are independent</li>
+</ul>
+<p><strong>Changes</strong><br>mean: <img src="/2018/07/31/Stats3/mean.png" alt=""><br>SE:<img src="/2018/07/31/Stats3/se.png" alt=""><br>df: min(n<sub>1</sub>-1, n<sub>2</sub>-1)</p>
+<h1 id="Paired-T-Test"><a href="#Paired-T-Test" class="headerlink" title="Paired T-Test"></a>Paired T-Test</h1><p>A paired t-test is used when researchers are interested in making inference about the population means from two paired (that is, correlated) groups and want to compare the population means between the two groups.<br><code>For example, is the mean weight of mothers’ first born babies different from the mean weight of mothers’ second born babies?</code><br><img src="/2018/07/31/Stats3/ptt.png" alt=""></p>
+<p><strong>Changes</strong><br>SE:<img src="/2018/07/31/Stats3/septt.png" alt=""></p>
+<p><strong>Two sample vs. Paired</strong><br>Two sample t-test does not take the dependence between the two samples into account when computing the standard error of the point estimate. As a result, the standard error used in the two sample t-test is too large for a paired design which can make it “harder” to reject the null hypothesis of no difference, and we could miss a potential signal.</p>
+<ul>
+<li>For two independent groups: SE(X̅1−X̅2)=√Var(X̅1)+Var(X̅2)</li>
+<li>For two paired groups: SE(X̅1−X̅2)=√Var(X̅1)+Var(X̅2)−2Cov(X̅1,X̅2)</li>
+</ul>
+<h1 id="Analysis-of-Variance-ANOVA"><a href="#Analysis-of-Variance-ANOVA" class="headerlink" title="Analysis of Variance (ANOVA)"></a>Analysis of Variance (ANOVA)</h1><p>Analysis of variance (ANOVA) is used when researchers are interested in making inference about the population means from three or more independent groups and want to compare the population means across the groups.<br><code>For example, is the mean weight of babies born to mothers with the following income levels, as defined by the US government for tax purposes, different: below-poverty-level vs. low-level vs. moderate-level?</code><br><img src="/2018/07/31/Stats3/anova.png" alt=""></p>
+<p><strong>Assumptions</strong></p>
+<ul>
+<li>Independence. The observations are independent within and across groups.</li>
+<li>Approximately normal. The data within each group are nearly normal.</li>
+<li>Constant variance. The variability across the groups is about equal. Usually, the largest sample standard deviation should not be more than twice as large as the smallest across the groups.</li>
+</ul>
+<p><strong>Hypothesis</strong></p>
+<p>H<sub>0</sub>: μ<sub>1</sub> = μ<sub>2</sub> = … =  μ<sub>k</sub><br>H<sub>A</sub>: at least one μ is different</p>
+<p><strong>F-test</strong><br>n: number of all observations counting together<br>k: number of groups</p>
+<p><strong>MSG</strong>: mean square <em>between</em> groups, a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large.<br>df1 = df<sub>G</sub> = k − 1<br><strong>MSE</strong>: mean square error , a measure of the variability <em>within</em> the groups.<br>df2 = df<sub>E</sub> = N − k.<br><img src="/2018/07/31/Stats3/msgmse.png" alt=""></p>
+<p><strong>F statistic</strong><br>F statistic represents a standardized ratio of variability in the sample means relative to the variability within the groups.<br><code>F = MSG/MSE</code><br>When the null hypothesis is true, any differences among the sample means are only due to chance, and the MSG and MSE should be about equal, F=1.</p>
+<ul>
+<li>When the F-statistic is <strong>large</strong>, we <strong>reject</strong> the null hypothesis that the group means are equal. The cut off we use for “large” for a α-level hypothesis test is the F-statistic greater than the 1 – α quantile of its F sampling distribution.</li>
+</ul>
+<p><strong>F distribution &amp; ANOVA Table</strong></p>
+<p><img src="/2018/07/31/Stats3/f.png" alt=""><br><img src="/2018/07/31/Stats3/anvtable.png" alt=""><br>Notes:</p>
+<ul>
+<li>The ANOVA F-score is equaled to the two sample t-test, with equal variances, T-score squared.</li>
+<li>After a significant ANOVA signal is detected, each possible pair of the K group means should be compared using a <strong>two sample t-test</strong> and/or confidence interval. There are many</li>
+</ul>
+<p><strong>Multiple comparisons &amp; the Bonferroni correction for α</strong><br>The scenario of testing many pairs of groups is called multiple comparisons. When we run so many tests, the Type 1 Error rate increases.<br>This issue is resolved by using a modified significance level.The Bonferroni correction suggests that a more stringent significance level is more appropriate for these tests:<br>$α^* = α/K $<br>where K is the number of comparisons being considered (formally or informally).<br>If there are k groups, then usually all possible pairs are compared and K = k(k−1) .</p>
+<h1 id="Repeated-Measures-ANOVA"><a href="#Repeated-Measures-ANOVA" class="headerlink" title="Repeated Measures ANOVA"></a>Repeated Measures ANOVA</h1><p>Repeated measures ANOVA is used when researchers are interested in making inference about the population means from three or more paired (that is, correlated) groups and want to compare the population means across the groups.<br><code>For example, is the mean glucose levels in pregnant women different during at the end of each month of pregnancy?</code><br><img src="/2018/07/31/Stats3/rmanova.png" alt=""></p>
+<ul>
+<li>ANOVA is the extension of the two sample t-test for more than two independent groups.</li>
+<li>Repeated Measures ANOVA can be thought of as the extension of the paired t-test for more than two paired groups.</li>
+</ul>
+<p><strong>Conditions</strong></p>
+<ul>
+<li>The observations within each group are <strong>independent</strong>.</li>
+<li>The <strong>same subjects</strong> are measured within each group. This assumption can be checked by looking for any missing values of the response variable across the K groups.</li>
+<li>The response variable must be <strong>normally</strong> distributed within each group.  This assumption can be checked by creating a normal probability plot of the response variable for each group.</li>
+<li>The variance of the paired differences in the response variable for each pair of the K groups must be the same.  (<strong>sphericity</strong> assumption) The standard deviation needs to be same for all K(K-1)/2 pairs of K groups. This assumption can be checked by computing the sample standard deviation of the paired differences for each pair of the groups.Make sure that the largest standard deviation is not more than twice the smallest.</li>
+</ul>
+<p><strong>F Statistic</strong><br>Repeated measures ANOVA will do the same thing, but now there will be an addition variance component in the decomposition – the <strong>variability within subjects</strong>. We<br>as such, we have the ability to estimate how much each subject varies about their personal mean.<br>ANOVA and repeated measures ANOVA are testing the same hypothesis with the same measure of “signal” but with a different measure of “noise”. In particular, the measure of “noise” in a repeated measures ANOVA will be smaller than that in an ANOVA. This is the same concept that we discussed for a two sample vs. paired t-test; the standard error of for the difference between sample means for two paired groups is <strong>smaller</strong> than the standard error of the same quantity for two independent groups because <em>the covariance between the samples is subtracted off</em>.<br><img src="/2018/07/31/Stats3/rmf.png" alt=""></p>
+<p><strong>Changes on df</strong><br>$df1 = df_G= k − 1$</p>
+<p>$df2 = df_E = N − k - r - 1$</p>
+<p>r: number of replicates in each group (that is, the unit on which the repeated measurement is made)</p>
+<ul>
+<li>Under the repeated measures design, the pair-wise group means should be compared using a paired t-test instead of a two sample t-test. The <strong>Bonferroni correction</strong> should be used again to account for the multiple comparisons that will be made in the post-hoc analysis.</li>
+</ul>
+<h1 id="Implementations-in-R"><a href="#Implementations-in-R" class="headerlink" title="Implementations in R"></a>Implementations in R</h1><p><strong>One Sample T-Test</strong></p>
+<ul>
+<li>test for normality:<br><code>par(mfrow==c(1,1))
+qqPlot(Mydata$X)</code></li>
+<li>p-value(two sided): <code>pt(- t-score, df) + (1 - pt(+ t-scorem, df))</code><br>`t.test(Mydata$X,<pre><code>alterenative=&quot;two.sided&quot;,
+mu=0,
+conf.level = 0.95)`
+</code></pre></li>
+<li>alternative: two.sided, greater, less<br>  In order to get a confidence interval using the t.test() function, the alternative argument must be set to “two.sided”. If the alternative argument is set to “greater” or “less”, the t.test() function will return a one-sided confidence bound (that is, either a lower or upper bound, respectively, on the population mean) instead of a confidence interval (that is, range of plausible values of the population mean).</li>
+</ul>
+<p><strong>Two Sample T-Test</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t.test(Mydata1$X, MyData2$X,</span><br><span class="line">                alterenative=<span class="string">"two.sided"</span>,</span><br><span class="line">                mu=<span class="number">0</span>,</span><br><span class="line">                conf.level = <span class="number">0.95</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Paired T-Test</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t.test(Mydata1$X, MyData2$X,</span><br><span class="line">                paired=<span class="literal">TRUE</span></span><br><span class="line">                alterenative=<span class="string">"two.sided"</span>,</span><br><span class="line">                mu=<span class="number">0</span>,</span><br><span class="line">                conf.level = <span class="number">0.95</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>ANOVA</strong></p>
+<ul>
+<li><p>assess the equal variance assumption: <code>doBy::summaryBy()</code><br>Here, the variable <em>Y</em> will be compared by the levels of variable <em>Group</em> from the <em>MyData</em> data set.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a_fit &lt;- aov(Y ~ Group, data=MyData)</span><br><span class="line">summary(a_fit)</span><br></pre></td></tr></table></figure>
+<p>Pair-wise confidence intervals can be constructed using the <code>pairwiseCI()</code> function in the pairwiseCI package.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">no.tests &lt;- choose(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">pairwiseCI(Y ~ Group, data=MyData,</span><br><span class="line">           conf.level = <span class="number">1</span> - (<span class="number">0.05</span>/no.tests))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>or<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pw_tests &lt;- pairwiseTest(Y ~ Group, data=MyData)</span><br><span class="line">summary(pw_tests, p.adjust.method=<span class="string">'bonf'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Boxplot for each group<br><code>boxplot(Y ~ Group)</code></p>
+<p><strong>Repeated Measures ANOVA</strong><br>Before performing the repeated measures ANOVA analysis, you must check if your subject and group variables are stored as factor variables. If not, use the <code>factor()</code> function to convert the variables to factors.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a_fit &lt;- aov(Y ~ Group + Error(Subject), data=MyData)</span><br><span class="line">summary(a_fit)</span><br></pre></td></tr></table></figure>
+<p>ANOVA table can be splited into two parts: error due variability within-subjects and the error that remains after taking out the within-subjects error.<br><img src="/2018/07/31/Stats3/anovatable.png" alt=""></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><h3 id="Inference-vs-Intervals-Estimation"><a href="#Inference-vs-Intervals-Estimation" class="headerlink" title="Inference vs. Intervals Estimation"></a>Inference vs. Intervals Estimation</h3><p>(eg. t-distribution)</p>
+<p><strong>Inference</strong>: For a given sample,  test how different a sample mean is from a given value to decide if the population mean is really this value.</p>
+<p><strong>Estimation</strong>: given a sample, calculate the population mean’s point estimate and confindence intervals</p>
+<ul>
+<li>Mean: $μ  =  \bar{x}$</li>
+<li>Std: $SE = \frac{s}{\sqrt{n}}$</li>
+<li>confidence intervals: $(\bar{x} - t_{critical} <em> SE,  \bar{x} + t_{critical} </em> SE)$</li>
+</ul>
+<h2 id="Z-test-vs-T-test"><a href="#Z-test-vs-T-test" class="headerlink" title="Z-test vs. T-test"></a>Z-test vs. T-test</h2><p>For a given sample($\bar{x}$, s),  test how different a sample mean $\bar{x}$ is from a given value $μ_0$,  to decide if the population mean μ is really this value $μ_0$.</p>
+<p>If we <strong>DO</strong> know the population std σ, we could perform a <strong>Z-test</strong>.</p>
+<p>The sample distribution is a normal distribution with:</p>
+<ul>
+<li>center: $μ_0$</li>
+<li>standard error: $SE =  \frac{σ} {\sqrt{n}}$</li>
+</ul>
+<p>we calculate the Z-score for this given sample: $z = \frac{\bar{x} - μ} {SE}$, get the p-value, and then compare with α.</p>
+<p>If we do <strong>NOT</strong> know the population std σ, but we have the sample std s, we could perform a <strong>T-test</strong>.</p>
+<p>The sample distribution is a T distribution with:</p>
+<ul>
+<li>center: $μ_0$</li>
+<li>std: $SE =  \frac{s} {\sqrt{n}}$</li>
+<li>degrees of freedom: $df = n - 1$</li>
+</ul>
+<p>we calculate the T-score for this given sample: $t= \frac{\bar{x} - μ} {SE}$, get the p-value, and then compare with α.</p>
+<p>For a T-test, as n gets larger:</p>
+<ul>
+<li><p>$s = \sqrt{\frac{\sum_{i=0}^{n} {x_i - \bar{x}}}{n - 1}}$-&gt; $s = \sqrt{\frac{\sum_{i=0}^{n} {x_i - \bar{x}}}{n}}$, which makes s -&gt; σ</p>
+</li>
+<li><p>T-distribution -&gt; Z-distribution(normal distribution)</p>
+</li>
+</ul>
+<h2 id="T-tests-ANOVAs"><a href="#T-tests-ANOVAs" class="headerlink" title="T-tests, ANOVAs"></a>T-tests, ANOVAs</h2><h3 id="T-tests"><a href="#T-tests" class="headerlink" title="T-tests"></a>T-tests</h3><p><strong>T-test</strong>: use how different a sample mean is from a given value μ0,  to decide if the population mean μ is really this value $μ_0$. </p>
+<p>for the sample we got:</p>
+<ul>
+<li>sample mean: $\bar{x}$</li>
+<li>Sample std: s</li>
+</ul>
+<p>for the sample distribution:</p>
+<ul>
+<li><p>center: $μ_2$</p>
+</li>
+<li><p>standard error: $SE = \frac{s} {\sqrt{n}}$</p>
+</li>
+<li>degrees of freedom: $df = n - 1$</li>
+</ul>
+<p>The distribution of all samples we might get from the population. Our $\bar{x}$ is at some point of this distribution.</p>
+<p><strong>Paired T-test</strong>: use how different two <strong>dependent</strong> sample means are from each other, to decide if these two population means are equal. (to decide if $μ_{diff}$ is equal to 0)</p>
+<p>for the sample we got:</p>
+<ul>
+<li>sample mean: $\bar{x}_{diff}$</li>
+<li>Sample std:$s_{diff} = \sqrt{\frac{\sum{x_i - \bar{x}_{diff}}}{n - 1}}$</li>
+</ul>
+<p>for the sample distribution: r</p>
+<ul>
+<li>center: 0</li>
+<li>Standard Error:<img src="/Users/jacqueline/hexo/source/_posts/Stats3/septt.png" alt=""></li>
+<li>degrees of freedom: $df = n_{diff} - 1$</li>
+</ul>
+<p><strong>Two sample T-test</strong>: how different two <strong>independent</strong> sample means are from each other, to decide if these two population means are equal.</p>
+<ul>
+<li>sample mean: $\bar{x}_A,  \bar{x}_B$</li>
+<li>sample std: $s_A, s_B$</li>
+</ul>
+<p>for the sample distribution:</p>
+<ul>
+<li><p>center: 0</p>
+</li>
+<li><p>Standard Error: <img src="/Users/jacqueline/hexo/source/_posts/Stats3/se.png" alt=""></p>
+</li>
+<li>degrees of freedom: $df = min(n_A-1, n_B-1)$ or $n_A - n_B -2$</li>
+</ul>
+<h3 id="ANOVAs"><a href="#ANOVAs" class="headerlink" title="ANOVAs"></a>ANOVAs</h3><h4 id="ANOVA"><a href="#ANOVA" class="headerlink" title="ANOVA"></a>ANOVA</h4><p>assume all samples have the same sample size n</p>
+<p><strong>Between-Group Variability</strong>: the avg square deviation of <strong>each sample mean</strong> from the <strong>total mean</strong>(grand mean $\ bar{x_G}$)</p>
+<p><img src="/2018/07/31/Stats3/aaa.png" alt=""></p>
+<p><strong>Within-Group Variability</strong>: the variability of each sample group</p>
+<p><img src="/2018/07/31/Stats3/mse.png" alt=""></p>
+<p>Why larger MSE could decrese the possibility of rejecting $H_0$<img src="/2018/07/31/Stats3/anv.png" alt=""></p>
+<p>$F = \frac{variability\, between\, means}{error} = \frac{Between-Group\,Variability}{Within-Group\, Variability} = \frac{MSG}{MSE} = \frac{SSG/df_G}{SSE/df_E} = \frac{n\sum_{i=1}^{k} {(\bar{x}<em>i - \bar{x})^2/(k-1)}}{\sum</em>{i=0}^{k} {\sum_{j=0}^{n} {(x_{ij} - \bar{x}_i)^2}}/(N-k)}$</p>
+<p>$df_1 = df_G = k-1$</p>
+<p>$df_2 = df_E = N - k$</p>
+<p>k: number of samples</p>
+<p>n: sample size</p>
+<p>N: total number of values from all samples = n*k</p>
+<p>i: notation for each sample group</p>
+<p>j: notation for each value in a sample group</p>
+<h4 id="rmANOVA"><a href="#rmANOVA" class="headerlink" title="rmANOVA"></a>rmANOVA</h4><p><strong>Changes on df</strong> </p>
+<p>$df1 = df_G= k − 1$<br>$df2 = df_E = N − k - r - 1$</p>
+<p>r: number of replicates in each group (that is, the unit on which the repeated measurement is made)</p>
+<h2 id="Two-sample-T-test-vs-ANOVA"><a href="#Two-sample-T-test-vs-ANOVA" class="headerlink" title="Two sample T-test vs. ANOVA"></a>Two sample T-test vs. ANOVA</h2><h3 id="Paired-T-test-vs-rmANOVA"><a href="#Paired-T-test-vs-rmANOVA" class="headerlink" title="Paired T-test vs. rmANOVA"></a>Paired T-test vs. rmANOVA</h3><h2 id="t-t-critical-p-α"><a href="#t-t-critical-p-α" class="headerlink" title="t, t_critical, p, α"></a>t, t_critical, p, α</h2><p>given a t statistic $t$ and confidencial value $\alpha$,  we can :</p>
+<ul>
+<li>read from the t-table using $t$ to get $p$, and then compare it with $\alpha$(usually 0.05)</li>
+<li>read from the t-table using $\alpha$ to get $t_{critical}$, and then compare it with $t$</li>
+</ul>
+<p>so</p>
+<ul>
+<li>$t$ — $p$</li>
+<li>$t_{critical} — \alpha$</li>
+</ul>
+<h2 id="Meaning-of-the-t-statistic"><a href="#Meaning-of-the-t-statistic" class="headerlink" title="Meaning of the t-statistic"></a>Meaning of the t-statistic</h2><p>$t= \frac{\bar{x} - μ} {SE}$</p>
+<p>how many standard error is the $\bar{x}$ away from $μ$</p>
+<h2 id="Normal-Distribution-T-Distribution-F-Distribution"><a href="#Normal-Distribution-T-Distribution-F-Distribution" class="headerlink" title="Normal Distribution, T Distribution, F Distribution"></a>Normal Distribution, T Distribution, F Distribution</h2><p><img src="/2018/07/31/Stats3/td.png" alt=""></p>
+<p><img src="/2018/07/31/Stats3/f-dist.png" alt=""></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Duke/" rel="tag"># Duke</a>
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/30/LinearAlgebra/" rel="next" title="[Online Review/Linear Algebra] Cheat Sheet">
+                <i class="fa fa-chevron-left"></i> [Online Review/Linear Algebra] Cheat Sheet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/31/Stats3c/" rel="prev" title="[Online Review/Statistics]  Unit 3.2 Simple Linear Regression  ">
+                [Online Review/Statistics]  Unit 3.2 Simple Linear Regression   <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T-distribution"><span class="nav-number">2.</span> <span class="nav-text">T-distribution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#One-Sample-T-Test"><span class="nav-number">3.</span> <span class="nav-text">One Sample T-Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-Sample-T-Test"><span class="nav-number">4.</span> <span class="nav-text">Two Sample T-Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Paired-T-Test"><span class="nav-number">5.</span> <span class="nav-text">Paired T-Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analysis-of-Variance-ANOVA"><span class="nav-number">6.</span> <span class="nav-text">Analysis of Variance (ANOVA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repeated-Measures-ANOVA"><span class="nav-number">7.</span> <span class="nav-text">Repeated Measures ANOVA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implementations-in-R"><span class="nav-number">8.</span> <span class="nav-text">Implementations in R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">9.</span> <span class="nav-text">Conclusion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inference-vs-Intervals-Estimation"><span class="nav-number">9.0.1.</span> <span class="nav-text">Inference vs. Intervals Estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Z-test-vs-T-test"><span class="nav-number">9.1.</span> <span class="nav-text">Z-test vs. T-test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T-tests-ANOVAs"><span class="nav-number">9.2.</span> <span class="nav-text">T-tests, ANOVAs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#T-tests"><span class="nav-number">9.2.1.</span> <span class="nav-text">T-tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANOVAs"><span class="nav-number">9.2.2.</span> <span class="nav-text">ANOVAs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ANOVA"><span class="nav-number">9.2.2.1.</span> <span class="nav-text">ANOVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmANOVA"><span class="nav-number">9.2.2.2.</span> <span class="nav-text">rmANOVA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-sample-T-test-vs-ANOVA"><span class="nav-number">9.3.</span> <span class="nav-text">Two sample T-test vs. ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paired-T-test-vs-rmANOVA"><span class="nav-number">9.3.1.</span> <span class="nav-text">Paired T-test vs. rmANOVA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t-t-critical-p-α"><span class="nav-number">9.4.</span> <span class="nav-text">t, t_critical, p, α</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meaning-of-the-t-statistic"><span class="nav-number">9.5.</span> <span class="nav-text">Meaning of the t-statistic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normal-Distribution-T-Distribution-F-Distribution"><span class="nav-number">9.6.</span> <span class="nav-text">Normal Distribution, T Distribution, F Distribution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">10.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
