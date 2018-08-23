@@ -93,7 +93,8 @@
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/lrtb.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/1.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/residual.png">
-<meta property="og:updated_time" content="2018-08-13T03:10:40.155Z">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/31/Stats3c/conditions.png">
+<meta property="og:updated_time" content="2018-08-17T03:00:42.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Online Review&#x2F;Statistics]  Unit 3.2 Simple Linear Regression  ">
 <meta name="twitter:description" content="This unit will introduce simple linear regression, a statistical inference method that allows data analysts to model the relationship between a continuous response variable and a predictor variable, w">
@@ -360,30 +361,60 @@
 <li><strong>Constant variability</strong>. The variability of points around the least squares line remains roughly constant.</li>
 <li><strong>Independent observations</strong>. Be cautious about applying regression to <em>time series</em> data, which are sequential observations in time such as a stock price each day. Such data may have an underlying structure that should be considered in a model and analysis. There are also other instances where correlations within the data are important.<br><img src="/2018/07/31/Stats3c/conditions.png" alt=""></li>
 </ul>
-<p><strong>Residual</strong><br>difference between observed and expected<br>e<sub>i</sub> = y<sub>i</sub>i − yˆ<sub>i</sub></p>
+<p><strong>Variables</strong></p>
+<p>X: predictor, explanatory, independent variable</p>
+<p>Y: outcome, response, dependent variable</p>
+<p>$y$: observed value [data]</p>
+<p>$\hat{y}$: expected value (based on the line of best fit) [fit]</p>
+<p>e: residual, $e = y - \hat{y}$ [residual]</p>
 <p>Data = Fit + Residual<br><img src="/2018/07/31/Stats3c/rsd.png" alt=""></p>
-<p><strong>Correlation</strong><br>Describes the <strong>strength</strong> of the linear relationship between two variables. We denote the correlation by R.<br><img src="/2018/07/31/Stats3c/r.png" alt=""></p>
-<p>R: correlation coefficient<br>R<sup>2</sup>: determination coefficient. describes the amount of variation in the response that is explained by the least squares line.<br>eg. the R2 value was again found to be 0.2486 demonstrating that using a student’s family income to estimate their expected financial aid amount reduced the uncertainty in the estimate by explaining approximately 25% of the variability in the response. However, 75% of the variability in the response is left unexplained by the fitted regression model suggesting that other factors play a role in determining a student’s financial aid amount.<br>b1: slope coefficient</p>
-<p><strong>Least Squares Line</strong><br>choose the line that minimizes the sum of the squared residuals:<br>e<sub>1</sub><sup>2</sup> + e<sub>2</sub><sup>2</sup> +···+ e<sub>n</sub><sup>2</sup></p>
-<p><strong>Point Estimate</strong><br>We use b<sub>0</sub> and b<sub>1</sub> to represent the point estimates of the parameters β<sub>0</sub> and β<sub>1</sub>.</p>
+<p><strong>Least Squares Line</strong><br>choose the line that minimizes the sum of the squared residuals:  $\sum{(y_i - \hat{y}_i})^2$</p>
+<p><strong>Coefficients</strong></p>
+<ul>
+<li>R: correlation coefficient.</li>
+</ul>
+<p>Describes the <strong>strength</strong> of the linear relationship between two variables. We denote the correlation by R. usually we calculate R by software but here is the definition equation:<br><img src="/2018/07/31/Stats3c/r.png" alt=""></p>
+<ul>
+<li>$R ^2$ : determination coefficient. </li>
+</ul>
+<p>describes the amount of variation in the response that is explained by the least squares line.</p>
+<p>eg. the R2 value was again found to be 0.2486 demonstrating that using a student’s family income to estimate their expected financial aid amount reduced the uncertainty in the estimate by explaining approximately 25% of the variability in the response. However, 75% of the variability in the response is left unexplained by the fitted regression model suggesting that other factors play a role in determining a student’s financial aid amount.</p>
+<ul>
+<li>b1: slope coefficient</li>
+</ul>
+<p><strong>Point Estimate</strong><br>We use $b_0, b_1$ to represent the point estimates of the parameters $\beta_0, \beta_1$</p>
 <p>Find LSL by applying two properties of the least squares line:</p>
 <ul>
-<li>The slope of the least squares line can be estimated by<br>b<sub>1</sub> = (s<sub>y</sub> / s<sub>x</sub>) * R</li>
-<li>(x ̄, y ̄) is on the least squares line:  y − y ̄ = b<sub>1</sub> ( x − x ̄ )</li>
+<li>The slope of the least squares line can be estimated by: $b_1 = R\frac{s_y} {s_x} $</li>
+<li>$(\bar{x}, \bar{y})$ is on the least squares line:  $y − \bar{y}  = b_1 ( x − \bar{x} )$</li>
 </ul>
-<p><strong>Inference</strong><br>table for Linear Regression<br><img src="/2018/07/31/Stats3c/lrtb.png" alt=""></p>
-<p>Regression coefficients:<br>row 1: b0<br>row 2: b1</p>
-<p>The p-values for testing whether or not the regression coefficients(b0, b1) are different from 0</p>
-<p><strong>Equivalence between Linear Regression and T-tests / ANOVA</strong><br>linear regression 的 input 是 continuous, t-tests &amp; ANOVA 的 input 是 discrete</p>
+<p><strong>Inference</strong></p>
+<p>we use <strong>t-test</strong> for the population slope $\beta_1$</p>
+<p>$H_0$: $\beta_1 = 0$</p>
+<p>$H_A$: $\beta_1\not= 0$</p>
+<p>table for Linear Regression<br><img src="/2018/07/31/Stats3c/lrtb.png" alt=""></p>
+<p>row 1: $b_0$<br>row 2: $b_1$</p>
+<p>df = N-2</p>
+<p>SE, t, p are calculated using software</p>
+<p>The p-values for testing whether or not the regression coefficients($b_0, b_1$) are different from 0</p>
+<p><strong>Equivalence between Linear Regression and T-tests / ANOVA</strong></p>
+<p>Input </p>
 <ul>
-<li>LR with a single indicator variable for group (1 vs. 2)  = a two sample t-test<br><img src="/2018/07/31/Stats3c/1.png" alt=""></li>
+<li>linear regression: continuous</li>
+<li>t-tests &amp; ANOVA: discrete</li>
+</ul>
+<ul>
+<li>LR with a single indicator variable for group (1 vs. 2)  = a two sample t-test</li>
+</ul>
+<p><img src="/2018/07/31/Stats3c/1.png" alt=""></p>
+<ul>
 <li>MLR(multivariable linear regression) with K-1 indicator variables for group (1, 2, …, K-1 vs. K) = ANOVA for K groups</li>
 <li>MLR with an indicator variable for which measurement (eg. pre vs. post) of the response variable is being considered and with n – 1 indicators for pair membership = a paired t-test.</li>
 </ul>
 <p><strong>Types of Outliers</strong><br><img src="/2018/07/31/Stats3c/residual.png" alt=""><br>(1) one outlier, though it only slightly influence the line.<br>(2) one outlier, though it is quite close to the least squares line, wasn’t very influential.<br>(3) one point far away from the cloud, and this outlier appears to pull the least squares line up on the right.<br>(4) a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least square line fit poorly almost everywhere.<br>(5) no obvious trend in the main cloud of points, the outlier on the right appears to largely control the slope of the least squares line.<br>(6) one outlier far from the cloud, but falls quite close to the least squares line and does not appear to be very influential.</p>
 <p>There is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).</p>
-<p><strong>Leverage</strong>: Points that fall <strong>horizontally* away from the center of the cloud tend to pull harder on the line, so we call them points with high leverage.<br>If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in cases (3), (4), and (5) of Example 7.23 – then we call it an </strong>influential point**</p>
-<p>If there are outliers in the data, they should not be removed or ignored without a good reason. Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.</p>
+<p><strong>Leverage</strong>: Points that fall <em>horizontally</em> away from the center of the cloud tend to pull harder on the line, so we call them points with high leverage.<br>If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in cases (3), (4), and (5) of Example 7.23 – then we call it an <strong>influential point</strong></p>
+<p>If there are outliers in the data, they should NOT be removed or ignored without a good reason. Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.</p>
 <h1 id="Implemeting-in-R"><a href="#Implemeting-in-R" class="headerlink" title="Implemeting in R"></a>Implemeting in R</h1><ul>
 <li>correlation: <code>cor(x, y, na.rm=FALSE)</code><br>  na.rm is an optional argument that indicates whether or not missing values should be removed when computing the summary measure.<ul>
 <li>compute p-value give T-score: <code>pt(t-stat, df)</code></li>
@@ -409,20 +440,31 @@
 <li>highlight a point: <code>points(X_value, X_variable, col=&#39;red&#39;, pch = 19)</code></li>
 </ul>
 <p><strong>Check Conditions</strong></p>
+<p><img src="/2018/07/31/Stats3c/conditions.png" alt=""></p>
 <ul>
-<li>Linearity: <code>plot(x, y)</code> or <code>plot(y ~ x)</code></li>
-<li>Normality:  y-y ̄ (residual quantile)~ y ̄ (theoretical quantile) QQ Plot <code>qqPlot(fit$residuals)</code></li>
-<li>Constant Variance: abs(residuals) ~ fitted value <code>plot(fit$vfitted.values, abs(fit$residuals))</code></li>
-<li>Independence: residuals ~ order vector 1:n where n is the sample size <code>plot(1:dim(Mydata)[1], fit$residuals)</code><br>  When creating this plot, we have to assume that the observations are listed in the order they were collected in the data set, unless there is variable containing the time and date of when each observation was collected.</li>
+<li><p><strong>Linearity</strong>: <code>plot(fit$residuals~x)</code>,no pattern; or <code>plot(fit$residuals ~ fit$fited_values)</code>, a horizontal line at zero</p>
+</li>
+<li><p><strong>Normality</strong>:  $y-\hat{y}$  (residual) ~  theoratical quantile of a normal distribution  <code>qqPlot(fit$residuals)</code>, should be a y=x line</p>
+<p>  Q-Q plot: First, the set of intervals for the quantiles is chosen. A point (<em>x</em>, <em>y</em>) on the plot corresponds to one of the quantiles of the second distribution (<em>y</em>-coordinate) plotted against the same quantile of the first distribution (<em>x</em>-coordinate). Thus the line is a parametric curve with the parameter which is the number of the interval for the quantile.</p>
+</li>
+<li><p><strong>Constant Variance</strong>: $|y-\hat{y}|$ ~ $\hat{y}$ <code>plot(fit$fitted.values, abs(fit$residuals))</code>, should be no pattern</p>
+</li>
+<li><p><strong>Independence</strong>: $y-\hat{y}$ ~ c(1:n)<code>plot(1:dim(Mydata)[1], fit$residuals)</code>, should be no pattern<br>  n is the sample size. When creating this plot, we have to assume that the observations are listed in the order they were collected in the data set, unless there is variable containing the time and date of when each observation was collected.</p>
+</li>
 </ul>
-<p>or simply: <code>plot(fit)</code>: will yield 4 plots 第四个图干啥的？</p>
+<p>or simply: <code>plot(fit)</code>: will yield 4 plots</p>
 <ul>
-<li>The first plot that R creates can be used to check the linearity assumption. The plot is scatter plot of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. if the linearity assumption is met, the LOESS curve should be a horizontal line at zero. If linearity assumption is not met, the LOESS curve will have a non-linear shape</li>
-<li>The second plot that R creates can be used to check the normality assumption. If all of the points fall near the line of identity, the normality assumption is met for this data set.</li>
-<li>The third plot that R creates can be used to check the constant variance assumption. The plot is scatter plot of the square root of the absolute value of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. If the constant variance assumption is met, the LOESS curve should be a flat line.</li>
-<li>R will not create the independence diagnostic plot. Instead it creates a plot of the residuals against a measure of leverage. This plot can be used to determine if any of the data points are potential influential points because this plot includes contours lines for Cook’s distance. Be wary of data points with Cook’s distance values above 0.5 or 1. If observations in the data set have values near or above these limits, a contour line will appear in the diagnostic plot to alter you to their presence. If no contour lines appear in the plot, you may infer that there is no evidence of influential points in the data set. </li>
+<li><p>Plot 1: linearity assumption. The plot is scatter plot of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. if the linearity assumption is met, the LOESS curve should be a horizontal line at zero.</p>
+</li>
+<li><p>Plot 2: normality assumption. If all of the points fall near the line of identity, the normality assumption is met for this data set.</p>
+</li>
+<li><p>Plot 3: constant variance assumption. The plot is scatter plot of the square root of the <em>absolute</em> value of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. If the constant variance assumption is met, the LOESS curve should be a flat line.</p>
+<p>放宽条件：Specifically, there appears to be less spread  for smaller fitted values and more spread for larger fitted values. However, if we ignore the left  most point in this plot, the spread seems approximately constant. Thus, the constant varianc e  assumption may be reasonable for this data set, but it would be good to investigate the potential  violation a bit more.  </p>
+</li>
+<li><p>R will NOT create the independence diagnostic plot. Instead it creates a plot of the residuals against a measure of leverage. This plot can be used to determine if any of the data points are potential influential points because this plot includes contours lines for Cook’s distance. Be wary of data points with Cook’s distance values above 0.5 or 1. If observations in the data set have values near or above these limits, a contour line will appear in the diagnostic plot to alter you to their presence. If no contour lines appear in the plot, you may infer that there is no evidence of influential points in the data set. </p>
+</li>
 </ul>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1>
       
     </div>
     
@@ -463,6 +505,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/18/Stats/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -543,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -634,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implemeting-in-R"><span class="nav-number">2.</span> <span class="nav-text">Implemeting in R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implemeting-in-R"><span class="nav-number">2.</span> <span class="nav-text">Implemeting in R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

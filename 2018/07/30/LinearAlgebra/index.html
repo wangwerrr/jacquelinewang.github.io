@@ -88,18 +88,22 @@
 <meta property="og:description" content="…">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/rref.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/7.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/1.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/2.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/3.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/ga.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/proj.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/111.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/112.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/113.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/diag.png">
-<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/diag2.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/diag3.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/st.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/center.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/od.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/30/LinearAlgebra/or.png">
-<meta property="og:updated_time" content="2018-07-30T07:44:49.048Z">
+<meta property="og:updated_time" content="2018-08-23T19:44:24.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Online Review&#x2F;Linear Algebra] Cheat Sheet">
 <meta name="twitter:description" content="…">
@@ -358,93 +362,174 @@
         <p>…</p>
 <a id="more"></a>
 <hr>
-<h1 id="Vector-and-Matrix-Algebra"><a href="#Vector-and-Matrix-Algebra" class="headerlink" title="Vector and Matrix Algebra"></a>Vector and Matrix Algebra</h1><h2 id="Span"><a href="#Span" class="headerlink" title="Span"></a>Span</h2><p>The span of a list of vectors {v1,…, vk} in R<sup>n</sup><br>is the collection of all linear combinations of {v1,…, vk}. Geometrically, Span{v1,…, vk} consists of all vectors that can be “reached” by taking linear combinations of {v1,…, vk}</p>
-<h2 id="Upper-and-Lower-Triangular-Matrices"><a href="#Upper-and-Lower-Triangular-Matrices" class="headerlink" title="Upper and Lower Triangular Matrices"></a>Upper and Lower Triangular Matrices</h2><p>Upper Triangular means that the entries of A “below the diagonal are zero.<br>Lower Triangular means that the entries of A “above” the diagonal are zero.<br>not just for SQUARE matrices</p>
-<h1 id="Systems-of-Linear-Equations-and-Nonsigular-Matrices"><a href="#Systems-of-Linear-Equations-and-Nonsigular-Matrices" class="headerlink" title="Systems of Linear Equations and Nonsigular Matrices"></a>Systems of Linear Equations and Nonsigular Matrices</h1><h2 id="Reduced-Row-Echelon-Form-rref"><a href="#Reduced-Row-Echelon-Form-rref" class="headerlink" title="Reduced Row Echelon Form (rref)"></a>Reduced Row Echelon Form (rref)</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>A matrix A is in reduced row echelon form (rref) if each of the following is satisfied:</p>
+<h1 id="Vector-and-Matrix-Algebra"><a href="#Vector-and-Matrix-Algebra" class="headerlink" title="Vector and Matrix Algebra"></a>Vector and Matrix Algebra</h1><p><strong>Span</strong></p>
+<p>The span of a list of vectors  ${v_1,…, v_k}$ in $R_n$ is the collection of all linear combinations of ${v_1,…, v_k}$. </p>
+<p><strong>Upper and Lower Triangular Matrices</strong></p>
+<p>Upper Triangular means that the entries of A “below the diagonal are zero.<br>Lower Triangular means that the entries of A “above” the diagonal are zero.</p>
+<ul>
+<li>not just for SQUARE matrices</li>
+</ul>
+<h1 id="Systems-of-Linear-Equations-amp-Nonsigular-Matrices"><a href="#Systems-of-Linear-Equations-amp-Nonsigular-Matrices" class="headerlink" title="Systems of Linear Equations &amp; Nonsigular Matrices"></a>Systems of Linear Equations &amp; Nonsigular Matrices</h1><h2 id="Reduced-Row-Echelon-Form-rref"><a href="#Reduced-Row-Echelon-Form-rref" class="headerlink" title="Reduced Row Echelon Form (rref)"></a>Reduced Row Echelon Form (rref)</h2><p><strong>Definition</strong></p>
+<p>A matrix A is in reduced row echelon form (rref) if each of the following is satisfied:</p>
 <ol>
 <li>Any zero-rows occur at the bottom.</li>
 <li>The first nonzero entry of a nonzero row is a 1 (called a pivot).</li>
 <li>Every pivot occurs to the right of the pivots above it.</li>
-<li>All nonpivot entries in a column containing a pivot are zero.</li>
+<li>All nonpivot entries [in a column that contains a pivot] are zero.</li>
 </ol>
-<h3 id="Rank-and-Nullity"><a href="#Rank-and-Nullity" class="headerlink" title="Rank and Nullity"></a>Rank and Nullity</h3><p>Rank : the number of pivot columns. –&gt; dependent variables<br>Nullity: the number of nonpivot columns.  –&gt; independent variables (free)</p>
-<h2 id="rref-Systems"><a href="#rref-Systems" class="headerlink" title="rref Systems"></a>rref Systems</h2><h3 id="Consistent-and-Inconsistent"><a href="#Consistent-and-Inconsistent" class="headerlink" title="Consistent and Inconsistent"></a>Consistent and Inconsistent</h3><p>consistent (or solvable): the augmented column contains no pivot.<br>inconsistent (or unsolvable): the augmented column contains a pivot.</p>
-<h3 id="Number-of-Solutions"><a href="#Number-of-Solutions" class="headerlink" title="Number of Solutions"></a>Number of Solutions</h3><p>A consistent rref system has:<br><strong>exactly one solution</strong> if it has no free variables. This means that<br>rank = number of variables and nullity = 0<br><strong>infinitely many solutions</strong> if it has free variables. This means that<br>rank &lt; number of variables and nullity &gt; 0<br>An inconsistent system has <strong>no solutions</strong>.</p>
-<h2 id="Gauss-Jordan-Elimination"><a href="#Gauss-Jordan-Elimination" class="headerlink" title="Gauss-Jordan Elimination"></a>Gauss-Jordan Elimination</h2><ol>
-<li>If aij = 0, switch the ith row with the first row below it whose jth entry is nonzero. If no such row exists, increase j by one and repeat this step.</li>
-<li>Multiply the ith row by 1/aij to make a pivot entry in the position (i,j).</li>
+<p><strong>Rank and Nullity</strong></p>
+<p>Rank : the number of pivot columns. –&gt; dependent variables<br>Nullity: the number of nonpivot columns.  –&gt; independent variables (free)</p>
+<h2 id="rref-Systems（增加了竖线右边那列）"><a href="#rref-Systems（增加了竖线右边那列）" class="headerlink" title="rref Systems（增加了竖线右边那列）"></a>rref Systems（增加了竖线右边那列）</h2><h3 id="Consistency-相容-可解"><a href="#Consistency-相容-可解" class="headerlink" title="Consistency 相容/可解"></a>Consistency 相容/可解</h3><p>consistent (or solvable): the augmented(竖线右边的那列) column contains no pivot.<br>inconsistent (or unsolvable): the augmented column contains a pivot.</p>
+<h3 id="Number-of-Solutions"><a href="#Number-of-Solutions" class="headerlink" title="Number of Solutions"></a>Number of Solutions</h3><p>An rref system has:</p>
+<ul>
+<li><strong>exactly one solution</strong> if <ul>
+<li>it is consistent. no pivot in augmented column</li>
+<li>it has <strong>NO</strong> free variables. rank = number of variables, nullity = 0</li>
+</ul>
+</li>
+<li><strong>infinitely many solutions</strong> if <ul>
+<li>it is consistent. no pivot in augmented column</li>
+<li>it has free variables. rank \&lt; number of variables, nullity &gt; 0</li>
+</ul>
+</li>
+<li><strong>no solutions</strong> if <ul>
+<li>it is inconsistent. augmented column contains a pivot</li>
+</ul>
+</li>
+</ul>
+<h2 id="Gauss-Jordan-Elimination-—-how-to-get-rref-of-a-matrix"><a href="#Gauss-Jordan-Elimination-—-how-to-get-rref-of-a-matrix" class="headerlink" title="Gauss-Jordan Elimination — how to get rref of a matrix"></a>Gauss-Jordan Elimination — how to get rref of a matrix</h2><p>从左至右，对每个column：当前row元素变成1，其他消为0</p>
+<ol>
+<li>If $a_{ij} = 0$, switch the $i^{th}$ row with the first row below it whose jth entry is nonzero. If no such row exists, increase j by one and repeat this step.</li>
+<li>Multiply the ith row by 1/aij to make a pivot entry in the position $(i,j)$.</li>
 <li>Eliminate all other entries in the jth column by subtracting suitable multiples of the ith row from the other rows.</li>
 <li>Increase i and j by one and return to Step 1.<br>The algorithm terminates after the last row or last column is processed. The output of this algorithm is the reduced row echelon form rref(A) of A.<br><img src="/2018/07/30/LinearAlgebra/rref.png" alt=""></li>
 </ol>
-<h2 id="Nonsingular-Matrices"><a href="#Nonsingular-Matrices" class="headerlink" title="Nonsingular Matrices"></a>Nonsingular Matrices</h2><p>x=A<sup>-1</sup>b</p>
-<p>inverse / reciprocal. 逆<br>可逆性 A n × n matrix A is invertible / nonsingular if and only if   rank(A) = n  .</p>
-<p><strong>Gauss-Jordan Algorithm for Computing A<sup>-1</sup></strong><br>Let A be a n × n matrix. The following steps will compute A<sup>-1</sup> or determine that A<sup>-1</sup>exists.</p>
-<ol>
-<li>Form the augmented matrix [A | IA<sub>n</sub>].</li>
-<li>Use Gauss-Jordan elimination to row reduce [A | In] to [rref(A) | B].</li>
-<li>If rref(A) ̸= In, then A is not invertible.</li>
-<li>If rref(A) = In, then A is invertible and B = A<sup>-1</sup>.</li>
+<h2 id="Nonsingular-Matrices-非奇异矩阵（可逆矩阵）"><a href="#Nonsingular-Matrices-非奇异矩阵（可逆矩阵）" class="headerlink" title="Nonsingular Matrices 非奇异矩阵（可逆矩阵）"></a>Nonsingular Matrices 非奇异矩阵（可逆矩阵）</h2><p>$Ax = b$  —&gt; $x=A^{-1}b$</p>
+<p>$A^{-1}$: inverse / reciprocal. 逆</p>
+<h3 id="Invertibility-可逆性"><a href="#Invertibility-可逆性" class="headerlink" title="Invertibility 可逆性"></a>Invertibility 可逆性</h3><p>a $n × n$ matrix A is invertible / nonsingular if and only if <code>rank(A) = n</code>  </p>
+<p>* <strong>only apply to square matrix</strong></p>
+<h3 id="Gauss-Jordan-Algorithm-for-Computing-A-1"><a href="#Gauss-Jordan-Algorithm-for-Computing-A-1" class="headerlink" title="Gauss-Jordan Algorithm for Computing $A^{-1}$"></a>Gauss-Jordan Algorithm for Computing $A^{-1}$</h3><ol>
+<li>Form $[A | I_n]$.</li>
+<li>Solve $[A | I_n]$ —&gt; $[rref(A) | B]$.</li>
+<li>If $rref(A) \neq I_n$, then A is <strong>not</strong> invertible.</li>
+<li>If $rref(A) = I_n$, then A is invertible and $A^{-1} = B$.</li>
 </ol>
-<p><strong>Matrix Inverse Rules</strong><br>Involution Rule: If A is invertible, then (A<sup>-1</sup>)<sup>-1</sup> = A.<br>Transposition Rule: If A is invertible, then (A<sup>-1</sup>)  = (A )<sup>-1</sup>.<br>Reverse Multiplication Rule: If A and B are invertible, then (AB)<sup>-1</sup> = B<sup>-1</sup>A<sup>-1</sup>.<br>Scaling Rule: If A is invertible and c ̸= 0, then (c · A)<sup>-1</sup> = (1/c) · A<sup>-1</sup>.</p>
-<h1 id="Least-Squares-Approximations"><a href="#Least-Squares-Approximations" class="headerlink" title="Least Squares Approximations"></a>Least Squares Approximations</h1><h2 id="Fitting-Lines-to-Data"><a href="#Fitting-Lines-to-Data" class="headerlink" title="Fitting Lines to Data"></a>Fitting Lines to Data</h2><p><img src="/2018/07/30/LinearAlgebra/1.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/2.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/3.png" alt=""></p>
-<h2 id="Linear-Independence"><a href="#Linear-Independence" class="headerlink" title="Linear Independence"></a>Linear Independence</h2><p>Let {v1, v2,…, vk} be the columns of a matrix A = [v1, v2,…, vk]<br>The list of vectors {v1, v2,…, vk} is<br><strong>linearly independent</strong> if rank(A) = the number of columns of A<br><strong>linearly dependent</strong> if rank(A) &lt; the number of columns of A<br>A matrix A whose columns are linearly independent (rank(A) equals the number of columns of A) is said to have <strong>full column rank</strong>.</p>
-<p><strong>Nonsingularity of A<sup>T</sup>A</strong><br>If A has full column rank, then A<sup>T</sup>A is nonsingular.<br>This means that the system   A<sup>T</sup>Ax = A<sup>T</sup>b   has a unique solution x , even if   Ax = b   has no solution.</p>
-<h2 id="The-Method-of-Least-Squares"><a href="#The-Method-of-Least-Squares" class="headerlink" title="The Method of Least Squares"></a>The Method of Least Squares</h2><p>When   Ax = b   has no solution,multiplyby A<sup>T</sup> and solve   A<sup>T</sup>Ax =A<sup>T</sup>b   for x .<br>The vector x  is called the <strong>least squares approximate solution</strong> to Ax = b .<br>This approximate solution makes the error   E = ∥Ax − b∥A<sup>2</sup>   as small as possible.</p>
-<h2 id="Gram-Schmidt-Orthogonalization-and-QR-Factorization"><a href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization" class="headerlink" title="Gram-Schmidt Orthogonalization and QR-Factorization"></a>Gram-Schmidt Orthogonalization and QR-Factorization</h2><p>Inversion:   (AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup><br>Transposition:   (AB)<sup>-1</sup> = B<sup>-1</sup>A<sup>-1</sup><br>orthogonal.<br>orthonormal.</p>
-<p><strong>Orthonormal List of Vectors</strong><br>A list of vectors {q1, q2,…, qk} is called orthonormal if each vector is a <strong>unit</strong> vector and each pair of vectors is <strong>orthogonal</strong>.</p>
-<p><strong>Matrices with Orthonormal Columns</strong><br>Matrices with <strong>orthonormal</strong> columns satisfies   Q<sup>T</sup>Q = I  . (proved by its definition)<br>Note that these matrices need not be square.<br>But when Q is a <strong>square</strong> matrix, the relation   Q<sup>T</sup>Q = I   means that   Q<sup>T</sup> = Q<sup>-1</sup>  . Such matrices are called <strong>orthogonal</strong> matrices.<br>如果正方形矩阵的列向量是orthonormal（相互orthogonal且长度都为1）的，则该矩阵是orthogonal的。</p>
-<p><strong>Least-Squares Approximationof Qx = b</strong><br>The least-squares approximation x of   Q x = b   is   x = Q<sup>T</sup>b   .<br>Consequently, if   Qx = QQ<sup>T</sup>b != b   then the system   Qx = b   is inconsistent.</p>
-<p><strong>QR-Decompositions</strong><br>Given   A = QR  , the least squares approximate solution to   Ax = b   is the solution x to the upper-triangular system   Rx = Q<sup>T</sup>b  .</p>
-<p><strong>Using Gram-Schmidt Algorithm to Compute A=QR</strong><br>Input: A matrix A with linearly independent columns (rank(A) equals the number of<br>columns of A).<br>Output: A QR-decomposition   A = QR  .<br><img src="/2018/07/30/LinearAlgebra/ga.png" alt=""></p>
-<p>Projecting a Vector v onto Another Vector w<br><img src="/2018/07/30/LinearAlgebra/proj.png" alt=""></p>
-<p>Summary<br>  Ax=b -&gt; QRx = b -&gt; Rx = Q<sup>T</sup>b</p>
-<h1 id="Elgenvalues"><a href="#Elgenvalues" class="headerlink" title="Elgenvalues"></a>Elgenvalues</h1><h2 id="Eigenvalues-amp-Eigenvectors"><a href="#Eigenvalues-amp-Eigenvectors" class="headerlink" title="Eigenvalues &amp; Eigenvectors"></a>Eigenvalues &amp; Eigenvectors</h2><p>Eigenvalues. 特征值<br>递推关系<br><strong>Eigenvalues</strong><br>A scalar λ is an eigenvalue of an n×n matrix A if the matrix   A−λ·I<sub>n</sub>   is singular.</p>
-<ul>
-<li>Calculate λ:   |A − λ · I<sub>n</sub>| = 0</li>
-<li>Test to Determine if λ is an Eigenvalue of A: a scalar λ is an eigenvalue of an n × n matrix A if and only if   rank(A − λ · I<sub>n</sub>) &lt; n  .</li>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/07/30/LinearAlgebra/7.png" alt="7"></h3><h3 id="Matrix-Inverse-Rules"><a href="#Matrix-Inverse-Rules" class="headerlink" title="Matrix Inverse Rules"></a>Matrix Inverse Rules</h3><ul>
+<li><strong>Involution</strong>: If A is invertible, then $(A^{-1})^{-1} = A$.</li>
+<li><strong>Transposition</strong>: If A is invertible, then $(A^{-1})^{T}  = (A^{T})^{-1}$</li>
+<li><strong>Reverse Multiplication</strong>: If A and B are invertible, then $(AB)^{-1}= B^{-1}A^{-1}$</li>
+<li><strong>Scaling Rule</strong>: If A is invertible and $c \neq 0$, then $(c · A)^{-1} = \frac{1}{c} · A^{-1}$.</li>
 </ul>
-<p><strong>Eigenvectors</strong><br>  Suppose that λ is an eigenvalue of a matrix A. An eigenvector of A associated to the eigenvalue λ is a vector v satisfying the equation   Av = λ·v</p>
+<h1 id="Least-Squares-Approximations"><a href="#Least-Squares-Approximations" class="headerlink" title="Least Squares Approximations"></a>Least Squares Approximations</h1><h2 id="Fitting-Lines-to-Data"><a href="#Fitting-Lines-to-Data" class="headerlink" title="Fitting Lines to Data"></a>Fitting Lines to Data</h2><p><img src="/2018/07/30/LinearAlgebra/1.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/2.png" alt=""><br><img src="/2018/07/30/LinearAlgebra/3.png" alt=""></p>
+<h2 id="The-Method-of-Least-Squares"><a href="#The-Method-of-Least-Squares" class="headerlink" title="The Method of Least Squares"></a>The Method of Least Squares</h2><p>Let ${v_1, v_2,…, v_k}$ be the columns of a matrix $A = [v_1, v_2,…, v_k]$<br>The list of vectors ${v_1, v_2,…, v_k}$ is</p>
 <ul>
-<li><p>Test to Determine if v is an Eigenvector of A: A vector v != 0 is an eigen vector of A if and only if   Av =λ·v   for some scalar λ. In this situation, λ is an eigenvalue of A.</p>
-<p><strong>Eigenpair</strong><br>An eigenpair of a matrix A is a pair (λ,v) where λ is an eigen value of A and v is an eigenvector of A corresponding to the eigenvalue λ.<br>many different eigenvectors may be associated to the same eigenvalue.</p>
+<li><strong>linearly independent</strong> if rank(A) = k —  <strong>full column rank</strong><ul>
+<li>if A is a square matrix, then it is nonsigular</li>
+</ul>
+</li>
+<li><strong>linearly dependent</strong> if rank(A) &lt; k</li>
+</ul>
+<p><strong>Nonsingularity of $A^TA$</strong></p>
+<ul>
+<li>If $A_{n*k}$ has full column rank ($rank(A)=k$), then $A^{T}A$ is nonsingular ($(A^TA)^{-1}$ exists).</li>
+<li>If C is nonsingular, then $Cx=d$ has a unique solution. (because we can do $C^{-1}Cx=C^{-1}d$ —&gt; $ x = C^{-1}d$ </li>
+</ul>
+<p>This means that the system $A^TAx = A^Tb$  has a unique solution x.</p>
+<p><strong>Least Squares Approximation</strong></p>
+<p>When $Ax = b$ has no solution, solve $A^TAx =A^Tb$  for x .<br>The vector x  is called the <strong>least squares approximate solution</strong> to $Ax = b$ .<br>This approximate solution makes the error $E = ∥Ax − b∥^2$ as small as possible.</p>
+<h2 id="Gram-Schmidt-Orthogonalization-and-QR-Factorization"><a href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization" class="headerlink" title="Gram-Schmidt Orthogonalization and QR-Factorization"></a>Gram-Schmidt Orthogonalization and QR-Factorization</h2><p>Inversion:   $(AB)^T= B^{T}A^{T}$<br>Transposition:   $(AB)^{-1}= B^{-1}A^{-1}$</p>
+<p><strong>Orthonormal </strong>list of vector<br>A list of vectors ${q_1, q_2,…, q_k}$ is called orthonormal if </p>
+<ul>
+<li>each vector is a <strong>unit</strong> vecto: $∥q_i∥ = 1$</li>
+<li>each pair of vectors is <strong>orthogonal</strong>: $q_i q_j = 0$</li>
+</ul>
+<p><strong>Matrices with Orthonormal Columns</strong><br>If matrix Q is composed of orthonormal columns, then $Q^{T}Q = I$ . (proved by its definition) </p>
+<p>Note that these matrices need NOT be square.</p>
+<p><strong>Orthogonal</strong> Matrix</p>
+<p>when Q is a <strong>square</strong> matrix, the relation $Q^{T}Q = I$ means that $Q^{-1}$ exists, and $Q^{-1}= Q^{T}$. </p>
+<p>Such matrices are called <strong>orthogonal</strong> matrices.<br>如果正方形矩阵的列向量是orthonormal（相互orthogonal且长度都为1）的，则该矩阵是orthogonal的。</p>
+<p><strong>Least-Squares Approximation for Qx = b</strong><br>The least-squares approximation $x$ of $Qx = b$ is $x = Q^{T}b$.<br>Consequently, if $Qx = QQ^{T}b \neq b$   then the system $Qx = b$ is inconsistent. (先乘$Q^{T}$, 再乘$Q$倒回去，但是结果不等，说明$Q^{T}b$ 只是近似解)</p>
+<p><strong>QR-Decompositions</strong><br>Given $A = QR$, the least squares approximate solution to $Ax = b$   is the solution x to the upper-triangular system $Rx = Q^{T}b$.</p>
+<p><strong>Using Gram-Schmidt Algorithm to Compute A=QR</strong><br>Input: matrix $A$ with linearly independent columns ($rank(A) =k$).<br>Output: find $Q, R$ for the QR-decomposition $A = QR$.</p>
+<p><img src="/2018/07/30/LinearAlgebra/ga.png" alt=""></p>
+<p>Explaination: projecting $v$ onto $w$<br><img src="/2018/07/30/LinearAlgebra/proj.png" alt=""></p>
+<p>* <strong>There are other way of computing Q, R and we might get results that are sligthly different in signals.</strong></p>
+<p>Ax=b -&gt; QRx = b -&gt; Rx = Q^{T}b</p>
+<h1 id="Elgenvalues"><a href="#Elgenvalues" class="headerlink" title="Elgenvalues"></a>Elgenvalues</h1><h2 id="Eigenvalues-amp-Eigenvectors"><a href="#Eigenvalues-amp-Eigenvectors" class="headerlink" title="Eigenvalues &amp; Eigenvectors"></a>Eigenvalues &amp; Eigenvectors</h2><p>Eigenvalues. 特征值<br>递推关系</p>
+<p><strong>Eigenvalues</strong></p>
+<ul>
+<li><p>Calculate λ:   $|A − λ · I_n| = 0$</p>
+</li>
+<li><p>Determine if $λ$ is an Eigenvalue of $A$: $λ$ is an eigenvalue of an $n×n$ matrix $A$ if the matrix $A−λI_n$  is singular ( $rank(A − λ  I_n) &lt; n$).</p>
 </li>
 </ul>
-<h2 id="Pivot-Basis"><a href="#Pivot-Basis" class="headerlink" title="Pivot Basis"></a>Pivot Basis</h2><p><strong>Geometric Multiplicity</strong><br>  The geometric multiplicity of λ as an eigenvalue of A is a number that measures the number of <strong>linearly independent</strong>(nonpivot columns) eigenvectors of A associated to λ.    gm<sub>A</sub>(λ) = nullity(A−λ·I<sub>n</sub>)  .</p>
-<p>  <strong>The Pivot Basis Associated to an Eigenvalue</strong><br>  Suppose that λ is an eigenvalue of an n×n matrix A. To find the pivot basis associated to λ, start by considering the system of linear equations given by   (A − λ · I<sub>n</sub>) x = 0  .<br> Use the reduced row echelon form   rref[A − λ · I<sub>n</sub> | 0 ]   to write the general solution to   (A−λ·I<sub>n</sub>)x = 0   as   x = c1·v1 + c2·v2 +···+cg·vg  . The list of vectors   {v1, v2,…, vg}   is called the <strong>pivot basis</strong> associated to λ. (but not the eigenvector associated to λ)</p>
-<p><strong>Eigenvectors are Linear Combinations of the Pivot Basis</strong><br>The eigenvectors of A associated to λ are the linear combinations of the pivot basis {v1, v2,…, vg}. That is, every eigenvector of A associated to λ is of the form   v = c1 · v1 + c2 · v2 + · · · + cg · vg   where c1,c2,…,cg are scalars.</p>
-<h2 id="Diagonalization"><a href="#Diagonalization" class="headerlink" title="Diagonalization"></a>Diagonalization</h2><p><strong>Diagonalizable</strong><br>An n × n matrix A is diagonalizable if it is possible to find an invertible n × n matrix P and an n × n diagonal matrix D satisfying   A = PDP<sup>−1</sup>  .<br>The matrix power A<sub>k</sub> is given by   A<sub>k</sub> = PD<sub>k</sub>P<sup>−1</sup></p>
+<p><img src="/2018/07/30/LinearAlgebra/111.png" alt=""></p>
+<p><strong>Eigenvectors</strong><br>An eigenvector of $A$ associated to the eigenvalue $λ$ is a vector $v$ satisfying the equation $Av = λv$.</p>
 <ul>
-<li>A is diagonalizable if and only if the sum of the geometric multiplicities of each eigenvalue of A is equal to n.<br><img src="/2018/07/30/LinearAlgebra/diag.png" alt=""></li>
+<li>Test to Determine if v is an Eigenvector of A: A vector v != 0 is an eigen vector of A if and only if   Av =λ·v   for some scalar λ. In this situation, λ is an eigenvalue of A.<br><img src="/2018/07/30/LinearAlgebra/112.png" alt=""></li>
 </ul>
-<p><strong>Algorithm for Diagonalizing a Matrix</strong><br>Let A be a diagonalizable matrix. To find a diagonalization   A = PDP<sup>−1</sup>  ., start with two empty n × n matrices P and D. Then complete the following steps for each eigenvalue λ of A.</p>
-<ol>
-<li>Find the pivot basis {v1, v2,…, vg} associated to λ.</li>
-<li>Insert each vector from the <strong>pivot basis</strong> { v 1, v 2, . . . , v g} into the first available columns of P.</li>
-<li>Insert <strong>λ</strong> onto the first available diagonal entries of D a total number of gm<sub>A</sub>(λ) times.<br><img src="/2018/07/30/LinearAlgebra/diag2.png" alt=""></li>
-</ol>
-<h2 id="Spectral-Theorem-and-Principal-Component-Analysis"><a href="#Spectral-Theorem-and-Principal-Component-Analysis" class="headerlink" title="Spectral Theorem and Principal Component Analysis"></a>Spectral Theorem and Principal Component Analysis</h2><p>symmetric:   A<sup>T</sup> = A<br>orthogonal:   Q<sup>T</sup> = Q&lt;<sup>-1</sup></p>
-<p><strong>Spectral Theorem (Diagonalization of Symmetric Matrices)</strong><br>Let A be a symmetric matrix, so   A<sup>T</sup> = A  . Then there is a diagonalization   A = QDQ<sup>T</sup>    where Q is an orthogonal matrix   Q<sup>T</sup>= Q<sup>-1</sup>  .<br>The spectral theorem guarantees that any given symmetric matrix is diagonalizable and that the eigenvectors chosen during the diagonalization process may be chosen to be or- thonormal.<br>作用：如果能够找到orthogonal的Q，就无需求Q-1了，直接求QT就好。<br><img src="/2018/07/30/LinearAlgebra/st.png" alt=""></p>
-<p><strong>The Covariance Matrix</strong><br>A -&gt; A<sub>c</sub>: <strong>centered</strong> data.<br>when we use a line to approximate centered data, the line is always of the form f (x) = m · x. That is, the line always passes through the origin.<br><img src="/2018/07/30/LinearAlgebra/center.png" alt=""></p>
-<p>Suppose that data is stored in an   n × p   matrix A, where each column corresponds to a variable. The covariance matrix of A is defined as the new matrix Σ (sigma) given by<br>  Σ= 1/(n-1) <em> A<sub>c</sub><sup>T</sup> </em> A<sub>c</sub><br>Features : positive definite</p>
+<p><strong>Eigenpair</strong></p>
+<p>An eigenpair of a matrix $A$ is a pair $(λ,v)$ where $λ$ is an eigen value of $A$ and $v$ is an eigenvector of $A$ corresponding to the eigenvalue $λ$.</p>
 <ul>
-<li>symmetric:   Σ<sup>T</sup> = Σ   -&gt; spectral theory -&gt; orthonormal eigenvectors</li>
-<li>eigenvalues of the covariance matrix are <strong>positive</strong> numbers</li>
+<li>one eigenvalue may have multiple eigenvectors. </li>
+</ul>
+<h2 id="Pivot-Basis"><a href="#Pivot-Basis" class="headerlink" title="Pivot Basis"></a>Pivot Basis</h2><p><strong>Geometric Multiplicity</strong> 几何重数<br>The geometric multiplicity of λ as an eigenvalue of $A$ is <strong>a number</strong> that measures the number of <strong>linearly independent</strong> eigenvectors (nonpivot columns) of $A$ associated to λ. </p>
+<p>$gm_A(λ) = nullity(A−λ·I_n)$</p>
+<p><strong>Find Pivot Basis Associated to $λ$</strong><br>for $(A − λ · I_n) x = 0$<br>form $[rref[A − λ · I_n | 0 ]$ </p>
+<p>write the general solution to  $(A−λ·I_n)x = 0$   as   $x = c_1·v_1 + c_2·v_2 +···+c_g·v_g$  . </p>
+<p>The list of vectors ${v1, v2,…, vg}$ is called the <strong>pivot basis</strong> associated to $λ$. (but not the eigenvector associated to λ)</p>
+<p><img src="/2018/07/30/LinearAlgebra/113.png" alt=""></p>
+<p><strong>Eigenvectors v.s Pivot Basis</strong><br>The eigenvectors of $A$ associated to $λ$ are the <strong>linear combinations</strong> of the pivot basis ${v_1, v_2,…, v_g}$. That is, every eigenvector of $A$ associated to $λ$ is of the form $v = c_1v_1 + c_2 v_2 + · · · + c_gv_g$   where $c_1,c_2,…,c_g$ are scalars.</p>
+<h2 id="Diagonalization-对于方阵"><a href="#Diagonalization-对于方阵" class="headerlink" title="Diagonalization 对于方阵"></a>Diagonalization 对于方阵</h2><p><strong>Diagonalizable</strong><br>An $n × n$ matrix $A$ is diagonalizable if it is possible to find </p>
+<ul>
+<li>an <strong>invertible</strong> $n × n$ matrix $P$ and (可逆的方阵P)</li>
+<li>an $n × n$ <strong>diagonal</strong> matrix $D$ （对角矩阵D）</li>
+</ul>
+<p>satisfying $A = PDP^{-1}$.</p>
+<p>The matrix power $A^k$ is given by $A^k = PD^kP^{-1}$ （连乘）</p>
+<p><strong>Determin diagonalizability</strong></p>
+<p>A is diagonalizable if and only if the sum of the geometric multiplicities of each eigenvalue $λ_i$ of $A$ is equal to $n$: $\sum{gm_A(λ_i)} = n$</p>
+<p><img src="/2018/07/30/LinearAlgebra/diag.png" alt=""></p>
+<p><strong>Diagonalize a Matrix</strong><br>Let A be a diagonalizable matrix. To find a diagonalization $A = PDP^{-1}$, start with two empty $n × n$ matrices $P$ and $D$. Then complete the following steps for each eigenvalue $λ$ of $A$.</p>
+<ol>
+<li>Find the pivot basis ${v_1, v_2,…, v_g}$ associated to $λ$. (solve $[rref[A − λ · I_n | 0 ]$ )</li>
+<li>P: Insert each vector from the <strong>pivot basis</strong> ${ v_1, v_2, . . . , v_g}$ into the first available columns of $P$.</li>
+<li>Q: Insert $λ$ onto the first available diagonal entries of $D$ a total number of $gm_A(λ)$ times.<br><img src="/2018/07/30/LinearAlgebra/diag3.png" alt=""></li>
+</ol>
+<h2 id="Spectral-Theorem-and-Principal-Component-Analysis"><a href="#Spectral-Theorem-and-Principal-Component-Analysis" class="headerlink" title="Spectral Theorem and Principal Component Analysis"></a>Spectral Theorem and Principal Component Analysis</h2><p>symmetric: $A^T= A$<br>orthogonal: $Q^T= Q^{-1}$</p>
+<p><strong>Spectral Theorem (Diagonalization of Symmetric Matrices)</strong><br>Let $A$ be a <strong>symmetric</strong> matrix ($A^T= A$). Then there is a diagonalization $A = QDQ^T$   where Q is an <strong>orthogonal</strong> matrix   ($Q^{T}= Q^{-1}$) .</p>
+<p>It indicates that any given symmetric matrix is diagonalizable and that the eigenvectors chosen during the diagonalization process may be chosen to be orthonormal.</p>
+<p>作用：如果能够找到orthogonal的$Q$，就无需求$Q^{-1}$，直接求$Q^T$就好。</p>
+<p><img src="/2018/07/30/LinearAlgebra/st.png" alt=""></p>
+<p><strong>The Covariance Matrix</strong> 协方差矩阵<br>$A$ -&gt; $A_c:$ <strong>centered</strong> data.<br>When using a line to approximate centered data, the line is always of the form $f (x) = mx$. </p>
+<p>That is, the line always passes through the origin.<br><img src="/2018/07/30/LinearAlgebra/center.png" alt=""></p>
+<p>Suppose that data is stored in an $n × p$ matrix $A$, where each column corresponds to a variable. </p>
+<p>The <strong>covariance matrix</strong> of A is $Σ= \frac{1}{n-1}{A_c}^TA_c$</p>
+<p><strong>positive definite</strong></p>
+<ul>
+<li><p>symmetric:   $Σ^T= Σ$   -&gt; we can use spectral theory to diagonalize $Σ=QDQ^T$ where Q is orthogonal</p>
+</li>
+<li><p>eigenvalues $\lambda_i$of the covariance matrix are <strong>positive</strong> numbers</p>
+</li>
 </ul>
 <p><strong>Orthogonal Distance</strong></p>
 <ul>
 <li>least squares: use <strong>vertical</strong> distance to measure the error (linear regression)</li>
 <li>principal component analysis (PCA): use <strong>orthogonal</strong> distance to measure the error (orthogonal regression)<br><img src="/2018/07/30/LinearAlgebra/od.png" alt=""></li>
 </ul>
-<p><strong>The Orthogonal Error in Approximating Centered Data by f (x) = m · x</strong><br>Consider the problem of using a line f(x) = m · x to approximate a centered data set, whose points are listed as vectors { p1, p2, . . . , pn}. The orthogonal error in using f (x) = m · x to approximate the data set is the sum of the squares of the orthogonal<br>distances from each of these points to the vector w = ⟨1, m⟩.<br>That is, the orthogonal error is<br>  E=∥p1 −proj<sub>w</sub>(p1)∥<sup>2</sup> +∥p2 −proj<sub>w</sub>(p2)∥<sup>2</sup> +···+∥pn −<sub>w</sub>(pn)∥<sup>2</sup></p>
+<p><strong>The Orthogonal Error in Approximating Centered Data by f (x) = m · x</strong><br>Consider the problem of using a line $f(x) = mx$ to approximate a centered data set, whose points are listed as vectors ${p_1, p_2, . . . , p_n}$. </p>
+<p>The orthogonal error in using $f (x) = mx$ to approximate the data set is: the sum of the squares of the orthogonal distances from each of these points to the vector $w = (1, m)$.(代表条线的一个向量)<br>That is, $E=∥p_1 −proj_w(p_1)∥^2+∥p_2 −proj_w(p_2)∥^2 +···+∥p_n −proj_w(p_n)∥^2$</p>
 <p><strong>Orthogonal Regression</strong></p>
+<p>Goal: Given a data set, find the line that minimizes the orthogonal error.</p>
+<p><strong>First Principal Component</strong>:  Suppose that $λ_1$ is the <strong>largest</strong> eigenvalue of the covariance matrix $Σ$(which is positive definite). A first principal component of $Σ$ is an eigenpair $(λ_1, v_1)$ of $Σ$.</p>
+<p><strong>Get the regression line</strong>:  </p>
 <ul>
-<li><p>Goal: Given a data set, find the line that minimizes the orthogonal error.</p>
-</li>
-<li><p>First Principal Component:  Suppose that λ1 is the largest eigenvalue of the covariance matrix Σ(which is positive definite). A first principal component of Σ is an eigenpair (λ1, v1) of Σ.</p>
-</li>
-<li><p>Technique:  Let A be a matrix whose rows consist of data points. Let (λ1, v1) be a first principal component of the covariance matrix Σ. Write the vector v1 in coordinates   v1 = ⟨x, y⟩   and define   m = y/x  . Then the line   f (x) = m · x   minimizes the orthogonal error.<br><img src="/2018/07/30/LinearAlgebra/or.png" alt=""></p>
-</li>
+<li>Let $A$ be a matrix whose rows consist of data points.</li>
+<li>Let $(λ_1, v_1)$ be a first principal component of the covariance matrix $Σ$. </li>
+<li>Write the vector $v_1$ in coordinates $v_1 = (x, y)$   and define $m = \frac{y}{x}$  . </li>
+<li>$f (x) = mx$ minimizes the orthogonal error.</li>
 </ul>
+<p><img src="/2018/07/30/LinearAlgebra/or.png" alt=""></p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://jingyan.baidu.com/article/27fa7326afb4c146f8271ff3.html" target="_blank" rel="noopener">如何求特征值和特征向量</a></p>
 
       
@@ -571,7 +656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -662,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector-and-Matrix-Algebra"><span class="nav-number">1.</span> <span class="nav-text">Vector and Matrix Algebra</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Span"><span class="nav-number">1.1.</span> <span class="nav-text">Span</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upper-and-Lower-Triangular-Matrices"><span class="nav-number">1.2.</span> <span class="nav-text">Upper and Lower Triangular Matrices</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Systems-of-Linear-Equations-and-Nonsigular-Matrices"><span class="nav-number">2.</span> <span class="nav-text">Systems of Linear Equations and Nonsigular Matrices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduced-Row-Echelon-Form-rref"><span class="nav-number">2.1.</span> <span class="nav-text">Reduced Row Echelon Form (rref)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">2.1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rank-and-Nullity"><span class="nav-number">2.1.2.</span> <span class="nav-text">Rank and Nullity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rref-Systems"><span class="nav-number">2.2.</span> <span class="nav-text">rref Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Consistent-and-Inconsistent"><span class="nav-number">2.2.1.</span> <span class="nav-text">Consistent and Inconsistent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-of-Solutions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Number of Solutions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gauss-Jordan-Elimination"><span class="nav-number">2.3.</span> <span class="nav-text">Gauss-Jordan Elimination</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nonsingular-Matrices"><span class="nav-number">2.4.</span> <span class="nav-text">Nonsingular Matrices</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Least-Squares-Approximations"><span class="nav-number">3.</span> <span class="nav-text">Least Squares Approximations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fitting-Lines-to-Data"><span class="nav-number">3.1.</span> <span class="nav-text">Fitting Lines to Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Independence"><span class="nav-number">3.2.</span> <span class="nav-text">Linear Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Method-of-Least-Squares"><span class="nav-number">3.3.</span> <span class="nav-text">The Method of Least Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization"><span class="nav-number">3.4.</span> <span class="nav-text">Gram-Schmidt Orthogonalization and QR-Factorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elgenvalues"><span class="nav-number">4.</span> <span class="nav-text">Elgenvalues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eigenvalues-amp-Eigenvectors"><span class="nav-number">4.1.</span> <span class="nav-text">Eigenvalues &amp; Eigenvectors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pivot-Basis"><span class="nav-number">4.2.</span> <span class="nav-text">Pivot Basis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diagonalization"><span class="nav-number">4.3.</span> <span class="nav-text">Diagonalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spectral-Theorem-and-Principal-Component-Analysis"><span class="nav-number">4.4.</span> <span class="nav-text">Spectral Theorem and Principal Component Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vector-and-Matrix-Algebra"><span class="nav-number">1.</span> <span class="nav-text">Vector and Matrix Algebra</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Systems-of-Linear-Equations-amp-Nonsigular-Matrices"><span class="nav-number">2.</span> <span class="nav-text">Systems of Linear Equations &amp; Nonsigular Matrices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduced-Row-Echelon-Form-rref"><span class="nav-number">2.1.</span> <span class="nav-text">Reduced Row Echelon Form (rref)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rref-Systems（增加了竖线右边那列）"><span class="nav-number">2.2.</span> <span class="nav-text">rref Systems（增加了竖线右边那列）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Consistency-相容-可解"><span class="nav-number">2.2.1.</span> <span class="nav-text">Consistency 相容/可解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-of-Solutions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Number of Solutions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gauss-Jordan-Elimination-—-how-to-get-rref-of-a-matrix"><span class="nav-number">2.3.</span> <span class="nav-text">Gauss-Jordan Elimination — how to get rref of a matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nonsingular-Matrices-非奇异矩阵（可逆矩阵）"><span class="nav-number">2.4.</span> <span class="nav-text">Nonsingular Matrices 非奇异矩阵（可逆矩阵）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Invertibility-可逆性"><span class="nav-number">2.4.1.</span> <span class="nav-text">Invertibility 可逆性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gauss-Jordan-Algorithm-for-Computing-A-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">Gauss-Jordan Algorithm for Computing $A^{-1}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.4.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrix-Inverse-Rules"><span class="nav-number">2.4.4.</span> <span class="nav-text">Matrix Inverse Rules</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Least-Squares-Approximations"><span class="nav-number">3.</span> <span class="nav-text">Least Squares Approximations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fitting-Lines-to-Data"><span class="nav-number">3.1.</span> <span class="nav-text">Fitting Lines to Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Method-of-Least-Squares"><span class="nav-number">3.2.</span> <span class="nav-text">The Method of Least Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gram-Schmidt-Orthogonalization-and-QR-Factorization"><span class="nav-number">3.3.</span> <span class="nav-text">Gram-Schmidt Orthogonalization and QR-Factorization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elgenvalues"><span class="nav-number">4.</span> <span class="nav-text">Elgenvalues</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eigenvalues-amp-Eigenvectors"><span class="nav-number">4.1.</span> <span class="nav-text">Eigenvalues &amp; Eigenvectors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pivot-Basis"><span class="nav-number">4.2.</span> <span class="nav-text">Pivot Basis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diagonalization-对于方阵"><span class="nav-number">4.3.</span> <span class="nav-text">Diagonalization 对于方阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spectral-Theorem-and-Principal-Component-Analysis"><span class="nav-number">4.4.</span> <span class="nav-text">Spectral Theorem and Principal Component Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

@@ -252,6 +252,648 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/08/18/Stats/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/Stats/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T18:07:39-04:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics"></a>Statistics</h1><h2 id="Unit-1-R"><a href="#Unit-1-R" class="headerlink" title="Unit 1 R"></a>Unit 1 R</h2><h3 id="R-vs-Python"><a href="#R-vs-Python" class="headerlink" title="R vs. Python"></a>R vs. Python</h3><table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">R</th>
+<th style="text-align:center">Python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index start</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>Series of number</td>
+<td style="text-align:center">inclusive, exclusive.                                                  <code>range(0, 5)</code> gives <code>[0,1,2,3,4]</code></td>
+<td style="text-align:center">both inclusive.                          <code>0:5</code> gives <code>0,1,2,3,4,5</code></td>
+</tr>
+<tr>
+<td>negative index a[-1]</td>
+<td style="text-align:center">all elements except for first one</td>
+<td style="text-align:center">last element</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Modes-for-Objects"><a href="#Modes-for-Objects" class="headerlink" title="Modes for Objects"></a>Modes for Objects</h3><p><code>mode()</code> <code>class()</code></p>
+<p><strong>same mode</strong></p>
+<ul>
+<li>vector: <code>c(1,2,3,4)</code> <code>seq(1,4, by=1)</code> <code>length()</code></li>
+<li>matrix: <code>matrix(1:4, 2, 2)</code> <code>cbind(), rbind()</code> <code>diag(myVec)</code> <code>dim()</code></li>
+<li>array: <code>array(1:18, dim=c(2,3,3))</code> <code>dim()</code></li>
+</ul>
+<p><strong>different mode</strong></p>
+<ul>
+<li>dataframe: <code>data.frame(myVecA, myVecB, myVecC)</code> <code>colnames(myDf)</code> <code>str(myDf)</code></li>
+<li>list: <code>list(myObjA, myObjB, myObjC)</code> <code>myList$myObjA</code> <code>length()</code></li>
+</ul>
+<h3 id="Read-files"><a href="#Read-files" class="headerlink" title="Read files"></a>Read files</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>sep</th>
+<th style="text-align:center">header</th>
+<th style="text-align:center">stringAsFactor (TRUE=Factor / FALSE=Char)</th>
+<th>na.strings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>read.table()</code></td>
+<td>‘ ‘</td>
+<td style="text-align:center">FALSE</td>
+<td style="text-align:center">Factor</td>
+<td>‘NA’</td>
+</tr>
+<tr>
+<td><code>read.csv()</code></td>
+<td>‘,’</td>
+<td style="text-align:center">TRUE</td>
+<td style="text-align:center">Factor</td>
+<td>‘NA’</td>
+</tr>
+<tr>
+<td><code>read.xlsx()</code></td>
+<td>-</td>
+<td style="text-align:center">colNames=TRUE</td>
+<td style="text-align:center">(no such para) Char</td>
+<td>‘NA’</td>
+</tr>
+<tr>
+<td><code>read_sas()</code></td>
+<td>-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td>num: ‘.’  char: ‘ ‘</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Histogram-vs-Bar-Plot"><a href="#Histogram-vs-Bar-Plot" class="headerlink" title="Histogram vs.Bar Plot"></a>Histogram vs.Bar Plot</h3><p><strong>Histogram</strong> — continuous data</p>
+<ul>
+<li>bin width to be determined by ourself</li>
+</ul>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats1/hist.png" alt=""></p>
+<p><strong>Bar Plot</strong> — discrete data</p>
+<ul>
+<li>each bar is a category</li>
+</ul>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats1/barplot.png" alt=""></p>
+<h3 id="Explore-Distributions-in-R"><a href="#Explore-Distributions-in-R" class="headerlink" title="Explore Distributions in R"></a>Explore Distributions in R</h3><p><strong>Distribution</strong></p>
+<ul>
+<li>Normal distribution: <code>norm(x, mean=0, sd=1)</code></li>
+<li>Exponential distribution: <code>exp(x, rate=1)</code></li>
+<li>Uniform distribution: <code>unif(x, min=0, max=1)</code></li>
+<li>Binomial distribution: <code>binom(x, size, prob)</code></li>
+<li>Poisson distribution: <code>pois(x, lambda)</code></li>
+<li>T distribution: <code>t(t, df)</code></li>
+</ul>
+<p><strong>Prefix</strong></p>
+<ul>
+<li>Probability density function (PDF): <code>d</code> （给x值求对应的概率）</li>
+<li>Cumulative distribution function (CDF, probabilities): <code>p</code> （给X求对应的累计概率）</li>
+<li>Percentiles from the distribution (quantiles): <code>q</code>  （给累计概率求对应的X）</li>
+<li>Random number generation from the distribution: <code>r</code> (产生随机数)</li>
+</ul>
+<h2 id="Unit-2-Statistical-Inference-Z-test"><a href="#Unit-2-Statistical-Inference-Z-test" class="headerlink" title="Unit 2 Statistical Inference (Z-test)"></a>Unit 2 Statistical Inference (Z-test)</h2><h3 id="Interpretations"><a href="#Interpretations" class="headerlink" title="Interpretations"></a>Interpretations</h3><p><strong>Hypothesis Testing</strong></p>
+<ul>
+<li>Goal: to determine whether <strong>a claim</strong> about a population parameter is supported by the sample data.</li>
+<li>Conclusion: Reject $H_0$ / Fail to reject $H_0$</li>
+</ul>
+<p><strong>Interval Estimation</strong></p>
+<ul>
+<li><p>Goal: to determine <strong>a range of plausible values</strong> for a population parameter.</p>
+</li>
+<li><p>Conclusion: “We are 95% confident that the interval captures the true value of the population parameter.”</p>
+</li>
+</ul>
+<h3 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h3><p><strong>Parameter</strong>: mean, std<br><strong>Statistics</strong>: Z-score(normal dist), T-score(t-test), F-score(anova)</p>
+<p><strong>Observation</strong>: a value</p>
+<p><strong>Sample</strong>: a collection of observations form a sample</p>
+<p><strong>Hypothesis Testing</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Name</th>
+<th>Notation</th>
+<th>Example Value</th>
+<th style="text-align:left">Explaination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">z-score</td>
+<td>z</td>
+<td>&gt;+1.96 or &lt; -1.96</td>
+<td style="text-align:left">the <strong>number of  SE</strong> it falls above or below the mean                $z = \frac{x - \mu}{SE}$, $SE = \frac{\sigma}{\sqrt{n}}$</td>
+</tr>
+<tr>
+<td style="text-align:right">p-value</td>
+<td>p</td>
+<td>&lt;0.05</td>
+<td style="text-align:left">the <strong>probability</strong> of observing a sample statistic as extreme or more extreme than the one observed, assuming the null hypothesis is true(area, above the corresponding z)</td>
+</tr>
+<tr>
+<td style="text-align:right">significance level</td>
+<td>$\alpha$</td>
+<td>0.05</td>
+<td style="text-align:left">a threshold. we have a 5% chance of observing one sample means from the sampling distribution that is far enough away from the claimed value in the null hypothesis to lead to it being rejected</td>
+</tr>
+</tbody>
+</table>
+<p>计算z 相当于是把$\bar{x}$从N($\mu_0$, SE)标准化到了N(0, SE)的正态分布上, 标准化后就可以通过查表得到p-value了：</p>
+<p><img src="/2018/08/18/Stats/1.jpg" alt=""></p>
+<p>row, col: z-score<br>inside: 1 - p-values (area below this z-scores)<img src="/2018/08/18/Stats/2.png" alt=""></p>
+<p><strong>Interval Estimation</strong></p>
+<ul>
+<li>point estimate: $μ  =  \bar{x}$</li>
+<li>Std: $SE = \frac{s}{\sqrt{n}}$</li>
+<li>confidence intervals: $(\bar{x} - z^<em> SE,  \bar{x} + z^</em>SE)$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Notation</th>
+<th style="text-align:center">Example Value</th>
+<th style="text-align:left">Explaination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">confidence level</td>
+<td style="text-align:center">($1-\alpha) ·100\%$</td>
+<td style="text-align:center">95%</td>
+<td style="text-align:left">We are 95% confident  that the interval captures the true value of the population parameter</td>
+</tr>
+<tr>
+<td style="text-align:center">multiplier</td>
+<td style="text-align:center">$C_\alpha$</td>
+<td style="text-align:center">2(1.96)</td>
+<td style="text-align:left">the interval spreads out 2 SE from the point estimate,</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Relationships between these statistics</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Z-score</th>
+<th style="text-align:center">for Hypothesis testing</th>
+<th>for Interval Estimation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Threshold</td>
+<td style="text-align:center">$z^* =1.96$</td>
+<td style="text-align:center">significance level $\alpha=0.05$</td>
+<td>confidence level 95%</td>
+</tr>
+<tr>
+<td>Calculated</td>
+<td style="text-align:center">$z = 0.43$</td>
+<td style="text-align:center">p-value $p=1 - 0.6664$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Steps-of-Inference"><a href="#Steps-of-Inference" class="headerlink" title="Steps of Inference"></a>Steps of Inference</h3><p>testing -&gt; estimation</p>
+<p>先假设检验【定性】，再区间估计【定量】</p>
+<p>Once a significant signal is detected with a hypothesis test, the next step is often to report a point and interval estimate to understand that signal.<br>For example, suppose the hypothesis test found evidence that θ is bigger than 10. What is your next question? Ok – how much bigger than 10? The interval estimate would allow you to address that question. As such, estimation and hypothesis testing are often used in tandem when performing inference; they are two parts of the whole.</p>
+<h3 id="Statistical-vs-Scientific-Significance"><a href="#Statistical-vs-Scientific-Significance" class="headerlink" title="Statistical vs. Scientific Significance"></a>Statistical vs. Scientific Significance</h3><p>Increasing the sample size will result in smaller numerical differences but still meeting the statistical significance threshold when performing a hypothesis test.  </p>
+<p>Because of this, it is really important to always pair a <strong>hypothesis test</strong> with a <strong>confidence interval</strong> so the presence or lack of a signal in the test can be explained  in the context of plausible values of the parameter.  By examining the corresponding confidence interval, you will be able to  determine if signal found in a hypothesis test is scientifically relevant.</p>
+<p>statistical significance: 相对的显著性</p>
+<p>scientific significance: 绝对的显著性</p>
+<h2 id="Unit-3-4-T-test-ANOVA-Linear-Regression"><a href="#Unit-3-4-T-test-ANOVA-Linear-Regression" class="headerlink" title="Unit 3-4 T-test, ANOVA, Linear Regression"></a>Unit 3-4 T-test, ANOVA, Linear Regression</h2><h3 id="Determine-which-test-to-be-used"><a href="#Determine-which-test-to-be-used" class="headerlink" title="Determine which test to be used"></a>Determine which test to be used</h3><p>Pool: z-test, t-test, two sample t-test, paired t-test, ANOVA, rmANOVA, Linear Regression</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Predictor</th>
+<th style="text-align:center">population parameter</th>
+<th style="text-align:center">Level</th>
+<th style="text-align:center">Dependency</th>
+<th style="text-align:left">Test to be performed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">None</td>
+<td style="text-align:center">known $\mu$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">z-test</td>
+</tr>
+<tr>
+<td style="text-align:center">None</td>
+<td style="text-align:center">unknown, only have $s$</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">t-test</td>
+</tr>
+<tr>
+<td style="text-align:center">Discrete</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">independent</td>
+<td style="text-align:left">Two sample t-test</td>
+</tr>
+<tr>
+<td style="text-align:center">Discrete</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">dependent</td>
+<td style="text-align:left">Paired t-test</td>
+</tr>
+<tr>
+<td style="text-align:center">Discrete</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">>=3</td>
+<td style="text-align:center">independent</td>
+<td style="text-align:left">ANOVA</td>
+</tr>
+<tr>
+<td style="text-align:center">Discrete</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">>=3</td>
+<td style="text-align:center">dependent</td>
+<td style="text-align:left">rmANOVA</td>
+</tr>
+<tr>
+<td style="text-align:center">Continuous</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">independent</td>
+<td style="text-align:left">Linear Regression</td>
+</tr>
+<tr>
+<td style="text-align:center">Continuous</td>
+<td style="text-align:center"><code></code></td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">dependent</td>
+<td style="text-align:left">Multi-variable Linear Regression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>z-test vs. t-test</strong></p>
+<p>$\sigma$: population std (x, i=0~N)</p>
+<p>$s$: std of sample(x, i=0~n)</p>
+<p>SE: standard Error, std of the sample distribution($\bar{x}$)</p>
+<ul>
+<li>$SE = \frac{\sigma}{\sqrt{n}}$ — perform a Z-test</li>
+<li>$SE = \frac{s}{\sqrt{n}}$ — perform a T-test</li>
+</ul>
+<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><p><strong>z-test</strong></p>
+<ul>
+<li><strong>Independence of observations</strong>. </li>
+<li><strong>Large sample size</strong>. n ≥ 30 is a good rule of thumb. it doesn’t matter what distribution those observations come from.</li>
+<li>The population distribution is not strongly skewed. </li>
+</ul>
+<p> <strong>t-test</strong></p>
+<ul>
+<li><p><strong>Independence of observations</strong>. collect a simple random sample from less than 10% of the population.</p>
+</li>
+<li><p>Approximately <strong>normal</strong>. Observations come from a nearly normal distribution.</p>
+</li>
+</ul>
+<p><strong>Two sample t-test</strong></p>
+<ul>
+<li>each sample meets the conditions for using the t-test</li>
+<li>the two <strong>samples</strong> are <strong>independent</strong> of each other</li>
+</ul>
+<p><strong>Paired t-test</strong></p>
+<ul>
+<li>each sample meets the conditions for using the t-test</li>
+<li>the two <strong>samples</strong> are <strong>dependent</strong> of each other</li>
+</ul>
+<p><strong>ANOVA</strong></p>
+<p><strong>Assumptions</strong></p>
+<ul>
+<li><strong>Independence</strong>. The observations are independent <strong>within and across</strong> groups.</li>
+<li>Approximately normal. The data within each group are nearly normal.</li>
+<li><strong>Constant variance</strong>. The variability across the groups is about equal. Usually, the largest sample standard deviation should not be more than twice as large as the smallest across the groups.</li>
+</ul>
+<p><strong>rmANOVA</strong></p>
+<ul>
+<li>The observations <strong>within</strong> each group are <strong>independent</strong>.</li>
+<li>The <strong>same subjects</strong> are measured within each group. This assumption can be checked by looking for any missing values of the response variable across the K groups.</li>
+<li>The response variable must be <strong>normally</strong> distributed within each group.  This assumption can be checked by creating a normal probability plot of the response variable for each group.</li>
+<li>The <strong>variance</strong> of the paired differences in the response variable for each pair of the K groups must be the same. The standard deviation needs to be same <strong>for all K(K-1)/2 pairs</strong> of K groups. This assumption can be checked by computing the sample standard deviation of the paired differences for each pair of the groups.Make sure that the largest standard deviation is not more than twice the smallest.</li>
+</ul>
+<h3 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h3><p><strong>T-test</strong>: use how different a sample mean is from a given value μ0,  to decide if the population mean μ is really this value $μ_0$. </p>
+<p>for the sample we got:</p>
+<ul>
+<li>sample mean: $\bar{x}$</li>
+<li>sample std: s</li>
+</ul>
+<p>for the sample distribution:</p>
+<ul>
+<li>center: $μ_0$</li>
+<li>standard error: $SE = \frac{s} {\sqrt{n}}$</li>
+<li>degrees of freedom: $df = n - 1$</li>
+</ul>
+<p>The distribution of all samples we might get from the population. Our $\bar{x}$ is at some point of this distribution.</p>
+<p><strong>Paired T-test</strong>: use how different two <strong>dependent</strong> sample means are from each other, to decide if these two population means are equal. (to decide if $μ_{diff}$ is equal to 0)</p>
+<p>for the sample we got:</p>
+<ul>
+<li>sample mean: $\bar{x}_{diff}$</li>
+<li>Sample std:$s_{diff} = \sqrt{\frac{\sum{x_i - \bar{x}_{diff}}}{n - 1}}$</li>
+</ul>
+<p>for the sample distribution: r</p>
+<ul>
+<li>center: 0</li>
+<li>Standard Error:<img src="/Users/jacqueline/hexo/source/_posts/Stats3/septt.png" alt=""></li>
+<li>degrees of freedom: $df = n_{diff} - 1$</li>
+</ul>
+<p><strong>Two sample T-test</strong>: how different two <strong>independent</strong> sample means are from each other, to decide if these two population means are equal.</p>
+<ul>
+<li>sample mean: $\bar{x}_A,  \bar{x}_B$</li>
+<li>sample std: $s_A, s_B$</li>
+</ul>
+<p>for the sample distribution:</p>
+<ul>
+<li>center: 0</li>
+<li>Standard Error: <img src="/Users/jacqueline/hexo/source/_posts/Stats3/se.png" alt=""></li>
+<li>degrees of freedom: $df = min(n_A-1, n_B-1)$ or $n_A - n_B -2$</li>
+</ul>
+<p><strong>ANOVA</strong>: making inference about the population means from three or more independent groups and want to compare the population means across the groups.</p>
+<p>$H_0: \mu_1 = \mu_2 = … =  \mu_k$<br>$H_A:$ at least one $\mu_i$ is different</p>
+<p>assume all samples have the same sample size n:</p>
+<ul>
+<li><strong>MSG</strong>:Between-Group Variability. the avg square deviation of <strong>each sample mean</strong> from the <strong>total mean</strong>(grand mean $\bar{x}_G$)</li>
+</ul>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats3/aaa.png" alt=""></p>
+<ul>
+<li><strong>MSE</strong>: Within-Group Variability. the variability of each sample group</li>
+</ul>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats3/mse.png" alt=""></p>
+<ul>
+<li>F score: $F = \frac{variability\, between\, means}{error} = \frac{Between-Group\,Variability}{Within-Group\, Variability} = \frac{MSG}{MSE} = \frac{SSG/df_G}{SSE/df_E} = \frac{n\sum_{i=1}^{k} {(\bar{x}<em>i - \bar{x})^2/(k-1)}}{\sum</em>{i=0}^{k} {\sum_{j=0}^{n} {(x_{ij} - \bar{x}_i)^2}}/(N-k)}$</li>
+<li>degree of freedom<ul>
+<li>between group: $df_1 = df_G = k-1$</li>
+<li>within group: $df_2 = df_E = N - k$</li>
+</ul>
+</li>
+</ul>
+<p>k: number of samples</p>
+<p>n: sample size</p>
+<p>N: total number of values from all samples. N = n*k</p>
+<p>i: notation for each sample group</p>
+<p>j: notation for each value in a sample group</p>
+<p><strong>rmANOVA</strong></p>
+<p><strong>Changes on df</strong> </p>
+<ul>
+<li>$df1 = df_G= k − 1$</li>
+<li>$df2 = df_E = N − k - r - 1$</li>
+</ul>
+<p>r: number of replicates in each group (that is, the unit on which the repeated measurement is made)</p>
+<h3 id="Distributions-amp-Tables"><a href="#Distributions-amp-Tables" class="headerlink" title="Distributions &amp; Tables"></a>Distributions &amp; Tables</h3><p><strong>Normal distribution &amp; Z table</strong></p>
+<p>row, col: z-score<br>inside: shaded area (p-value for negartive z, 1 - p-values for positive z)</p>
+<p><img src="/2018/08/18/Stats/3.png" alt="3"></p>
+<p><strong>T distribution &amp; T table</strong></p>
+<p>row: df, each df corresponds to a t-distribution</p>
+<p>column: shaded area (equal to p-value)</p>
+<p>Inside: t-score    <img src="/2018/08/18/Stats/4.png" alt="4"></p>
+<p><img src="/2018/08/18/Stats/5.png" alt="5"></p>
+<p><strong>F distribution &amp; ANOVA table</strong></p>
+<p>Row: ${df}_G= k - 1$</p>
+<p>Column: shaded area (p-value)</p>
+<p>inside: f-score</p>
+<p><img src="/2018/08/18/Stats/6.png" alt="6"></p>
+<h3 id="After-ANOVA-t-test-will-be-used"><a href="#After-ANOVA-t-test-will-be-used" class="headerlink" title="After ANOVA, t-test will be used"></a>After ANOVA, t-test will be used</h3><p>After a significant <strong>ANOVA</strong> signal is detected, each possible pair of the K group means should be compared using a <strong>two sample t-test</strong> and/or confidence interval. </p>
+<p>Under the <strong>rmANOVA</strong> design, the pair-wise group means should be compared using a <strong>paired t-test</strong> instead of a two sample t-test. </p>
+<p>The <strong>Bonferroni correction</strong> should be used again to account for the <strong>multiple comparisons</strong> that will be made in the post-hoc analysis. When we run so many tests, the Type 1 Error rate increases.This issue is resolved by using a modified significance level:</p>
+<p>$α^* = α/K $</p>
+<p>K: the number of comparisons being considered. If there are k groups, then K = k(k−1) .</p>
+<h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>Linear regression attempts to explain or predict how the mean value of the response variable changes with the value of a predictor variable.</p>
+<p><strong>Conditions</strong></p>
+<ul>
+<li><strong>Linearity</strong>. The data should show a linear trend.</li>
+<li><strong>Nearly normal residuals</strong>. Generally the residuals must be nearly normal. When this condition is found to be unreasonable, it is usually because of outliers or concerns about influential points.</li>
+<li><strong>Constant variability</strong>. The variability of points around the least squares line remains roughly constant.</li>
+<li><strong>Independent observations</strong>. Be cautious about applying regression to <em>time series</em> data, which are sequential observations in time such as a stock price each day. Such data may have an underlying structure that should be considered in a model and analysis. There are also other instances where correlations within the data are important.<br><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/conditions.png" alt=""></li>
+</ul>
+<p><strong>Variables</strong></p>
+<p>X: predictor, explanatory, independent variable</p>
+<p>Y: outcome, response, dependent variable</p>
+<p>$y$: observed value [data]</p>
+<p>$\hat{y}$: expected value (based on the line of best fit) [fit]</p>
+<p>e: residual, $e = y - \hat{y}$ [residual]</p>
+<p>Data = Fit + Residual<br><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/rsd.png" alt=""></p>
+<p><strong>Least Squares Line</strong><br>choose the line that minimizes the sum of the squared residuals:  $\sum{(y_i - \hat{y}_i})^2$</p>
+<p><strong>Coefficients</strong></p>
+<ul>
+<li>R: correlation coefficient.</li>
+</ul>
+<p>Describes the <strong>strength</strong> of the linear relationship between two variables. We denote the correlation by R. usually we calculate R by software but here is the definition equation:<br><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/r.png" alt=""></p>
+<ul>
+<li>$R ^2$ : determination coefficient. </li>
+</ul>
+<p>describes the amount of variation in the response that is explained by the least squares line.</p>
+<p>eg. the R2 value was again found to be 0.2486 demonstrating that using a student’s family income to estimate their expected financial aid amount reduced the uncertainty in the estimate by explaining approximately 25% of the variability in the response. However, 75% of the variability in the response is left unexplained by the fitted regression model suggesting that other factors play a role in determining a student’s financial aid amount.</p>
+<ul>
+<li>b1: slope coefficient</li>
+</ul>
+<p><strong>Point Estimate</strong><br>We use $b_0, b_1$ to represent the point estimates of the parameters $\beta_0, \beta_1$</p>
+<p>Find LSL by applying two properties of the least squares line:</p>
+<ul>
+<li>The slope of the least squares line can be estimated by: $b_1 = R\frac{s_y} {s_x} $</li>
+<li>$(\bar{x}, \bar{y})$ is on the least squares line:  $y − \bar{y}  = b_1 ( x − \bar{x} )$</li>
+</ul>
+<p><strong>Inference</strong></p>
+<p>we use <strong>t-test</strong> for the population slope $\beta_1$</p>
+<p>$H_0$: $\beta_1 = 0$</p>
+<p>$H_A$: $\beta_1\not= 0$</p>
+<p>table for Linear Regression<br><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/lrtb.png" alt=""></p>
+<p>row 1: $b_0$<br>row 2: $b_1$</p>
+<ul>
+<li>df = N-2</li>
+<li>SE, t, p are calculated using software</li>
+</ul>
+<p>The p-values for testing whether or not the regression coefficients($b_0, b_1$) are different from 0</p>
+<p><strong>Equivalence between Linear Regression and T-tests / ANOVA</strong></p>
+<p>Input </p>
+<ul>
+<li>linear regression: continuous</li>
+<li>t-tests &amp; ANOVA: discrete</li>
+</ul>
+<ul>
+<li>LR with a single indicator variable for group (1 vs. 2)  = a two sample t-test</li>
+</ul>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/1.png" alt=""></p>
+<ul>
+<li>MLR(multivariable linear regression) with K-1 indicator variables for group (1, 2, …, K-1 vs. K) = ANOVA for K groups</li>
+<li>MLR with an indicator variable for which measurement (eg. pre vs. post) of the response variable is being considered and with n – 1 indicators for pair membership = a paired t-test.</li>
+</ul>
+<p><strong>Types of Outliers</strong><br><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/residual.png" alt=""><br>(1) one outlier, though it only slightly influence the line.<br>(2) one outlier, though it is quite close to the least squares line, wasn’t very influential.<br>(3) one point far away from the cloud, and this outlier appears to pull the least squares line up on the right.<br>(4) a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least square line fit poorly almost everywhere.<br>(5) no obvious trend in the main cloud of points, the outlier on the right appears to largely control the slope of the least squares line.<br>(6) one outlier far from the cloud, but falls quite close to the least squares line and does not appear to be very influential.</p>
+<p>There is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).</p>
+<p><strong>Leverage</strong>: Points that fall <em>horizontally</em> away from the center of the cloud tend to pull harder on the line, so we call them points with high leverage.<br>If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in cases (3), (4), and (5) of Example 7.23 – then we call it an <strong>influential point</strong></p>
+<h1 id="Implemeting-in-R"><a href="#Implemeting-in-R" class="headerlink" title="Implemeting in R"></a>Implemeting in R</h1><ul>
+<li>correlation: <code>cor(x, y, na.rm=FALSE)</code><br>na.rm is an optional argument that indicates whether or not missing values should be removed when computing the summary measure.<ul>
+<li>compute p-value give T-score: <code>pt(t-stat, df)</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Inference</strong><br>      <code>fit &lt;- lm(Y~X, data=MyData)</code><br>      <code>summary(fit)</code></p>
+<ul>
+<li>It is not possible in the lm() function to specify the claimed value for the hypothesis test involving the regression coefficients or to specify a <strong>less than</strong> or <strong>greater than</strong> alternative hypothesis.</li>
+<li>when fitting a regression line to a data set, only observations with non-missing values for both X and Y will be included in the analysis. T</li>
+</ul>
+<p><strong>Confidence Interval</strong><br><code>confint(fit, level=0.95)</code></p>
+<p><strong>Inside the fit list</strong><br><code>lm()</code> object is a list that stores all of the output generated by the function call, and we can apply the <code>names()</code> function to the list object to determine what elements are stored in the list. </p>
+<ul>
+<li><code>fit$coefficients</code> will print a length 2 vector containing the estimated regression coefficients.</li>
+<li><code>fit$fitted.values[1]</code></li>
+<li><code>fit$residuals[1]</code></li>
+<li>plot the regression line: <code>abline(fit, col=&#39;blue&#39;, lwd = 3)</code></li>
+<li>highlight a point: <code>points(X_value, X_variable, col=&#39;red&#39;, pch = 19)</code></li>
+</ul>
+<p><strong>Check Conditions</strong></p>
+<p><img src="/Users/jacqueline/hexo/source/_posts/Stats3c/conditions.png" alt=""></p>
+<ul>
+<li><p><strong>Linearity</strong>: <code>plot(fit$residuals~x)</code>,no pattern; or <code>plot(fit$residuals ~ fit$fited_values)</code>, a horizontal line at zero</p>
+</li>
+<li><p><strong>Normality</strong>:  $y-\hat{y}$  (residual) ~  theoratical quantile of a normal distribution  <code>qqPlot(fit$residuals)</code>, should be a y=x line</p>
+<p>Q-Q plot: First, the set of intervals for the quantiles is chosen. A point (<em>x</em>, <em>y</em>) on the plot corresponds to one of the quantiles of the second distribution (<em>y</em>-coordinate) plotted against the same quantile of the first distribution (<em>x</em>-coordinate). Thus the line is a parametric curve with the parameter which is the number of the interval for the quantile.</p>
+</li>
+<li><p><strong>Constant Variance</strong>: $|y-\hat{y}|$ ~ $\hat{y}$ <code>plot(fit$fitted.values, abs(fit$residuals))</code>, should be no pattern</p>
+</li>
+<li><p><strong>Independence</strong>: $y-\hat{y}$ ~ c(1:n)<code>plot(1:dim(Mydata)[1], fit$residuals)</code>, should be no pattern<br>n is the sample size. When creating this plot, we have to assume that the observations are listed in the order they were collected in the data set, unless there is variable containing the time and date of when each observation was collected.</p>
+</li>
+</ul>
+<p>or simply: <code>plot(fit)</code>: will yield 4 plots</p>
+<ul>
+<li><p>Plot 1: linearity assumption. The plot is scatter plot of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. if the linearity assumption is met, the LOESS curve should be a horizontal line at zero.</p>
+</li>
+<li><p>Plot 2: normality assumption. If all of the points fall near the line of identity, the normality assumption is met for this data set.</p>
+</li>
+<li><p>Plot 3: constant variance assumption. The plot is scatter plot of the square root of the <em>absolute</em> value of the residuals (y-axis) against the fitted values (x-axis). R also adds a LOESS curve to the plot. If the constant variance assumption is met, the LOESS curve should be a flat line.</p>
+<p>放宽条件：Specifically, there appears to be less spread  for smaller fitted values and more spread for larger fitted values. However, if we ignore the left  most point in this plot, the spread seems approximately constant. Thus, the constant varianc e  assumption may be reasonable for this data set, but it would be good to investigate the potential  violation a bit more.  </p>
+</li>
+<li><p>R will NOT create the independence diagnostic plot. Instead it creates a plot of the residuals against a measure of leverage. This plot can be used to determine if any of the data points are potential influential points because this plot includes contours lines for Cook’s distance. Be wary of data points with Cook’s distance values above 0.5 or 1. If observations in the data set have values near or above these limits, a contour line will appear in the diagnostic plot to alter you to their presence. If no contour lines appear in the plot, you may infer that there is no evidence of influential points in the data set. </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/07/31/Stats3c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1305,7 +1947,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-02T00:05:04-04:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-02T12:05:04-04:00">
                 2018-07-02
               </time>
             
@@ -1420,7 +2062,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/27/Algorithms-Backtracking/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/28/Algorithms-Backtracking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -1439,7 +2081,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/27/Algorithms-Backtracking/" itemprop="url">[Algorithms] Backtracking</a></h1>
+                <a class="post-title-link" href="/2018/06/28/Algorithms-Backtracking/" itemprop="url">[Algorithms] Backtracking</a></h1>
         
 
         <div class="post-meta">
@@ -1451,8 +2093,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T19:46:39-04:00">
-                2018-06-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-28T07:46:39-04:00">
+                2018-06-28
               </time>
             
 
@@ -1515,153 +2157,7 @@
           <p>Backtracking is an algorithmic paradigm that tries different solutions until finds a solution that “works”. It works in incremental way and is an optimization over the Naive solution where all possible configurations are generated and tried.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/06/27/Algorithms-Backtracking/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/18/Algorithms-DynamicProgramming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jacqueline Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jacqueline Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/18/Algorithms-DynamicProgramming/" itemprop="url">[Algorithms] Dynamic Programming</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-18T19:45:34-04:00">
-                2018-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/18/Algorithms-DynamicProgramming/#more" rel="contents">
+            <a class="btn" href="/2018/06/28/Algorithms-Backtracking/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1753,7 +2249,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

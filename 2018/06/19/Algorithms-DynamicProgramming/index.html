@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LeetCode,Algorithms," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
+<meta name="keywords" content="LeetCode,Algorithms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Algorithms] Dynamic Programming">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/index.html">
+<meta property="og:site_name" content="Jacqueline Wang">
+<meta property="og:description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/LongestPath.jpg">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/Tabulation-vs-Memoization.png">
+<meta property="og:updated_time" content="2018-06-21T09:10:32.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Algorithms] Dynamic Programming">
+<meta name="twitter:description" content="Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.">
+<meta name="twitter:image" content="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/LongestPath.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/"/>
+
+
+
+
+
+  <title>[Algorithms] Dynamic Programming | Jacqueline Wang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacqueline Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/06/19/Algorithms-DynamicProgramming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacqueline Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacqueline Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Algorithms] Dynamic Programming</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T07:45:34-04:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again.</p>
+<a id="more"></a>
+<hr>
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p>Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.</p>
+<h3 id="Overlapping"><a href="#Overlapping" class="headerlink" title="Overlapping"></a>Overlapping</h3><p>Dynamic Programming is mainly used when solutions of <strong>same subproblems are needed again and again</strong>. In dynamic programming, computed solutions to subproblems are <strong>stored in a table</strong> so that these don’t have to be recomputed.</p>
+<h3 id="Optimal-Substructure"><a href="#Optimal-Substructure" class="headerlink" title="Optimal Substructure"></a>Optimal Substructure</h3><p>A given problems has Optimal Substructure Property if <strong>the optimal solution is the combination of its subproblems’ optimals</strong>.</p>
+<p>For example, the <strong>Shortest Path</strong> problem has following optimal substructure property:<br>If a node x lies in the shortest path from node u to node v, then <code>minPath(u,v) = minPath(u,x) + minPath(u,v)</code>.</p>
+<p>On the other hand, the <strong>Longest Path</strong> problem <strong>doesn’t</strong> have the Optimal Substructure property. Here by Longest Path we mean longest simple path (path without cycle) between two nodes. For example, there are two longest paths from q to t: q→r→t and q→s→t. However, <code>maxPath(q,t) != maxPath(q,r) + maxPath(r,t)</code>, because the longest path from q to r is q→s→t→r and the longest path from r to t is r→q→s→t.<br><img src="/2018/06/19/Algorithms-DynamicProgramming/LongestPath.jpg" alt=""></p>
+<h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><p>There are following two different ways to store the values so that these values can be reused: Memoization and Tabulation.<br>The time taken by these two DP solutions is much less than the exponential brute Recursive method.<br>Note that unlike the Tabulated version, all entries of the lookup table are not necessarily filled in Memoized version.<br><img src="/2018/06/19/Algorithms-DynamicProgramming/Tabulation-vs-Memoization.png" alt=""></p>
+<h3 id="Solution-1-Memorization"><a href="#Solution-1-Memorization" class="headerlink" title="Solution 1: Memorization"></a>Solution 1: Memorization</h3><ul>
+<li>Top down</li>
+<li>Look-up table<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n, lookup)</span>:</span></span><br><span class="line"><span class="comment"># Base case</span></span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span> <span class="keyword">or</span> n == <span class="number">1</span> :</span><br><span class="line">lookup[n] = n</span><br><span class="line"></span><br><span class="line"><span class="comment"># If the value is not calculated previously then calculate it</span></span><br><span class="line"><span class="keyword">if</span> lookup[n] <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">lookup[n] = fib(n<span class="number">-1</span> , lookup)  + fib(n<span class="number">-2</span> , lookup)</span><br><span class="line"></span><br><span class="line"><span class="comment"># return the value corresponding to that value of n</span></span><br><span class="line"><span class="keyword">return</span> lookup[n]</span><br><span class="line"></span><br><span class="line">n = <span class="number">34</span></span><br><span class="line">lookup = [<span class="keyword">None</span>]*(<span class="number">101</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Fibonacci Number is "</span>, fib(n, lookup)</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Solution-2-Tabulation"><a href="#Solution-2-Tabulation" class="headerlink" title="Solution 2: Tabulation"></a>Solution 2: Tabulation</h3><ul>
+<li>Bottom up</li>
+<li>First calculate f(0), then f(1), then f(2)…<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line"><span class="comment"># array declaration</span></span><br><span class="line">f = [<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># base case assignment</span></span><br><span class="line">f[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># calculating the fibonacci and storing the values</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span> , n+<span class="number">1</span>):</span><br><span class="line">f[i] = f[i<span class="number">-1</span>] + f[i<span class="number">-2</span>]</span><br><span class="line"><span class="keyword">return</span> f[n]</span><br><span class="line"></span><br><span class="line">n = <span class="number">34</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Fibonacci number is "</span> , fib(n)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><ol>
+<li>Think backward, calculate forward</li>
+<li>Write down the recursive formula: <code>currentState =  lastState + currentMove</code></li>
+<li>Deal with corner case: lastState have various posibilities. We should distinguish the firstState(which could also have multiple choices) to begin with</li>
+<li>Add hash table: record every currentState</li>
+</ol>
+<h2 id="Sample-Problems-from-LeetCode"><a href="#Sample-Problems-from-LeetCode" class="headerlink" title="Sample Problems (from LeetCode)"></a>Sample Problems (from LeetCode)</h2><h3 id="Climbing-Stairs-70"><a href="#Climbing-Stairs-70" class="headerlink" title="Climbing Stairs (70)"></a>Climbing Stairs (70)</h3><p>Problem:<br>You are climbing a stair case. It takes n steps to reach to the top.<br>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br>Note: Given n will be a positive integer.</p>
+<p>Example:</p>
+<pre><code>Input: 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps</code></pre>
+
+<p>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#return self.dpMemo(n, &#123;&#125;)</span></span><br><span class="line">    <span class="keyword">return</span> self.dpTable(n)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># S1: Memorization; res is a dictionary</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dpMemo</span><span class="params">(self, n, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span> <span class="keyword">or</span> n == <span class="number">1</span>:</span><br><span class="line">            res[n] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> n <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">            res[n] = self.dpMemo(n<span class="number">-1</span>, res) + self.dpMemo(n<span class="number">-2</span>, res)</span><br><span class="line">        <span class="keyword">return</span> res[n]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># S2: Tabulation; res is an array</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dpTable</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        res = [<span class="number">0</span>] * (n+<span class="number">1</span>)</span><br><span class="line">        res[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        res[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, n+<span class="number">1</span>):</span><br><span class="line">            res[i] = res[i<span class="number">-1</span>] + res[i<span class="number">-2</span>]   <span class="comment"># i, not n!!</span></span><br><span class="line">        <span class="keyword">return</span> res[n]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Maximum-Subarray-53"><a href="#Maximum-Subarray-53" class="headerlink" title="Maximum Subarray (53)"></a>Maximum Subarray (53)</h3><p>Problem:<br>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<p>Example:</p>
+<pre><code>Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.</code></pre>
+
+<p>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">    curSum = nums[<span class="number">0</span>]</span><br><span class="line">    maxSum = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">        curSum = max(nums[i], curSum + nums[i])</span><br><span class="line">        maxSum = max(maxSum, curSum)</span><br><span class="line">    <span class="keyword">return</span> maxSum</span><br></pre></td></tr></table></figure></p>
+<h3 id="Best-Time-to-Buy-and-Sell-Stock-121"><a href="#Best-Time-to-Buy-and-Sell-Stock-121" class="headerlink" title="Best Time to Buy and Sell Stock (121)"></a>Best Time to Buy and Sell Stock (121)</h3><p>Problem:<br>Say you have an array for which the ith element is the price of a given stock on day i.<br>If you were only permitted to complete at most <strong>one</strong> transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.<br>Note that you cannot sell a stock before you buy one.</p>
+<p>Example:</p>
+<pre><code>Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Not 7-1 = 6, as selling price needs to be larger than buying price.</code></pre>
+
+<p>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">    maxProfit, minPrice = <span class="number">0</span>, float(<span class="string">'inf'</span>)</span><br><span class="line">    <span class="keyword">for</span> price <span class="keyword">in</span> prices:</span><br><span class="line">        minPrice = min(minPrice, price)   <span class="comment"># deciding buying price</span></span><br><span class="line">        maxProfit = max(maxProfit, price - minPrice) <span class="comment"># for a given buying price, find the selling price(after buying price) which maximize the profit</span></span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br></pre></td></tr></table></figure></p>
+<h3 id="Best-Time-to-Buy-and-Sell-Stock-II-122"><a href="#Best-Time-to-Buy-and-Sell-Stock-II-122" class="headerlink" title="Best Time to Buy and Sell Stock II (122)"></a>Best Time to Buy and Sell Stock II (122)</h3><p>Problem:<br>Say you have an array for which the ith element is the price of a given stock on day i.<br>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock <strong>multiple</strong> times).</p>
+<p>Example:</p>
+<p><pre><code>Input: [7,1,5,3,6,4]<br>Output: 7<br>Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.<br>Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</code></pre><br>Solution:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(prices) == <span class="number">0</span> <span class="keyword">or</span> len(prices) == <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    maxProfit = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(prices)):</span><br><span class="line">        diff = prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">if</span> diff &gt; <span class="number">0</span>:</span><br><span class="line">            maxProfit += diff</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line"></span><br><span class="line"><span class="comment"># maxProfit = SUM(positive differences)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="noopener">1. Dynamic programming - Wikipedia</a><br><a href="https://www.cdn.geeksforgeeks.org/dynamic-programming/" target="_blank" rel="noopener">2. Dynamic programming - GeeksforGeeks</a><br><a href="https://www.sohu.com/a/153858619_466939" target="_blank" rel="noopener">3. 漫画：什么是动态规划？</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/Udacity-Data-Analyst-Advanced-Data-Wrangling/" rel="next" title="[Udacity/DA] 1 Data Wrangling">
+                <i class="fa fa-chevron-left"></i> [Udacity/DA] 1 Data Wrangling
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/28/Algorithms-Backtracking/" rel="prev" title="[Algorithms] Backtracking">
+                [Algorithms] Backtracking <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jacqueline Wang" />
+            
+              <p class="site-author-name" itemprop="name">Jacqueline Wang</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world :)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jacquelinewang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jczhang.com" title="Jincheng" target="_blank">Jincheng</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overlapping"><span class="nav-number">1.1.</span> <span class="nav-text">Overlapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimal-Substructure"><span class="nav-number">1.2.</span> <span class="nav-text">Optimal Substructure</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solutions"><span class="nav-number">2.</span> <span class="nav-text">Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-Memorization"><span class="nav-number">2.1.</span> <span class="nav-text">Solution 1: Memorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2-Tabulation"><span class="nav-number">2.2.</span> <span class="nav-text">Solution 2: Tabulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">2.3.</span> <span class="nav-text">Steps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Problems-from-LeetCode"><span class="nav-number">3.</span> <span class="nav-text">Sample Problems (from LeetCode)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Climbing-Stairs-70"><span class="nav-number">3.1.</span> <span class="nav-text">Climbing Stairs (70)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maximum-Subarray-53"><span class="nav-number">3.2.</span> <span class="nav-text">Maximum Subarray (53)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-121"><span class="nav-number">3.3.</span> <span class="nav-text">Best Time to Buy and Sell Stock (121)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-II-122"><span class="nav-number">3.4.</span> <span class="nav-text">Best Time to Buy and Sell Stock II (122)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+      <span id="busuanzi_container_site_uv">
+        Visitor Counts<span id="busuanzi_value_site_uv"></span>times
+      </span>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
