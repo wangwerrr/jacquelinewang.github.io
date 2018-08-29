@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/4.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/5.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/6.png">
-<meta property="og:image" content="https://jacquelinewang.github.io/Users/jacqueline/hexo/source/_drafts/Stats3/anovatable.png">
+<meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/anovatable.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/conditions.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/rsd.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/r.png">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/1.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/residual.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/conditions.png">
-<meta property="og:updated_time" content="2018-08-29T12:38:49.836Z">
+<meta property="og:updated_time" content="2018-08-29T14:15:15.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Online Review] Statistics">
 <meta name="twitter:description" content="Overview of statistical inference. Topics include z-test, t-test, ANOVA &amp;amp; linear regression.">
@@ -787,7 +787,7 @@
 <p><code>boxplot(Y ~ Group)</code></p>
 <p><strong>Repeated Measures ANOVA</strong><br>Before performing the repeated measures ANOVA analysis, you must <strong>check if your subject and group variables are stored as factor</strong> variables. If not, use the <code>factor()</code> function to convert the variables to factors.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a_fit &lt;- aov(Y ~ Group + Error(Subject), data=MyData)</span><br><span class="line">summary(a_fit)</span><br></pre></td></tr></table></figure>
-<p>ANOVA table can be splited into two parts: error due variability within-subjects and the error that remains after taking out the within-subjects error.<br><img src="/Users/jacqueline/hexo/source/_drafts/Stats3/anovatable.png" alt=""></p>
+<p>ANOVA table can be splited into two parts: error due variability within-subjects and the error that remains after taking out the within-subjects error.<br><img src="/2018/08/19/Stats/anovatable.png" alt=""></p>
 <h1 id="Unit-4-Linear-Regression"><a href="#Unit-4-Linear-Regression" class="headerlink" title="Unit 4 Linear Regression"></a>Unit 4 Linear Regression</h1><h2 id="Concepts-1"><a href="#Concepts-1" class="headerlink" title="Concepts"></a>Concepts</h2><p>Linear regression attempts to explain or predict how the mean value of the response variable changes with the value of a predictor variable.</p>
 <p><strong>Conditions</strong></p>
 <ul>
