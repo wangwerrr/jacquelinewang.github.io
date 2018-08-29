@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Life is short and I use python…">
+<meta name="description" content="Life is short and I use python.">
 <meta name="keywords" content="Duke,Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Online Review&#x2F;Python] Cheat Sheet ">
+<meta property="og:title" content="[Online Review] Python ">
 <meta property="og:url" content="https://jacquelinewang.github.io/2018/07/19/Python/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Life is short and I use python…">
+<meta property="og:description" content="Life is short and I use python.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/19/Python/format.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/07/19/Python/indexing.png">
-<meta property="og:updated_time" content="2018-08-20T22:05:33.460Z">
+<meta property="og:updated_time" content="2018-08-29T12:36:48.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Online Review&#x2F;Python] Cheat Sheet ">
-<meta name="twitter:description" content="Life is short and I use python…">
+<meta name="twitter:title" content="[Online Review] Python ">
+<meta name="twitter:description" content="Life is short and I use python.">
 <meta name="twitter:image" content="https://jacquelinewang.github.io/2018/07/19/Python/format.png">
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title>[Online Review/Python] Cheat Sheet  | Jacqueline Wang</title>
+  <title>[Online Review] Python  | Jacqueline Wang</title>
   
 
 
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Online Review/Python] Cheat Sheet </h1>
+          <h1 class="post-title" itemprop="name headline">[Online Review] Python </h1>
         
 
         <div class="post-meta">
@@ -345,7 +345,7 @@
       
 
       
-        <p>Life is short and I use python<br>…</p>
+        <p>Life is short and I use python.</p>
 <a id="more"></a>
 <hr>
 <h1 id="Built-in-Functions"><a href="#Built-in-Functions" class="headerlink" title="Built-in Functions"></a>Built-in Functions</h1><p><code>format()</code><br><img src="/2018/07/19/Python/format.png" alt=""></p>
@@ -361,7 +361,7 @@
 <p><code>sorted()</code>:could be used with pairs<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pairs = [(<span class="number">2</span>,<span class="number">7</span>),(<span class="number">2</span>,<span class="number">6</span>),(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">print(sorted(pairs))</span><br></pre></td></tr></table></figure></p>
 <p>output:[(1, 4), (2, 6), (2, 7)]</p>
 <p><code>list.drop()</code>: 不能边for index 边delete list 里头的元素！！！！这样index会出错</p>
-<h1 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h1><p>primes.py<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def is_prime(number):</span><br><span class="line"><span class="string">""</span><span class="string">"Return True if *number* is prime."</span><span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> range(number):</span><br><span class="line">        <span class="keyword">if</span> number % element == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> False</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> True</span><br></pre></td></tr></table></figure></p>
+<h1 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h1><p>primes.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_prime</span><span class="params">(number)</span>:</span></span><br><span class="line"><span class="string">"""Return True if *number* is prime."""</span></span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> range(number):</span><br><span class="line">        <span class="keyword">if</span> number % element == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
 <p>test_primes.py<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line">from primes import is_prime</span><br><span class="line"></span><br><span class="line">class PrimesTestCase(unittest.TestCase):</span><br><span class="line">    <span class="string">""</span><span class="string">"Tests for `primes.py`."</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">    def test_is_five_prime(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"Is five successfully determined to be prime?"</span><span class="string">""</span></span><br><span class="line">        self.assertTrue(is_prime(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure></p>
 <p>The file creates a unit test with a single test case: <code>test_is_five_prime</code>. Using Python’s built-in unittest framework, any member function whose name begins with <code>test</code> in a class deriving from <code>unittest</code>.TestCase will be run, and its assertions checked, when <code>unittest.main()</code> is called.</p>
 <h1 id="Computational-Programming"><a href="#Computational-Programming" class="headerlink" title="Computational Programming"></a>Computational Programming</h1><h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p><strong>Array Features</strong><br>a is a numpy array<br><code>a.ndim</code>:<br><code>a.shape</code>: (row, col)<br><code>a.dtype</code></p>
@@ -379,7 +379,7 @@
 <p><strong>Matrix Operations</strong><br>Element-wise multiplication: <code>matrix1 * matrix2</code></p>
 <p>Matrix multiplication:<br><code>matrix1 @ matrix2</code><br><code>matrix1.dot(matrix2)</code><br><code>np.dot(matrix1,matrix2)</code></p>
 <p>Transpose: <code>x.T</code></p>
-<p>Outer Product: <code>np.outer(x,x)</code> so that you can do matrix multiplication for 2 vector, since row vector cannot be transposed in to col vector,<br>or we can use: <code>x.reshape((row, 1)</code> to force x into a col vector</p>
+<p>Outer Product: <code>np.outer(x,x)</code> so that you can do matrix multiplication for 2 vector, since row vector cannot be transposed in to col vector,<br>or we can use: <code>x.reshape(row, 1)</code> to force x into a col vector</p>
 <p><code>np.cumsum()</code>: cumulative sum</p>
 <h2 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h2><p><a href="https://matplotlib.org/index.html" target="_blank" rel="noopener"><code>matplotlib</code></a> is a plotting library for Python that builds heavily on NumPy. This package can be used to make publication-quality plots and graphics and is highly customizable. While <code>matplotlib</code> is one of the most well-established Python plotting libraries, there are a number of other plotting packages that you may find useful for your work:</p>
 <ul>
@@ -437,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/17/Stats2/" rel="next" title="[Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference">
-                <i class="fa fa-chevron-left"></i> [Online Review/Statistics]  Unit 2 Basice Principles of Statistical Inference
+              <a href="/2018/07/04/Udacity-Data-Analyst-Advanced-EDA/" rel="next" title="[Udacity/DA] 2 EDA">
+                <i class="fa fa-chevron-left"></i> [Udacity/DA] 2 EDA
               </a>
             
           </div>
@@ -447,8 +447,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/30/LinearAlgebra/" rel="prev" title="[Online Review/Linear Algebra] Cheat Sheet">
-                [Online Review/Linear Algebra] Cheat Sheet <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/30/LinearAlgebra/" rel="prev" title="[Online Review] Linear Algebra">
+                [Online Review] Linear Algebra <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +530,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -552,7 +552,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -824,6 +824,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
