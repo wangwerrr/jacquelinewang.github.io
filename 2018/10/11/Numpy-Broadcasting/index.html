@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,Database," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
-<meta name="keywords" content="LeetCode,Database">
+<meta name="description" content="Broadcasting describes how numpy treats arrays with different shapes during arithmetic operations.">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode&#x2F;DB] 620 Not Boring Movies">
-<meta property="og:url" content="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/index.html">
+<meta property="og:title" content="Broadcasting">
+<meta property="og:url" content="https://jacquelinewang.github.io/2018/10/11/Numpy-Broadcasting/index.html">
 <meta property="og:site_name" content="Jacqueline Wang">
-<meta property="og:description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
+<meta property="og:description" content="Broadcasting describes how numpy treats arrays with different shapes during arithmetic operations.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-07T23:34:04.753Z">
+<meta property="og:updated_time" content="2018-10-11T20:07:45.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode&#x2F;DB] 620 Not Boring Movies">
-<meta name="twitter:description" content="Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.">
+<meta name="twitter:title" content="Broadcasting">
+<meta name="twitter:description" content="Broadcasting describes how numpy treats arrays with different shapes during arithmetic operations.">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/"/>
+  <link rel="canonical" href="https://jacquelinewang.github.io/2018/10/11/Numpy-Broadcasting/"/>
 
 
 
 
 
-  <title>[LeetCode/DB] 620 Not Boring Movies | Jacqueline Wang</title>
+  <title>Broadcasting | Jacqueline Wang</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/">
+    <link itemprop="mainEntityOfPage" href="https://jacquelinewang.github.io/2018/10/11/Numpy-Broadcasting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacqueline Wang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode/DB] 620 Not Boring Movies</h1>
+          <h1 class="post-title" itemprop="name headline">Broadcasting</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-08T07:03:44-04:00">
-                2018-05-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-11T16:05:22-04:00">
+                2018-10-11
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -342,39 +342,40 @@
       
 
       
-        <p>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’.<br><a id="more"></a></p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.<br>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.<br>For example, table cinema:</p>
-<pre><code>+---------+-----------+--------------+-----------+
-|   id    | movie     |  description |  rating   |
-+---------+-----------+--------------+-----------+
-|   1     | War       |   great 3D   |   8.9     |
-|   2     | Science   |   fiction    |   8.5     |
-|   3     | irish     |   boring     |   6.2     |
-|   4     | Ice song  |   Fantacy    |   8.6     |
-|   5     | House card|   Interesting|   9.1     |
-+---------+-----------+--------------+-----------+
-</code></pre>
-For the example above, the output should be:
-<pre><code>+---------+-----------+--------------+-----------+
-|   id    | movie     |  description |  rating   |
-+---------+-----------+--------------+-----------+
-|   5     | House card|   Interesting|   9.1     |
-|   1     | War       |   great 3D   |   8.9     |
-+---------+-----------+--------------+-----------+
-</code></pre>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><pre><code>SELECT *
-FROM cinema
-WHERE description != 'boring' AND id % 2 = 1
-ORDER BY rating DESC;
-</code></pre>
-
-<h2 id="Related-Knowledge"><a href="#Related-Knowledge" class="headerlink" title="Related Knowledge"></a>Related Knowledge</h2><h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p><code>WHERE</code> clause specifies the search condition for the rows returned by the query.<br>The syntax is:<br><code>WHERE column operator value</code></p>
-<p>Some commonly-used operators in <code>WHERE</code> clause:</p>
-<table><tr><th>Operators</th><th>Description</th></tr><tr><td>=</td><td>Equals</td></tr><tr><td>&lt;&gt;, !=</td><td>Not Equal To</td></tr><tr><td>&gt;</td><td>Greater Than</td></tr><tr><td>&lt;</td><td>Less Than</td></tr><tr><td>&gt;=</td><td>Greater Than or Equal To</td></tr><tr><td>&lt;=</td><td>Less Than or Equal To</td></tr><tr><td>BETWEEN</td><td>In Some Range Of</td></tr><tr><td>LIKE</td><td>Search For A Specified Pattern</td></tr></table>
-
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>WHERE</code> is oftenly used after <code>SELECT</code> to select rows from table with some given conditions. The expression after <code>WHERE</code> defines the condition to be met for the rows to be returned. There is no limit to the number of predicates that can be included in a search condition.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/queries/where-transact-sql?view=sql-server-2017" target="_blank" rel="noopener">1. WHERE (Transact-SQL)</a><br><a href="http://www.w3school.com.cn/sql/sql_where.asp" target="_blank" rel="noopener">2. SQL WHERE Clause (Chinese)</a></p>
+        <p>Broadcasting describes how numpy treats arrays with different shapes during arithmetic operations. </p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>Broadcasting provides a means of vectorizing array operations so that looping occurs in C instead of Python. It does this without making needless copies of data and usually leads to efficient algorithm implementations. </p>
+<p>NumPy’s broadcasting rule relaxes this constraint when the arrays’ shapes meet certain constraints. </p>
+<h1 id="Simple-Broadcasting-Array-Scalar"><a href="#Simple-Broadcasting-Array-Scalar" class="headerlink" title="Simple Broadcasting: Array * Scalar"></a>Simple Broadcasting: Array * Scalar</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">2.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a * b</span><br><span class="line">array([ <span class="number">2.</span>,  <span class="number">4.</span>,  <span class="number">6.</span>])</span><br></pre></td></tr></table></figure>
+<p>We can think of the scalar <code>b</code> being <em>stretched</em> during the arithmetic operation into an array with the same shape as <code>a</code>. And then, element-wise multiplication is performed.</p>
+<p>The stretching analogy is only conceptual. NumPy is smart enough to use the original scalar value without actually making copies, so that broadcasting operations are as <strong>memory and computationally efficient</strong> as possible.</p>
+<h1 id="General-Broadcasting-Rules-Array-Array"><a href="#General-Broadcasting-Rules-Array-Array" class="headerlink" title="General Broadcasting Rules: Array * Array"></a>General Broadcasting Rules: Array * Array</h1><p>总体思想：先看shape的对应，画图，再计算。</p>
+<h2 id="Comparing-shape"><a href="#Comparing-shape" class="headerlink" title="Comparing shape"></a>Comparing shape</h2><p>When operating on two arrays, NumPy <strong>compares their shapes</strong> element-wise. It <strong>starts with the last</strong> dimensions, and works its way forward. </p>
+<p>Two dimensions are compatible when</p>
+<ul>
+<li><p>they are equal, or</p>
+</li>
+<li><p>one of them is 1 (or None)</p>
+</li>
+</ul>
+<p>If these conditions are not met, a <code>ValueError: frames are not aligned</code> exception is thrown, indicating that the arrays have incompatible shapes. </p>
+<p>The size of the resulting array is the <strong>maximum size along each dimension</strong> of the input arrays.</p>
+<h2 id="Multiplication"><a href="#Multiplication" class="headerlink" title="Multiplication"></a>Multiplication</h2><p><strong>Example1</strong></p>
+<p>Arrays do not need to have the same <em>number</em> of dimensions. For example, if you have a <code>256x256x3</code> array of <u>RGB values, and you want to scale each color in the image by a different value</u>, you can multiply the image by a one-dimensional array with 3 values. Lining up the sizes of the trailing axes of these arrays according to the broadcast rules, shows that they are compatible:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Image  (3d array): 256 x 256 x 3</span><br><span class="line">Scale  (1d array):             3</span><br><span class="line">Result (3d array): 256 x 256 x 3</span><br></pre></td></tr></table></figure>
+<p>When either of the dimensions compared is one, the other is used. In other words, dimensions with size 1 are stretched or “copied” to match the other.</p>
+<p>总结：有三个256X256的2Darray, 各个 array 分别用一个1d array的三个scalar乘以其全部element</p>
+<p><strong>Example2</strong></p>
+<p>In the following example, both the <code>A</code> and <code>B</code> arrays have axes with length one that are expanded to a larger size during the broadcast operation:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A      (4d array):  8 x 1 x 6 x 1</span><br><span class="line">B      (3d array):      7 x 1 x 5</span><br><span class="line">Result (4d array):  8 x 7 x 6 x 5</span><br></pre></td></tr></table></figure>
+<p><strong>More examples</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">A      (3d array):  15 x 3 x 5</span><br><span class="line">B      (3d array):  15 x 1 x 5</span><br><span class="line">Result (3d array):  15 x 3 x 5</span><br><span class="line"></span><br><span class="line">A      (3d array):  15 x 3 x 5</span><br><span class="line">B      (2d array):       3 x 5</span><br><span class="line">Result (3d array):  15 x 3 x 5</span><br><span class="line"></span><br><span class="line">A      (3d array):  15 x 3 x 5</span><br><span class="line">B      (2d array):       3 x 1</span><br><span class="line">Result (3d array):  15 x 3 x 5</span><br></pre></td></tr></table></figure>
+<p><strong>An example of broadcasting in practice</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = np.arange(4)</span><br><span class="line">&gt;&gt;&gt; xx = x.reshape(4,1)</span><br><span class="line">&gt;&gt;&gt; y = np.ones(5)</span><br><span class="line">&gt;&gt;&gt; z = np.ones((3,4))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x.shape</span><br><span class="line">(4,)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; y.shape</span><br><span class="line">(5,)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x + y</span><br><span class="line">&lt;type &apos;exceptions.ValueError&apos;&gt;: shape mismatch: objects cannot be broadcast to a single shape</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; xx.shape</span><br><span class="line">(4, 1)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; y.shape</span><br><span class="line">(5,)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; (xx + y).shape</span><br><span class="line">(4, 5)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; xx + y</span><br><span class="line">array([[ 1.,  1.,  1.,  1.,  1.],</span><br><span class="line">       [ 2.,  2.,  2.,  2.,  2.],</span><br><span class="line">       [ 3.,  3.,  3.,  3.,  3.],</span><br><span class="line">       [ 4.,  4.,  4.,  4.,  4.]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x.shape</span><br><span class="line">(4,)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; z.shape</span><br><span class="line">(3, 4)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; (x + z).shape</span><br><span class="line">(3, 4)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; x + z</span><br><span class="line">array([[ 1.,  2.,  3.,  4.],</span><br><span class="line">       [ 1.,  2.,  3.,  4.],</span><br><span class="line">       [ 1.,  2.,  3.,  4.]])</span><br></pre></td></tr></table></figure>
+<h2 id="Application-outer-operation"><a href="#Application-outer-operation" class="headerlink" title="Application: outer operation"></a>Application: outer operation</h2><p>Broadcasting provides a convenient way of taking the outer product (or any other outer operation) of two arrays. </p>
+<p>The following example shows an outer addition operation of two 1-d arrays:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([0.0, 10.0, 20.0, 30.0])</span><br><span class="line">&gt;&gt;&gt; b = np.array([1.0, 2.0, 3.0])</span><br><span class="line">&gt;&gt;&gt; a[:, np.newaxis] + b</span><br><span class="line">array([[  1.,   2.,   3.],</span><br><span class="line">       [ 11.,  12.,  13.],</span><br><span class="line">       [ 21.,  22.,  23.],</span><br><span class="line">       [ 31.,  32.,  33.]])</span><br></pre></td></tr></table></figure>
+<p>Here the <code>newaxis</code> index operator inserts a new axis into <code>a</code>, making it a two-dimensional <code>4x1</code> array. Combining the <code>4x1</code> array with <code>b</code>, which has shape <code>(3,)</code>, yields a <code>4x3</code> array.</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://docs.scipy.org/doc/numpy-1.15.0/user/basics.broadcasting.html" target="_blank" rel="noopener">scipy-broadcasting</a></p>
 
       
     </div>
@@ -392,9 +393,7 @@ ORDER BY rating DESC;
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-            <a href="/tags/Database/" rel="tag"># Database</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -407,8 +406,8 @@ ORDER BY rating DESC;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/07/LeetCode-DB-627-Swap-Salary/" rel="next" title="[LeetCode/DB] 627 Swap Salary">
-                <i class="fa fa-chevron-left"></i> [LeetCode/DB] 627 Swap Salary
+              <a href="/2018/08/19/Stats/" rel="next" title="[Online Review] Statistics">
+                <i class="fa fa-chevron-left"></i> [Online Review] Statistics
               </a>
             
           </div>
@@ -416,10 +415,6 @@ ORDER BY rating DESC;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/08/Lean-In-note-1/" rel="prev" title="[Lean In] Reading Note 1">
-                [Lean In] Reading Note 1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +590,7 @@ ORDER BY rating DESC;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Knowledge"><span class="nav-number">3.</span> <span class="nav-text">Related Knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE"><span class="nav-number">3.1.</span> <span class="nav-text">WHERE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview"><span class="nav-number"></span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Simple-Broadcasting-Array-Scalar"><span class="nav-number"></span> <span class="nav-text">Simple Broadcasting: Array * Scalar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Broadcasting-Rules-Array-Array"><span class="nav-number"></span> <span class="nav-text">General Broadcasting Rules: Array * Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparing-shape"><span class="nav-number">1.</span> <span class="nav-text">Comparing shape</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiplication"><span class="nav-number">2.</span> <span class="nav-text">Multiplication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-outer-operation"><span class="nav-number">3.</span> <span class="nav-text">Application: outer operation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
             
 
           </div>

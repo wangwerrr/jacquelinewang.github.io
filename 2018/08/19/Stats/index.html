@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Duke,R,Statistics," />
+  <meta name="keywords" content="Duke,Statistics,R," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Overview of statistical inference. Topics include z-test, t-test, ANOVA &amp;amp; linear regression.">
-<meta name="keywords" content="Duke,R,Statistics">
+<meta name="keywords" content="Duke,Statistics,R">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Online Review] Statistics">
 <meta property="og:url" content="https://jacquelinewang.github.io/2018/08/19/Stats/index.html">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/1.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/residual.png">
 <meta property="og:image" content="https://jacquelinewang.github.io/2018/08/19/Stats/conditions.png">
-<meta property="og:updated_time" content="2018-08-29T14:15:15.570Z">
+<meta property="og:updated_time" content="2018-09-03T00:13:24.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Online Review] Statistics">
 <meta name="twitter:description" content="Overview of statistical inference. Topics include z-test, t-test, ANOVA &amp;amp; linear regression.">
@@ -458,19 +458,27 @@
 <p><img src="/2018/08/19/Stats/barplot.png" alt=""></p>
 <h2 id="Explore-Distributions-in-R"><a href="#Explore-Distributions-in-R" class="headerlink" title="Explore Distributions in R"></a>Explore Distributions in R</h2><p><strong>Distribution</strong></p>
 <ul>
-<li>Normal distribution: <code>norm(x, mean=0, sd=1)</code></li>
-<li>Exponential distribution: <code>exp(x, rate=1)</code></li>
-<li>Uniform distribution: <code>unif(x, min=0, max=1)</code></li>
-<li>Binomial distribution: <code>binom(x, size, prob)</code></li>
-<li>Poisson distribution: <code>pois(x, lambda)</code></li>
-<li>T distribution: <code>t(t, df)</code></li>
+<li>Normal distribution: <code>dnorm(x, mean=0, sd=1)</code></li>
+<li>Exponential distribution: <code>dexp(x, rate=1)</code></li>
+<li>Uniform distribution: <code>dunif(x, min=0, max=1)</code></li>
+<li>Binomial distribution: <code>dbinom(x, size, prob，lower.tail=TRUE)</code></li>
+<li>Poisson distribution: <code>dpois(x, lambda)</code></li>
+<li>T distribution: <code>dt(t, df)</code></li>
 </ul>
 <p><strong>Prefix</strong></p>
 <ul>
-<li>Probability density function (PDF): <code>d</code> （给x值求对应的概率）</li>
-<li>Cumulative distribution function (CDF, probabilities): <code>p</code> （给X求对应的累计概率）</li>
-<li>Percentiles from the distribution (quantiles): <code>q</code>  （给累计概率求对应的X）</li>
-<li>Random number generation from the distribution: <code>r</code> (产生随机数)</li>
+<li>Probability density function (PDF): <code>dbinom(x, size, prob，lower.tail=TRUE)</code> （给x值求对应的概率）</li>
+<li>Cumulative distribution function (CDF, probabilities): <code>pbinom(q, size, prob，lower.tail=TRUE)</code> （给quantile求对应的累计概率）<ul>
+<li>lower.tail=TRUE: $P(X≤x)$</li>
+<li>lower.tail=FALSE: $P(X&gt;x)$</li>
+</ul>
+</li>
+<li>Percentiles from the distribution (quantiles): <code>qbinom(p, size, prob，lower.tail=TRUE)</code>  （给累计概率p求对应的X）<ul>
+<li>lower.tail=TURE: return smallest $q$, so that $P(X≤q)≥p$</li>
+<li>lower.tail=FALSE: return the biggest $q$, so that $P(X &gt;q)≥p$ </li>
+</ul>
+</li>
+<li>Random number generation from the distribution: <code>rbinom(n, size, prob，lower.tail=TRUE)</code> (产生随机数)</li>
 </ul>
 <h1 id="Unit-2-Statistical-Inference-Z-test"><a href="#Unit-2-Statistical-Inference-Z-test" class="headerlink" title="Unit 2 Statistical Inference (Z-test)"></a>Unit 2 Statistical Inference (Z-test)</h1><h2 id="Interpretations"><a href="#Interpretations" class="headerlink" title="Interpretations"></a>Interpretations</h2><p><strong>Hypothesis Testing</strong></p>
 <ul>
@@ -915,9 +923,9 @@
           
             <a href="/tags/Duke/" rel="tag"># Duke</a>
           
-            <a href="/tags/R/" rel="tag"># R</a>
-          
             <a href="/tags/Statistics/" rel="tag"># Statistics</a>
+          
+            <a href="/tags/R/" rel="tag"># R</a>
           
         </div>
       
@@ -939,6 +947,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/11/Numpy-Broadcasting/" rel="prev" title="Broadcasting">
+                Broadcasting <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1019,7 +1031,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
