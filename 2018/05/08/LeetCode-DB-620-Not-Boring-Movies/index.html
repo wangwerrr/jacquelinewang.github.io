@@ -319,6 +319,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/08/LeetCode-DB-620-Not-Boring-Movies/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -455,6 +465,9 @@ ORDER BY rating DESC;
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -548,12 +561,6 @@ ORDER BY rating DESC;
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.facebook.com/100002269882529" target="_blank" title="FB Page">
-                      
-                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="https://instagram.com/jacqueline.jw" target="_blank" title="Instagram">
                       
                         <i class="fa fa-fw fa-instagram"></i>Instagram</a>
@@ -629,7 +636,7 @@ ORDER BY rating DESC;
       <div class="footer-inner">
         <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-star}"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jacqueline Wang</span>
 
@@ -654,7 +661,8 @@ ORDER BY rating DESC;
 
         
 <div class="busuanzi-count">
-  <script async src=“https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js”></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
   
     <span class="site-uv">
@@ -813,6 +821,28 @@ ORDER BY rating DESC;
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'tsSiQC54MeppChVcuqG9hUPp-gzGzoHsz# your leancloud application appid',
+        appKey: 'SUCwiYoV0aFuBkWn6o5Ouztf',
+        placeholder: 'Comment here',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
